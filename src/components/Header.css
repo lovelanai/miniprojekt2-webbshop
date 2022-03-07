@@ -1,0 +1,9 @@
+header {
+  height: 5rem;
+  background-color: rgb(197, 147, 147);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
