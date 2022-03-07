@@ -13,7 +13,7 @@ export interface Product {
 const Products: Product[] = [
   {
     id: 1,
-    title: "Fullformatskamera med effektiv autofokus",
+    title: "Sony A7 III kamerahus",
     info: "Sony A7 III är försedd med en nyutvecklad, bakbelyst Exmor R CMOS-sensor i fullformat och den har ärvt många funktioner och finesser från modellerna A7R III och A9 såsom bättre batteritid och joystick för att kontrollera autofokusen.",
     price: 19990,
     quantity: 1,
