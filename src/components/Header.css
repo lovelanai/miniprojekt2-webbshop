@@ -1,9 +1,17 @@
 header {
   height: 5rem;
-  background-color: rgb(197, 147, 147);
+  background-color: #e2061e;
   width: 100%;
   display: flex;
+  position: fixed;
+  top: 0;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  color: #fbf7f5;
+  z-index: 10;
+}
+
+h2 {
+  padding-bottom: 1rem;
 }
