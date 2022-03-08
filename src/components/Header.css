@@ -23,6 +23,10 @@ header .title {
   height: 100%;
 }
 
+header img {
+  height: 30rem;
+}
+
 .show-products {
   animation: showProducts 1s ease-in-out forwards;
   animation-delay: 0.2s;
