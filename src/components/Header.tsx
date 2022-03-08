@@ -2,7 +2,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CameraIcon from "@mui/icons-material/Camera";
 import "./Header.css";
 import { Badge, Button } from "@mui/material";
-import { display } from "@mui/system";
 
 function Header() {
   return (
@@ -12,7 +11,13 @@ function Header() {
         sx={{ paddingLeft: "1rem", fontSize: "2rem", opacity: "0" }}
       />
 
-      <img id={"logo"} src={require("./logo.png")} alt="logo" />
+      <img id={"logo"} src={require("../assets/img/logo.png")} alt="logo" />
+      <img
+        className="small-logo-nodisplay"
+        id={"smallLogo"}
+        src={require("../assets/img/smallogo.png")}
+        alt="logo"
+      />
 
       <Button id="showProductsBtn" onClick={showProducts}>
         Shoppa
@@ -33,6 +38,11 @@ function Header() {
 function showProducts() {
   document.getElementById("header")?.classList.add("show-products");
   document.getElementById("logo")?.classList.add("logo-fit");
+  document
+    .getElementById("smallLogo")
+    ?.classList.remove("small-logo-nodisplay");
+  document.getElementById("smallLogo")?.classList.add("small-logo");
+
   document.getElementById("cartIcon")?.classList.add("show-cart");
   document.getElementById("cameraIcon")?.classList.add("show-cart");
   document.getElementById("showProductsBtn")?.remove();
