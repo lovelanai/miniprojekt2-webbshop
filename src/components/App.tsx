@@ -1,12 +1,15 @@
 import { Button } from "@mui/material";
+import ProductProvider from "../contexts/ProductContext";
 import "./App.css";
 import Layout from "./Layout";
 
 function App() {
   return (
-    <div>
+    // <BrowserRouter>
+    <ProductProvider>
       <Layout />
-    </div>
+    </ProductProvider>
+    // </BrowserRouter>
   );
 }
 
