@@ -8,6 +8,7 @@ function Header() {
   const [animate, setAnimate] = useState(false);
 
   return (
+
     <header id="header" className="show-products">
       <CameraIcon
         className="icon"
@@ -27,6 +28,7 @@ function Header() {
         badgeContent={"99+"}
         color="primary"
       >
+
         <ShoppingCartIcon sx={{ fontSize: "2rem" }} />
       </Badge>
     </header>
