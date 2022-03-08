@@ -11,7 +11,7 @@ function Header() {
         <h1>kameraproffset.se</h1>
         <h2>Av fotografer, för fotografer.</h2>
       </div>
-      <Badge sx={{ marginRight: "1rem" }} badgeContent={"99+"} color="primary">
+      <Badge sx={{ marginRight: "1rem" }} badgeContent={99} color="primary">
         <ShoppingCartIcon sx={{ fontSize: "2rem" }} />
       </Badge>
     </header>
