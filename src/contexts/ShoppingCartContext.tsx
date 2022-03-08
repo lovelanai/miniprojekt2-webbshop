@@ -2,7 +2,7 @@ import { FC, useState, createContext, useContext, useEffect } from "react";
 import { Product } from "../interfaces/interfaces";
 
 export interface ContextValue {
-  cartItems?: Product[];
+  cartItems: Product[];
   handleAddProduct: (product: Product) => void;
   handleRemoveProduct: (product: Product) => void;
 }
