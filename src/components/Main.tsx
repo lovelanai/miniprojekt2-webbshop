@@ -1,6 +1,9 @@
+
+
+
+import ProductInfo from "./Productinfo";
 import { Routes, Route } from "react-router-dom";
 import ShoppingCartPage from "./ShoppingCartPage";
-
 import Store from "./Store";
 
 function Main() {
@@ -10,6 +13,7 @@ function Main() {
         <Route path="/" element={<Store />} />
         <Route path="/ShoppingCartPage" element={<ShoppingCartPage />} />
       </Routes>
+      <ProductInfo />
     </main>
   );
 }
