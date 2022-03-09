@@ -24,8 +24,6 @@ const ProductProvider: FC = (props) => {
     setProducts(products.filter(({ id }) => id !== product.id));
   };
 
-  console.log(products);
-
   return (
     <ProductContext.Provider
       value={{ products, handleAddProduct, handleRemoveProduct }}

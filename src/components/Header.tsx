@@ -2,13 +2,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CameraIcon from "@mui/icons-material/Camera";
 import "./Header.css";
 import { Badge, Button } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 
 function Header() {
   const [animate, setAnimate] = useState(false);
 
+  const { amountOfProducts } = useContext(ShoppingCartContext);
   return (
-
     <header id="header" className="show-products">
       <CameraIcon
         className="icon"
@@ -25,10 +26,9 @@ function Header() {
       <Badge
         className="icon"
         sx={{ marginRight: "1rem", opacity: "0" }}
-        badgeContent={"99+"}
+        badgeContent={amountOfProducts}
         color="primary"
       >
-
         <ShoppingCartIcon sx={{ fontSize: "2rem" }} />
       </Badge>
     </header>

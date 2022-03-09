@@ -3,18 +3,21 @@ import { Product } from "../interfaces/interfaces";
 
 export interface ContextValue {
   cartItems: Product[];
+  amountOfProducts: number;
   handleAddProduct: (product: Product) => void;
   handleRemoveProduct: (product: Product) => void;
 }
 
 export const ShoppingCartContext = createContext<ContextValue>({
   cartItems: [],
-  handleAddProduct: (product: Product) => [],
-  handleRemoveProduct: (product: Product) => [],
+  amountOfProducts: 0,
+  handleAddProduct: () => {},
+  handleRemoveProduct: () => {},
 });
 
 const ShoppingCartProvider: FC = (props) => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [amountOfProducts, setAmountOfProducts] = useState<number>(0);
 
   /**
    * This function adds a product to the cartItems-array.
@@ -36,6 +39,7 @@ const ShoppingCartProvider: FC = (props) => {
     } else {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
+    setAmountOfProducts(amountOfProducts + 1);
   }
 
   /**
@@ -59,11 +63,17 @@ const ShoppingCartProvider: FC = (props) => {
         })
       );
     }
+    setAmountOfProducts(amountOfProducts - 1);
   }
 
   return (
     <ShoppingCartContext.Provider
-      value={{ cartItems, handleAddProduct, handleRemoveProduct }}
+      value={{
+        cartItems,
+        handleAddProduct,
+        handleRemoveProduct,
+        amountOfProducts,
+      }}
     >
       {props.children}
     </ShoppingCartContext.Provider>
@@ -71,3 +81,5 @@ const ShoppingCartProvider: FC = (props) => {
 };
 
 export default ShoppingCartProvider;
+
+export const useCart = () => useContext(ShoppingCartContext);
