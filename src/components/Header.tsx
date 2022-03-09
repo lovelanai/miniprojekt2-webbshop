@@ -5,15 +5,11 @@ import "./Header.css";
 import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import { Badge, Button } from "@mui/material";
 import { useContext, useState } from "react";
 import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 
-
 import "./ShoppingCartPage.tsx";
 function Header() {
-
-
   const { amountOfProducts } = useContext(ShoppingCartContext);
   return (
     <header id="header" className="show-products">
@@ -36,17 +32,13 @@ function Header() {
       <Link to="/ShoppingCartPage">
         <Badge
           className="icon"
-        sx={{ marginRight: "1rem", opacity: "0" }}
-        badgeContent={amountOfProducts}
-        color="primary"
+          sx={{ marginRight: "1rem", opacity: "0" }}
+          badgeContent={amountOfProducts}
+          color="primary"
         >
-
           <ShoppingCartIcon sx={{ fontSize: "2rem" }} />
         </Badge>
-
-
       </Link>
-
     </header>
   );
 }
