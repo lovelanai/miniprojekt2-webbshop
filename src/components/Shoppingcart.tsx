@@ -65,7 +65,7 @@ export default function ShoppingCart(): JSX.Element {
           </div>
           <div className="items">
             <h3>Produkter</h3>
-            <Typography><Typography>
+            <p> total </p>
           </div>
 
           <div className="total">
