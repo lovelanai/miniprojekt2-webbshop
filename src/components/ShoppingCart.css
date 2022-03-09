@@ -82,7 +82,6 @@
 
 .productContainer {
   background-color: cornflowerblue;
-  width: 80;
   flex-direction: column;
   height: 25rem;
   margin: 1rem 1rem;
@@ -104,4 +103,5 @@
   background-color: red;
   width: 100%;
   display: flex;
+  flex-direction: row;
 }

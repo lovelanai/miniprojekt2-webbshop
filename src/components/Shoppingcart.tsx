@@ -14,7 +14,7 @@ import ProductContext from "../contexts/ProductContext";
 
 export default function ShoppingCart(): JSX.Element {
   const { cartItems } = useContext(ShoppingCartContext);
-
+  const { amountOfProducts } = useContext(ShoppingCartContext);
   return (
     <div className="cart-container">
       <div className="cart">
@@ -32,7 +32,7 @@ export default function ShoppingCart(): JSX.Element {
           <div className="productContainer">
             {cartItems.map((item) => (
               <div className="addedProducts">
-                <Card key={item.id} sx={{ maxWidth: 345 }}>
+                <Card key={item.id}>
                   <CardMedia
                     component="img"
                     alt={item.title}
@@ -45,7 +45,7 @@ export default function ShoppingCart(): JSX.Element {
                       {item.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {item.info1}
+                      {item.price}
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -65,12 +65,11 @@ export default function ShoppingCart(): JSX.Element {
           </div>
           <div className="items">
             <h3>Produkter</h3>
-            <p> total </p>
+            <p> {amountOfProducts}</p>
           </div>
-
           <div className="total">
             <h3>Total</h3>
-            <p>Summa ""</p>
+            {/* <p>Summa "{item.price * item.quantity}"</p> */}
           </div>
         </div>
       </div>
