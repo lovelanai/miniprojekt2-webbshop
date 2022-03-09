@@ -10,27 +10,33 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { ProductContext } from "../contexts/ProductContext";
 import { ActiveProductContext } from "../contexts/ActiveProduct";
+import { Product } from "../interfaces/interfaces";
 
 const AutoPlaySwipeableViews = SwipeableViews;
 
-function ProductInfoImageSlider() {
-  const { products } = useContext(ProductContext);
-  const { activeProduct } = useContext(ActiveProductContext);
+interface Props {
+  product: Product;
+}
+
+function ProductInfoImageSlider(props: Props) {
+  // const { products } = useContext(ProductContext);
+  // const { activeProduct } = useContext(ActiveProductContext);
+  const { product } = props;
   const images = [
     {
-      label: activeProduct?.title,
+      label: product.title,
       id: 1,
-      imgPath: activeProduct?.image,
+      imgPath: product.image,
     },
     {
-      label: activeProduct?.title,
+      label: product.title,
       id: 2,
-      imgPath: activeProduct?.image2,
+      imgPath: product.image2,
     },
     {
-      label: activeProduct?.title,
+      label: product.title,
       id: 3,
-      imgPath: activeProduct?.image3,
+      imgPath: product.image3,
     },
   ];
 

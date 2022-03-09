@@ -15,6 +15,7 @@ import { Theme } from "@mui/material";
 import { ProductContext } from "../contexts/ProductContext";
 import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
 import { ActiveProductContext } from "../contexts/ActiveProduct";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -77,14 +78,16 @@ export default function ImgMediaCard(): JSX.Element {
               >
                 Lägg i kundvagn
               </Button>
-              <Button
-                onClick={() => handleSetActiveProduct(item)}
-                variant="contained"
-                size="small"
-                color="secondary"
-              >
-                Till produkten
-              </Button>
+              <Link to={item.title.replaceAll(" ", "-")}>
+                <Button
+                  // onClick={() => handleSetActiveProduct(item)}
+                  variant="contained"
+                  size="small"
+                  color="secondary"
+                >
+                  Till produkten
+                </Button>
+              </Link>
             </div>
           </CardActions>
         </Card>
