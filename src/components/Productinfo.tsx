@@ -19,6 +19,7 @@ function ProductInfo(props: Props) {
       <div key={product.id}>
         <h2 className="product-info-title">{product.title}</h2>
         <p className="product-info-description">{product.longinfo}</p>
+        <p className="product-info-price">{product.price} :-</p>
       </div>
     </div>
   );
