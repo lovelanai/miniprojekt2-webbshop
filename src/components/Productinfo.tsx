@@ -17,8 +17,8 @@ function ProductInfo(props: Props) {
     <div className="product-info-container">
       <ProductInfoImageSlider product={product} />
       <div key={product.id}>
-        <h2>{product.title}</h2>
-        <p>{product.longinfo}</p>
+        <h2 className="product-info-title">{product.title}</h2>
+        <p className="product-info-description">{product.longinfo}</p>
       </div>
     </div>
   );

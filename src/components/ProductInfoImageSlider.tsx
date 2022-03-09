@@ -24,17 +24,17 @@ function ProductInfoImageSlider(props: Props) {
   const { product } = props;
   const images = [
     {
-      label: product.title,
+      label: product.info1,
       id: 1,
       imgPath: product.image,
     },
     {
-      label: product.title,
+      label: product.info2,
       id: 2,
       imgPath: product.image2,
     },
     {
-      label: product.title,
+      label: product.info3,
       id: 3,
       imgPath: product.image3,
     },
@@ -57,7 +57,7 @@ function ProductInfoImageSlider(props: Props) {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box sx={{ maxWidth: 700, flexGrow: 1 }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -70,11 +70,13 @@ function ProductInfoImageSlider(props: Props) {
               <Box
                 component="img"
                 sx={{
-                  height: 255,
+                  height: "100%",
                   display: "block",
-                  maxWidth: 400,
+                  maxHeight: 455,
+                  maxWidth: 700,
                   overflow: "hidden",
                   width: "100%",
+                  objectFit: "contain",
                 }}
                 src={step.imgPath}
                 alt={step.label}
