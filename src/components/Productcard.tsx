@@ -13,6 +13,7 @@ import { info } from "console";
 import ProductAccordion from "./ProductAccordion";
 import { Theme } from "@mui/material";
 import { ProductContext } from "../contexts/ProductContext";
+import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +27,7 @@ export default function ImgMediaCard(): JSX.Element {
   const classes = useStyles();
 
   const { products } = useContext(ProductContext);
+  const { handleAddProduct } = useCart();
 
   return (
     <div className="ProductContainer">
@@ -65,7 +67,12 @@ export default function ImgMediaCard(): JSX.Element {
           <ProductAccordion info={item.longinfo} />
           <CardActions>
             <div className="buttons">
-              <Button variant="contained" size="small" color="primary">
+              <Button
+                onClick={() => handleAddProduct(item)}
+                variant="contained"
+                size="small"
+                color="primary"
+              >
                 Lägg i kundvagn
               </Button>
               <Button variant="contained" size="small" color="secondary">
