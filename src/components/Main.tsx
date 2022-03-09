@@ -1,12 +1,46 @@
-import ShoppingCart from "./Shoppingcart";
+
+
+import { Routes, Route } from "react-router-dom";
+import ShoppingCartPage from "./ShoppingCartPage";
+
+
+
 import Store from "./Store";
 
 function Main() {
   return (
     <main>
-      <Store />
-      <ShoppingCart />
-    </main>
+
+
+      <Routes>
+        <Route
+          path="/"
+          element={<Store />}
+        />
+        <Route
+          path="/ShoppingCartPage"
+          element={
+            <ShoppingCartPage />}
+        />
+
+      </Routes>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main >
+
   );
 }
 
