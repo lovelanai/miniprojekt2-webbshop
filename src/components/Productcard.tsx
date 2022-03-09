@@ -14,6 +14,7 @@ import ProductAccordion from "./ProductAccordion";
 import { Theme } from "@mui/material";
 import { ProductContext } from "../contexts/ProductContext";
 import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
+import { ActiveProductContext } from "../contexts/ActiveProduct";
 
 const useStyles = makeStyles({
   root: {
@@ -28,6 +29,7 @@ export default function ImgMediaCard(): JSX.Element {
 
   const { products } = useContext(ProductContext);
   const { handleAddProduct } = useCart();
+  const { handleSetActiveProduct } = useContext(ActiveProductContext);
 
   return (
     <div className="ProductContainer">
@@ -75,7 +77,12 @@ export default function ImgMediaCard(): JSX.Element {
               >
                 Lägg i kundvagn
               </Button>
-              <Button variant="contained" size="small" color="secondary">
+              <Button
+                onClick={() => handleSetActiveProduct(item)}
+                variant="contained"
+                size="small"
+                color="secondary"
+              >
                 Till produkten
               </Button>
             </div>

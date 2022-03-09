@@ -1,15 +1,14 @@
 
 
+
 import { Routes, Route } from "react-router-dom";
 import ShoppingCartPage from "./ShoppingCartPage";
-
-
-
 import Store from "./Store";
 
 function Main() {
   return (
     <main>
+
 
 
       <Routes>

@@ -8,6 +8,8 @@ export interface Product {
   price: number;
   quantity: number;
   image: string;
+  image2: string;
+  image3: string;
 }
 
 export const mockedProducts: Product[] = [
@@ -23,6 +25,10 @@ export const mockedProducts: Product[] = [
     quantity: 1,
     image:
       "https://www.scandinavianphoto.se/globalassets/1038723.jpg?ref=9A7E5CB4A2&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1038723_1.jpg?ref=1145D98FC7&w=1920&h=1920&mode=max",
+    image3:
+      "https://www.scandinavianphoto.se/globalassets/1038723_2.jpg?ref=36400AFD1E&w=1920&h=1920&mode=max",
   },
   {
     id: 2,
@@ -35,7 +41,11 @@ export const mockedProducts: Product[] = [
     price: 89900,
     quantity: 1,
     image:
-      "	https://www.scandinavianphoto.se/globalassets/1049125.jpg?ref=9BD8741CE2&w=1920&h=1920&mode=max",
+      "https://www.scandinavianphoto.se/globalassets/1049125.jpg?ref=9BD8741CE2&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1049125_3.jpg?ref=131E56B2CE&w=1920&h=1920&mode=max",
+    image3:
+      "https://www.scandinavianphoto.se/globalassets/1049125_1.jpg?ref=821387DCD1&w=3840&h=3840&mode=max",
   },
   {
     id: 3,
@@ -49,6 +59,10 @@ export const mockedProducts: Product[] = [
     quantity: 1,
     image:
       "https://www.scandinavianphoto.se/globalassets/1048664_11.jpg?ref=C91E595A11&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1048664_12.jpg?ref=1A2B604F61&w=1920&h=1920&mode=max",
+    image3:
+      "https://www.scandinavianphoto.se/globalassets/1048664_13.jpg?ref=6BF35CDA79&w=3840&h=3840&mode=max",
   },
   {
     id: 4,
@@ -62,6 +76,10 @@ export const mockedProducts: Product[] = [
     quantity: 1,
     image:
       "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650.jpg?ref=4F54BD9EA6&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650_right.jpg?ref=756435196C&w=1920&h=1920&mode=max",
+    image3:
+      "https://www.elgiganten.se/image/dv_web_D180001002784843/330001/sony-digital-vlogg-kamera-zv-e10l--pdp_zoom-3000--pdp_main-960.jpg",
   },
   {
     id: 5,
@@ -75,6 +93,10 @@ export const mockedProducts: Product[] = [
     quantity: 1,
     image:
       "https://www.scandinavianphoto.se/globalassets/1036886.jpg?ref=748AED7B91&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1036886_3.jpg?ref=8F1C2DC18B&w=1920&h=1920&mode=max",
+    image3:
+      "https://www.scandinavianphoto.se/globalassets/1036886_2.jpg?ref=45097BE295&w=3840&h=3840&mode=max",
   },
   {
     id: 6,
@@ -89,6 +111,10 @@ export const mockedProducts: Product[] = [
     quantity: 1,
     image:
       "https://www.scandinavianphoto.se/globalassets/1054659.jpg?ref=550E52B9B6&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1054659_1.jpg?ref=A4E6F0B8D4&w=1920&h=1920&mode=max",
+    image3:
+      "https://www.scandinavianphoto.se/globalassets/1054659_2.jpg?ref=5F0C4D9C3E&w=1920&h=1920&mode=max",
   },
   {
     id: 7,
@@ -103,6 +129,10 @@ export const mockedProducts: Product[] = [
     quantity: 1,
     image:
       "https://www.scandinavianphoto.se/globalassets/1047603.jpg?ref=348324CCD8&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1047603_4.jpg?ref=88DB3CCEC9&w=960&h=960&mode=max",
+    image3:
+      "https://www.scandinavianphoto.se/globalassets/1047603_2.jpg?ref=0B65D6ADE3&w=960&h=960&mode=max",
   },
   {
     id: 8,
@@ -116,6 +146,10 @@ export const mockedProducts: Product[] = [
     quantity: 1,
     image:
       "https://www.scandinavianphoto.se/globalassets/1027465.jpg?ref=6EB92BE8F3&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1027465_1.jpg?ref=94B293D9B9&w=1920&h=1920&mode=max",
+    image3:
+      "https://www.scandinavianphoto.se/globalassets/1027465_2.jpg?ref=DE00B8E67C&w=1920&h=1920&mode=max",
   },
   {
     id: 9,
@@ -130,5 +164,9 @@ export const mockedProducts: Product[] = [
     quantity: 1,
     image:
       "https://www.scandinavianphoto.se/globalassets/1053456.jpg?ref=6C795A6B04&w=1920&h=1920&mode=max",
+    image2:
+      "https://www.scandinavianphoto.se/globalassets/1053456_1.jpg?ref=160BDE0533&w=960&h=960&mode=max",
+    image3:
+      "https://www.scandinavianphoto.se/globalassets/1053456_3.jpg?ref=92FA1DBF61&w=960&h=960&mode=max",
   },
 ];
