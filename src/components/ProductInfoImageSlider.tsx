@@ -70,12 +70,13 @@ function ProductInfoImageSlider(props: Props) {
               <Box
                 component="img"
                 sx={{
-                  height: "100%",
+                  // height: "100%",
                   display: "block",
-                  maxHeight: 455,
-                  maxWidth: 700,
+                  height: 455,
+                  minHeight: 255,
+                  minWidth: 700,
                   overflow: "hidden",
-                  width: "100%",
+                  width: 700,
                   objectFit: "contain",
                 }}
                 src={step.imgPath}
@@ -120,6 +121,7 @@ function ProductInfoImageSlider(props: Props) {
         sx={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
           height: 50,
           pl: 2,
           bgcolor: "background.default",
