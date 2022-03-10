@@ -164,3 +164,11 @@
     padding: 0.5rem;
   }
 }
+
+.emtyCart {
+  width: 100%;
+  min-height: 26rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
