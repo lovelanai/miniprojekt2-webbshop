@@ -13,6 +13,10 @@ header {
   height: 100vh;
 }
 
+.icon {
+  color: #fbf7f5;
+}
+
 header .MuiButton-root {
   font-size: 5rem;
   color: #fff9de;
