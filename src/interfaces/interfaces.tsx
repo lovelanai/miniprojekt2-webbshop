@@ -79,7 +79,7 @@ export const mockedProducts: Product[] = [
     image2:
       "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650_right.jpg?ref=756435196C&w=1920&h=1920&mode=max",
     image3:
-      "https://www.elgiganten.se/image/dv_web_D180001002784843/330001/sony-digital-vlogg-kamera-zv-e10l--pdp_zoom-3000--pdp_main-960.jpg",
+      "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650_top.jpg?ref=FF078259D7&w=1920&h=1920&mode=max",
   },
   {
     id: 5,
