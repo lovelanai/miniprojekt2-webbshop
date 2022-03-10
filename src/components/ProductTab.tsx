@@ -66,7 +66,17 @@ export default function ProductTab(props: Props) {
         <p>{props.product.longinfo}</p>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Specs
+        <ul>
+          {props.product.spec.map((test) => (
+            <li
+              style={{ display: "flex", justifyContent: "space-between" }}
+              key={test.id}
+            >
+              <p style={{ marginRight: "3rem" }}>{test.spectitle}</p>
+              <p>{test.spec}</p>
+            </li>
+          ))}
+        </ul>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
