@@ -24,6 +24,10 @@
 .right-product-container {
   width: 50%;
 }
+.left-product-container {
+  width: 50%;
+  margin-right: 2rem;
+}
 
 .product-info-title {
   font-size: 2rem;
@@ -40,7 +44,7 @@
 
 .product-info-price {
   font-size: 1.5rem;
-  margin: 1rem;
+  margin: 1rem 3rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
@@ -49,6 +53,19 @@
   .product-info-container {
     flex-direction: column;
     height: unset;
+  }
+  .right-product-container {
+  width: 100%;
+}
+.left-product-container {
+  width: 100%;
+ 
+}
+}
+
+@media (max-height: 1100) {
+  .product-info-container {
+    height: 100%;
   }
 }
 

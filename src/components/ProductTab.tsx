@@ -59,28 +59,28 @@ export default function ProductTab(props: Props) {
         >
           <Tab label="Produktinfo" {...a11yProps(0)} />
           <Tab label="Specs" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
         <p>{props.product.longinfo}</p>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ul>
+        <ul style={{ padding: "0" }}>
           {props.product.spec.map((test) => (
             <li
               style={{ display: "flex", justifyContent: "space-between" }}
               key={test.id}
             >
-              <p style={{ marginRight: "3rem" }}>{test.spectitle}</p>
-              <p>{test.spec}</p>
+              <p style={{ margin: "0" }}>{test.spectitle}</p>
+              <p style={{ margin: ".3rem 0" }}>{test.spec}</p>
             </li>
           ))}
         </ul>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/* <TabPanel value={value} index={2}>
         Item Three
-      </TabPanel>
+      </TabPanel> */}
     </Box>
   );
 }
