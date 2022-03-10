@@ -23,7 +23,9 @@ function ProductInfo(props: Props) {
       <Link to="/">
         <ArrowBackIcon sx={{ fontSize: "2.2rem" }} className="back-arrow" />
       </Link>
+
       <ProductInfoImageSlider product={product} />
+
       <div className="right-product-container" key={product.id}>
         <h2 className="product-info-title">{product.title}</h2>
         <ProductTab product={product} />
