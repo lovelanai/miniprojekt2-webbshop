@@ -2,7 +2,6 @@ import ProductInfoImageSlider from "./ProductInfoImageSlider";
 import "./Productinfo.css";
 import { useContext } from "react";
 import ProductContext from "../contexts/ProductContext";
-import { ActiveProductContext } from "../contexts/ActiveProduct";
 import { Product } from "../interfaces/interfaces";
 import { Button } from "@mui/material";
 import { useCart } from "../contexts/ShoppingCartContext";
@@ -25,7 +24,7 @@ function ProductInfo(props: Props) {
         <ArrowBackIcon sx={{ fontSize: "2.2rem" }} className="back-arrow" />
       </Link>
       <ProductInfoImageSlider product={product} />
-      <div key={product.id}>
+      <div className="right-product-container" key={product.id}>
         <h2 className="product-info-title">{product.title}</h2>
         <ProductTab product={product} />
 
