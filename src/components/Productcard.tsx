@@ -84,10 +84,9 @@ export default function ImgMediaCard(): JSX.Element {
               </Button>
               <Link to={item.title.replaceAll(" ", "-")}>
                 <Button
-                  // onClick={() => handleSetActiveProduct(item)}
                   variant="contained"
                   size="small"
-                  color="secondary"
+                  style={{ backgroundColor: "#ec2444", color: "white" }}
                 >
                   Till produkten
                 </Button>
