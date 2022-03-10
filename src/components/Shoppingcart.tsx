@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./ShoppingCart.css";
 import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
-
+import { Product } from "../interfaces/interfaces";
+import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -14,46 +15,61 @@ import ProductContext from "../contexts/ProductContext";
 
 export default function ShoppingCart(): JSX.Element {
   const { cartItems } = useContext(ShoppingCartContext);
+  const { amountOfProducts } = useContext(ShoppingCartContext);
+  const { handleAddProduct } = useCart();
+  const { handleRemoveProduct } = useCart();
+
+  const totalCost = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="cart-container">
       <div className="cart">
         <div className="cart-left">
           <div className="CartHeader">
-            <h1> Varukorg</h1>
-          </div>
-          <div className="itemsCard">
-            <p>balle</p>
-            <p>snopp</p>
-            <p>hej</p>
-            <p>hej</p>
+            <h1>Varukorg</h1>
           </div>
 
-          <div className="productContainer">
+          <div className="test-container">
             {cartItems.map((item) => (
-              <div className="addedProducts">
-                <Card key={item.id} sx={{ maxWidth: 345 }}>
-                  <CardMedia
-                    component="img"
-                    alt={item.title}
-                    height="auto"
-                    image={item.image}
-                    title={item.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {item.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {item.info1}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">+ </Button>
-                    <Typography>{item.quantity} </Typography>
-                    <Button size="small">-</Button>
+              <div>
+                <Card className="test" key={item.id}>
+                  <div className="image">
+                    <CardMedia
+                      component="img"
+                      alt={item.title}
+                      height="auto"
+                      image={item.image}
+                      title={item.title}
+                    />
+                    <h1>{item.title}</h1>
+                  </div>
+
+                  <div className="product-info">
+                    <CardContent>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.price}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        size="small"
+                        onClick={() => handleAddProduct(item)}
+                      >
+                        +
+                      </Button>
+                      <Typography>{item.quantity} </Typography>
+                      <Button
+                        size="small"
+                        onClick={() => handleRemoveProduct(item)}
+                      >
+                        -
+                      </Button>
+                    </CardActions>
                     <Typography>{item.quantity * item.price}:- </Typography>
-                  </CardActions>
+                  </div>
                 </Card>
               </div>
             ))}
@@ -65,12 +81,14 @@ export default function ShoppingCart(): JSX.Element {
           </div>
           <div className="items">
             <h3>Produkter</h3>
-            <p> total </p>
+            <p>{amountOfProducts}</p>
           </div>
-
           <div className="total">
             <h3>Total</h3>
-            <p>Summa ""</p>
+
+            <p>{totalCost}:-</p>
+
+            {/* <Link to="checkOut">Bekfräfta</Link> */}
           </div>
         </div>
       </div>
