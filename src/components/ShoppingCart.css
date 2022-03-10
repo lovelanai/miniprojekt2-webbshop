@@ -65,6 +65,16 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  padding-top: 5rem;
+}
+
+.items h3 {
+  font-size: 1.5rem;
+}
+
+.items p {
+  font-size: 2rem;
+  padding: 1rem;
 }
 
 .total {
@@ -74,6 +84,15 @@
   align-items: center;
   padding: 6rem 0;
   width: 100%;
+}
+
+.total h3 {
+  font-size: 1.5rem;
+}
+
+.total p {
+  padding: 1rem;
+  font-size: 2rem;
 }
 
 .image {
@@ -125,5 +144,23 @@
     flex-direction: column;
     height: auto;
     border-bottom: 1px solid black;
+  }
+
+  .total h3 {
+    font-size: 1rem;
+  }
+
+  .total p {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .items h3 {
+    font-size: 1rem;
+  }
+
+  .items p {
+    font-size: 1.5rem;
+    padding: 0.5rem;
   }
 }
