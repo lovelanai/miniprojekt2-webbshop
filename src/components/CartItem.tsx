@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import ProductContext from "../contexts/ProductContext";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 export default function CartItem(): JSX.Element {
   const { cartItems } = useContext(ShoppingCartContext);
@@ -34,6 +35,7 @@ export default function CartItem(): JSX.Element {
           <div>
             <Card className="test" key={item.id}>
               <div className="image">
+                <h1>{item.title}</h1>
                 <CardMedia
                   component="img"
                   alt={item.title}
@@ -41,7 +43,6 @@ export default function CartItem(): JSX.Element {
                   image={item.image}
                   title={item.title}
                 />
-                <h1>{item.title}</h1>
               </div>
 
               <div className="product-info">
@@ -51,15 +52,16 @@ export default function CartItem(): JSX.Element {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" onClick={() => handleAddProduct(item)}>
-                    +
-                  </Button>
-                  <Typography>{item.quantity} </Typography>
                   <Button
                     size="small"
                     onClick={() => handleRemoveProduct(item)}
                   >
                     -
+                  </Button>
+
+                  <Typography>{item.quantity} </Typography>
+                  <Button size="small" onClick={() => handleAddProduct(item)}>
+                    +
                   </Button>
                 </CardActions>
                 <Typography>{item.quantity * item.price}:- </Typography>

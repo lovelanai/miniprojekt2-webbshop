@@ -1,5 +1,11 @@
-.container {
-  height: 20rem;
-  width: 20rem;
-  background-color: aqua;
+.checkout-container {
+  height: 100%;
+  width: 100%;
+  background-color: aquamarine;
+  color: black;
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

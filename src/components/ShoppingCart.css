@@ -1,19 +1,20 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .cart-container {
-  background: #333333;
-  height: calc(100vh - 9rem);
+  background: white;
+  /* height: calc(100vh - 9rem); */
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.header-font {
+  font-size: 1.7rem;
 }
 
 .cart {
   background: white;
-  height: 40rem;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -65,15 +66,15 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding-top: 5rem;
+  margin-top: 1.5rem;
 }
 
 .items h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .items p {
-  font-size: 2rem;
+  font-size: 1.2rem;
   padding: 1rem;
 }
 
@@ -82,17 +83,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 6rem 0;
   width: 100%;
 }
 
 .total h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .total p {
   padding: 1rem;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .image {
@@ -109,37 +109,59 @@
   align-items: center;
   height: 12rem;
   margin: 0 1rem;
+  margin-bottom: 0.7rem;
 }
 
 .test img {
   height: 10rem;
   width: 10rem;
+  object-fit: contain;
 }
 
 .image h1 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  margin: 0;
+  margin-top: 0.5rem;
 }
 
 .test-container {
   overflow: scroll;
-  max-height: 31rem;
+  position: relative;
+  overflow-x: hidden;
+  height: calc(100vh - 15.5rem);
+  scroll-behavior: smooth;
   margin-top: 2rem;
+}
+
+.test-container::-webkit-scrollbar {
+  display: none;
 }
 
 .product-info {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem;
+}
+@media (max-width: 500px) {
+  .cart {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .cart-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+  }
 }
 @media (max-width: 900px) {
+  .header-font {
+    font-size: 1.4rem;
+  }
   .product-info {
     flex-direction: column;
   }
-
-  .image h1 {
-    font-size: 1rem;
-  }
-
   .test {
     flex-direction: column;
     height: auto;
@@ -171,4 +193,10 @@
   justify-content: center;
   align-items: center;
   display: flex;
+}
+
+@media (max-width: 1000px) {
+  .image h1 {
+    font-size: 1rem;
+  }
 }

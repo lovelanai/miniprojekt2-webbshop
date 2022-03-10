@@ -25,13 +25,13 @@ function ShoppingCartPage() {
           <div className="cart">
             <div className="cart-left">
               <div className="CartHeader">
-                <h1>Varukorg</h1>
+                <h1 className="header-font">Varukorg</h1>
               </div>
               <CartItem />
             </div>
             <div className="cart-right">
               <div className="orderSummary">
-                <h1>Översikt</h1>
+                <h1 className="header-font">Översikt</h1>
               </div>
               <div className="items">
                 <h3>Produkter</h3>
@@ -42,13 +42,11 @@ function ShoppingCartPage() {
 
                 <p>{totalCost}:-</p>
 
-                {
-                  <Link to="checkOut">
-                    <Button variant="contained" size="small" color="secondary">
-                      Bekräfta
-                    </Button>
-                  </Link>
-                }
+                <Link to="/checkOut">
+                  <Button variant="contained" size="small" color="secondary">
+                    Bekräfta
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
