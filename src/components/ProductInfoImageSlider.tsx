@@ -9,8 +9,8 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { ProductContext } from "../contexts/ProductContext";
-import { ActiveProductContext } from "../contexts/ActiveProduct";
 import { Product } from "../interfaces/interfaces";
+import "./imgslider.css";
 
 const AutoPlaySwipeableViews = SwipeableViews;
 
@@ -57,7 +57,7 @@ function ProductInfoImageSlider(props: Props) {
   };
 
   return (
-    <Box sx={{ maxWidth: 700, flexGrow: 1 }}>
+    <Box className="img-slider" sx={{ flexGrow: 1 }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -68,17 +68,18 @@ function ProductInfoImageSlider(props: Props) {
           <div key={step.id}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
+                className="img"
                 component="img"
-                sx={{
-                  // height: "100%",
-                  display: "block",
-                  height: 455,
-                  minHeight: 255,
-                  minWidth: 700,
-                  overflow: "hidden",
-                  width: 700,
-                  objectFit: "contain",
-                }}
+                // sx={{
+                //   // height: "100%",
+                //   display: "block",
+                //   height: 455,
+                //   minHeight: 255,
+                //   minWidth: 700,
+                //   overflow: "hidden",
+                //   width: 700,
+                //   objectFit: "contain",
+
                 src={step.imgPath}
                 alt={step.label}
               />
@@ -87,6 +88,7 @@ function ProductInfoImageSlider(props: Props) {
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
+        className="next"
         steps={maxSteps}
         position="static"
         activeStep={activeStep}

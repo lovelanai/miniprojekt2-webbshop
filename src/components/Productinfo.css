@@ -8,6 +8,7 @@
   /* margin: 2rem; */
   /* padding: 0 2rem; */
   background-color: #ffffff;
+  height: calc(100vh - 7rem);
 }
 
 .product-info-title {
@@ -33,5 +34,26 @@
 @media (max-width: 1155px) {
   .product-info-container {
     flex-direction: column;
+    height: unset;
   }
+}
+
+@media (max-width: 800px) {
+  .product-info-container {
+padding: 0 2rem;
+}
+.product-info-title {
+  font-size: 1.3rem;
+  margin: 0.8rem 0;
+
+}
+.product-info-description {
+  font-size: 0.8rem;
+   margin: 0rem;
+
+}
+.product-info-price {
+margin: 1rem 0;
+}
+
 }
