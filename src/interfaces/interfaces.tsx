@@ -10,6 +10,7 @@ export interface Product {
   image: string;
   image2: string;
   image3: string;
+  spec: Array<{ spectitle: string; spec: string; id: number }>;
 }
 
 export const mockedProducts: Product[] = [
@@ -29,6 +30,33 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1038723_1.jpg?ref=1145D98FC7&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1038723_2.jpg?ref=36400AFD1E&w=1920&h=1920&mode=max",
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "24.2 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "Fullformat (24x36)",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Sony E",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "CMOS Bakgrundsbelyst",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "650 g",
+        id: 5,
+      },
+    ],
   },
   {
     id: 2,
@@ -46,7 +74,35 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1049125_3.jpg?ref=131E56B2CE&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1049125_1.jpg?ref=821387DCD1&w=3840&h=3840&mode=max",
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "40 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "Fullformat (24x36)",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Leica M",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "CMOS",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "660 g",
+        id: 5,
+      },
+    ],
   },
+
   {
     id: 3,
     title: "Canon EOS R6",
@@ -63,6 +119,34 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1048664_12.jpg?ref=1A2B604F61&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1048664_13.jpg?ref=6BF35CDA79&w=3840&h=3840&mode=max",
+
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "20.1 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "Fullformat (24x36)",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Canon RF",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "CMOS",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "598 g",
+        id: 5,
+      },
+    ],
   },
   {
     id: 4,
@@ -79,7 +163,34 @@ export const mockedProducts: Product[] = [
     image2:
       "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650_right.jpg?ref=756435196C&w=1920&h=1920&mode=max",
     image3:
-      "https://www.elgiganten.se/image/dv_web_D180001002784843/330001/sony-digital-vlogg-kamera-zv-e10l--pdp_zoom-3000--pdp_main-960.jpg",
+      "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650_top.jpg?ref=FF078259D7&w=1920&h=1920&mode=max",
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "24.2 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "APS-C",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Sony E",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "CMOS",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "299 g",
+        id: 5,
+      },
+    ],
   },
   {
     id: 5,
@@ -97,6 +208,33 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1036886_3.jpg?ref=8F1C2DC18B&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1036886_2.jpg?ref=45097BE295&w=3840&h=3840&mode=max",
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "20.3 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "Micro 4/3",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Micro 4/3",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "Live MOS",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "658 g",
+        id: 5,
+      },
+    ],
   },
   {
     id: 6,
@@ -115,6 +253,33 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1054659_1.jpg?ref=A4E6F0B8D4&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1054659_2.jpg?ref=5F0C4D9C3E&w=1920&h=1920&mode=max",
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "20.4 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "Micro 4/3",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Micro 4/3",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "Live MOS",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "511 g",
+        id: 5,
+      },
+    ],
   },
   {
     id: 7,
@@ -133,23 +298,78 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1047603_4.jpg?ref=88DB3CCEC9&w=960&h=960&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1047603_2.jpg?ref=0B65D6ADE3&w=960&h=960&mode=max",
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "45 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "Fullformat (24x36)",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Canon RF",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "CMOS",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "650 g",
+        id: 5,
+      },
+    ],
   },
   {
     id: 8,
-    title: "Engångskamera Fun Saver 27",
+    title: "Fujifilm X-T30 II silver + XC 15-45mm f/3,5-5,6 OIS PZ",
     longinfo:
-      "Det enkla sättet att fotografera dina minnen! Om du letar efter ett roligt och enkelt sätt att ta bra bilder, inomhus eller utomhus, är Kodak Fun Saver 27 engångskamera ett utmärkt val. Kameran ger 27 bilder och är laddad med Kodakfilm med ISO 800.",
-    info1: "Perfekt för semester",
-    info2: "Vattentät! Fungerar bra i plurret!",
-    info3: "Rymmer 27st bilder",
-    price: 149,
+      "Fujifilm X-T30 II är en uppdaterad version av X-T30 och har bland annat en snabbare och bättre autofokus, nya filmsimuleringar och kan nu spela in slowmotion-video i hela FHD/240p. Fujifilm X-T30 II levererar stillbilder med samma upplösning, färgåtergivning och låga brus som kritikerrosade Fujifilm X-T3. Kameran har även 4K-video som fungerar ihop med Fujis filmsimuleringar.",
+    info1:
+      "Bakbelyst 26.1 megapixel APS-C X-Trans CMOS 4 sensor utan optiskt lågpassfilter",
+    info2: "Högupplöst skärm på 1,62 miljoner punkter",
+    info3: "Autofokusen är snabb och exakt - samma som hos X-T4",
+    price: 10990,
     quantity: 1,
     image:
-      "https://www.scandinavianphoto.se/globalassets/1027465.jpg?ref=6EB92BE8F3&w=1920&h=1920&mode=max",
+      "https://www.scandinavianphoto.se/globalassets/1053463_2.jpg?ref=9074AEE7BD&w=1920&h=1920&mode=max",
     image2:
-      "https://www.scandinavianphoto.se/globalassets/1027465_1.jpg?ref=94B293D9B9&w=1920&h=1920&mode=max",
+      "https://www.scandinavianphoto.se/globalassets/1053463_4.jpg?ref=CDD16AF565&w=1920&h=1920&mode=max",
     image3:
-      "https://www.scandinavianphoto.se/globalassets/1027465_2.jpg?ref=DE00B8E67C&w=1920&h=1920&mode=max",
+      "https://www.scandinavianphoto.se/globalassets/1053463_5.jpg?ref=C69C135ED7&w=1920&h=1920&mode=max",
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "26.1 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "APS-C",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Fuji X",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "CMOS X-trans",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "383 g",
+        id: 5,
+      },
+    ],
   },
   {
     id: 9,
@@ -168,5 +388,32 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1053456_1.jpg?ref=160BDE0533&w=960&h=960&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1053456_3.jpg?ref=92FA1DBF61&w=960&h=960&mode=max",
+    spec: [
+      {
+        spectitle: "Upplösning",
+        spec: "26 Megapixel",
+        id: 1,
+      },
+      {
+        spectitle: "Bildsensorstorlek",
+        spec: "APS-C",
+        id: 2,
+      },
+      {
+        spectitle: "Objektivfattning",
+        spec: "Fuji X",
+        id: 3,
+      },
+      {
+        spectitle: "Sensortyp",
+        spec: "CMOS X-Trans Bakbelyst",
+        id: 4,
+      },
+      {
+        spectitle: "Vikt",
+        spec: "536 g",
+        id: 5,
+      },
+    ],
   },
 ];

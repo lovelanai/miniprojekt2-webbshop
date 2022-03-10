@@ -14,7 +14,7 @@ import ProductAccordion from "./ProductAccordion";
 import { Theme } from "@mui/material";
 import { ProductContext } from "../contexts/ProductContext";
 import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
-import { ActiveProductContext } from "../contexts/ActiveProduct";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -29,43 +29,48 @@ export default function ImgMediaCard(): JSX.Element {
 
   const { products } = useContext(ProductContext);
   const { handleAddProduct } = useCart();
-  const { handleSetActiveProduct } = useContext(ActiveProductContext);
 
   return (
     <div className="ProductContainer">
       {products.map((item) => (
         <Card className={classes.root} key={item.id}>
-          <CardActionArea>
-            <div className="ImageContainer">
-              <CardMedia
-                component="img"
-                alt={item.title}
-                height="auto"
-                image={item.image}
-                title={item.title}
-              />
-            </div>
-            <CardContent>
-              <div className="InfoContainer">
-                <Typography gutterBottom variant="h5" component="h2">
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="textSecondary"
-                  component="ul"
-                >
-                  <li>{item.info1}</li>
-                  <li>{item.info2}</li> <li>{item.info3}</li>
-                </Typography>
+          <Link to={item.title.replaceAll(" ", "-")}>
+            <CardActionArea>
+              <div className="ImageContainer">
+                <CardMedia
+                  component="img"
+                  alt={item.title}
+                  height="auto"
+                  image={item.image}
+                  title={item.title}
+                />
               </div>
-              <div className="price">
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {item.price} SEK
-                </Typography>
-              </div>
-            </CardContent>
-          </CardActionArea>
+              <CardContent>
+                <div className="InfoContainer">
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="ul"
+                  >
+                    <li>{item.info1}</li>
+                    <li>{item.info2}</li> <li>{item.info3}</li>
+                  </Typography>
+                </div>
+                <div className="price">
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {item.price} SEK
+                  </Typography>
+                </div>
+              </CardContent>
+            </CardActionArea>
+          </Link>
           <ProductAccordion info={item.longinfo} />
           <CardActions>
             <div className="buttons">
@@ -77,14 +82,16 @@ export default function ImgMediaCard(): JSX.Element {
               >
                 Lägg i kundvagn
               </Button>
-              <Button
-                onClick={() => handleSetActiveProduct(item)}
-                variant="contained"
-                size="small"
-                color="secondary"
-              >
-                Till produkten
-              </Button>
+              <Link to={item.title.replaceAll(" ", "-")}>
+                <Button
+                  // onClick={() => handleSetActiveProduct(item)}
+                  variant="contained"
+                  size="small"
+                  color="secondary"
+                >
+                  Till produkten
+                </Button>
+              </Link>
             </div>
           </CardActions>
         </Card>

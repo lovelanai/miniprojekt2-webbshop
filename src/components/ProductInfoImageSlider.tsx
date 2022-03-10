@@ -9,28 +9,34 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { ProductContext } from "../contexts/ProductContext";
-import { ActiveProductContext } from "../contexts/ActiveProduct";
+import { Product } from "../interfaces/interfaces";
+import "./imgslider.css";
 
 const AutoPlaySwipeableViews = SwipeableViews;
 
-function ProductInfoImageSlider() {
-  const { products } = useContext(ProductContext);
-  const { activeProduct } = useContext(ActiveProductContext);
+interface Props {
+  product: Product;
+}
+
+function ProductInfoImageSlider(props: Props) {
+  // const { products } = useContext(ProductContext);
+  // const { activeProduct } = useContext(ActiveProductContext);
+  const { product } = props;
   const images = [
     {
-      label: activeProduct?.title,
+      label: product.info1,
       id: 1,
-      imgPath: activeProduct?.image,
+      imgPath: product.image,
     },
     {
-      label: activeProduct?.title,
+      label: product.info2,
       id: 2,
-      imgPath: activeProduct?.image2,
+      imgPath: product.image2,
     },
     {
-      label: activeProduct?.title,
+      label: product.info3,
       id: 3,
-      imgPath: activeProduct?.image3,
+      imgPath: product.image3,
     },
   ];
 
@@ -51,7 +57,7 @@ function ProductInfoImageSlider() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box className="img-slider" sx={{ flexGrow: 1 }}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -62,14 +68,18 @@ function ProductInfoImageSlider() {
           <div key={step.id}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
+                className="img"
                 component="img"
-                sx={{
-                  height: 255,
-                  display: "block",
-                  maxWidth: 400,
-                  overflow: "hidden",
-                  width: "100%",
-                }}
+                // sx={{
+                //   // height: "100%",
+                //   display: "block",
+                //   height: 455,
+                //   minHeight: 255,
+                //   minWidth: 700,
+                //   overflow: "hidden",
+                //   width: 700,
+                //   objectFit: "contain",
+
                 src={step.imgPath}
                 alt={step.label}
               />
@@ -78,6 +88,7 @@ function ProductInfoImageSlider() {
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
+        className="next"
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
@@ -112,6 +123,7 @@ function ProductInfoImageSlider() {
         sx={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
           height: 50,
           pl: 2,
           bgcolor: "background.default",
