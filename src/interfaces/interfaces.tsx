@@ -426,6 +426,11 @@ export interface Delivery {
   image: string;
 }
 
+export interface ShipperSelection {
+  shipper: Delivery;
+  checked: boolean;
+}
+
 export const mockedShipping: Delivery[] = [
   {
     id: 20,

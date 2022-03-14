@@ -23,16 +23,22 @@ export default function Shipping() {
               type="email"
               name="email"
               label="Mejladress"
+              required
             />
             <TextField
               className="box-1-input"
               name="zip-code"
               label="Postnummer"
+              required
             />
           </div>
-          <TextField name="firstandlastname" label="Fullständigt Namn" />
-          <TextField name="street" label="street" />
-          <TextField name="phonenumber" label="Telefon nr" />
+          <TextField
+            name="firstandlastname"
+            label="Fullständigt Namn"
+            required
+          />
+          <TextField name="street" label="street" required />
+          <TextField name="phonenumber" label="Telefon nr" required />
         </div>
       </div>
     </Box>

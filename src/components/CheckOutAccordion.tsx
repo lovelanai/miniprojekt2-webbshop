@@ -1,4 +1,8 @@
-import { Delivery, mockedShipping } from "../interfaces/interfaces";
+import {
+  Delivery,
+  mockedShipping,
+  ShipperSelection,
+} from "../interfaces/interfaces";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
@@ -13,6 +17,7 @@ import {
   Checkbox,
   Typography,
   Button,
+  getCheckboxUtilityClass,
 } from "@mui/material";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import React from "react";
@@ -56,6 +61,13 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 export default function CheckOutAccordion() {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
+  const defaultShipperState: ShipperSelection[] = mockedShipping.map(
+    (shipper) => ({ shipper, checked: false })
+  );
+
+  const [checkboxes, setCheckboxes] =
+    React.useState<ShipperSelection[]>(defaultShipperState);
+
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
@@ -87,8 +99,8 @@ export default function CheckOutAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography style={DeliveryForm}>
-            {mockedShipping.map((alt) => (
-              <div>
+            {checkboxes.map((checkbox) => (
+              <div key={checkbox.shipper.id}>
                 <FormGroup
                   sx={{
                     display: "flex",
@@ -97,14 +109,37 @@ export default function CheckOutAccordion() {
                   }}
                 >
                   <FormControlLabel
-                    control={<Checkbox />}
-                    label={<img style={img} src={alt.image} alt="" />}
-                  />
-                  {/* <img style={img} src={alt.image} alt="postnord" /> */}
+                    control={
+                      <Checkbox
+                        onChange={() => {
+                          let checkboxListToUpdate = checkboxes;
 
-                  <div style={info} key={alt.id}>
-                    <p>{alt.price}:-</p>
-                    <p>{alt.info}</p>
+                          checkboxListToUpdate.forEach((tempCheckbox) => {
+                            tempCheckbox.checked = false;
+                          });
+
+                          const currentBoxIndex = mockedShipping.findIndex(
+                            (item) => item.id === checkbox.shipper.id
+                          );
+
+                          checkboxListToUpdate[currentBoxIndex].checked = true;
+
+                          console.log(checkboxListToUpdate);
+
+                          setCheckboxes([...checkboxListToUpdate]);
+                          console.log(checkboxes);
+                        }}
+                        checked={checkbox.checked}
+                      />
+                    }
+                    label={
+                      <img style={img} src={checkbox.shipper.image} alt="" />
+                    }
+                  />
+
+                  <div style={info} key={checkbox.shipper.id}>
+                    <p>{checkbox.shipper.price}:-</p>
+                    <p>{checkbox.shipper.info}</p>
                   </div>
                 </FormGroup>
               </div>
