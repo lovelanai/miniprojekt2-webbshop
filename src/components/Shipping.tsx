@@ -1,14 +1,9 @@
-import * as React from "react";
+import { PinDropSharp } from "@mui/icons-material";
+import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
+
 import "./checkout.css";
-
-import InputLabel from "@mui/material/InputLabel";
-
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { Input, FormHelperText } from "@mui/material";
 
 export default function Shipping() {
   return (
@@ -18,7 +13,7 @@ export default function Shipping() {
         "& .MuiTextField-root": { m: 1, width: "25ch" },
       }}
       noValidate
-      autoComplete="off"
+      autoComplete="on"
     >
       <div>
         <div className="form-container">
@@ -38,6 +33,7 @@ export default function Shipping() {
           <TextField name="firstandlastname" label="Fullständigt Namn" />
           <TextField name="street" label="street" />
           <TextField name="phonenumber" label="Telefon nr" />
+          <Button>Bekräfta</Button>
         </div>
       </div>
     </Box>
