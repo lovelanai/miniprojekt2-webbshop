@@ -37,6 +37,11 @@
   right: 0;
   top: 0;
   padding: 1rem;
+  cursor: pointer;
+}
+
+.admin-edit-form-icon {
+  cursor: pointer;
 }
 
 .admin-image-container {

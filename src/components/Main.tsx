@@ -17,8 +17,9 @@ function Main() {
 
         {products.map((item) => (
           <Route
+            key={item.id}
             path={item.title.replaceAll(" ", "-")}
-            element={<ProductInfo key={item.id} product={item} />}
+            element={<ProductInfo product={item} />}
           />
         ))}
       </Routes>

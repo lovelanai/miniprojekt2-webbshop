@@ -20,7 +20,7 @@ function AdminPage() {
     return (
       <div className="admin-container">
         {products.map((item) => (
-          <div className="admin-product-container">
+          <div key={item.id} className="admin-product-container">
             <EditIcon
               onClick={() => sendToEdit(item)}
               className="admin-edit-icon"

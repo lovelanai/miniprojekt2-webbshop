@@ -1,6 +1,6 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { ChangeEvent, useState } from "react";
 import { Product } from "../interfaces/interfaces";
 
 interface Props {
@@ -8,6 +8,26 @@ interface Props {
 }
 
 export default function AdminPageForm(props: Props) {
+  const [price, setPrice] = useState<string>();
+  const [errors, setErrors] = useState<{ price: string }>();
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { value },
+    } = event;
+    setErrors({ price: "" });
+    setPrice(value);
+    /**
+     * If the value contains something other than numbers, the reg variable
+     * gets set to false, which then sets the errors state to the following.
+     */
+    let reg = /^\d*$/.test(value);
+    if (!reg) {
+      setErrors({ price: "Only numbers are permitted" });
+    }
+    console.log(value);
+  };
+
   return (
     <Box
       component="form"
@@ -36,11 +56,11 @@ export default function AdminPageForm(props: Props) {
             required
             id="outlined-number"
             label="Price"
-            type="Number"
+            error={Boolean(errors?.price)}
             defaultValue={props.product?.price}
-            helperText="Produktens pris"
+            helperText={errors?.price ? errors?.price : "Produktens pris"}
+            onChange={handleChange}
           />
-
           <TextField
             sx={{ marginLeft: 3 }}
             required
