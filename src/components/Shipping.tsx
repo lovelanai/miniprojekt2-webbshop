@@ -33,7 +33,6 @@ export default function Shipping() {
           <TextField name="firstandlastname" label="Fullständigt Namn" />
           <TextField name="street" label="street" />
           <TextField name="phonenumber" label="Telefon nr" />
-          <Button>Bekräfta</Button>
         </div>
       </div>
     </Box>
