@@ -7,18 +7,25 @@ import { Link } from "react-router-dom";
 
 import { useContext, useState } from "react";
 import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 
 import "./ShoppingCartPage.tsx";
 function Header() {
   const { amountOfProducts } = useContext(ShoppingCartContext);
   return (
     <header id="header" className="show-products">
-      <Link to="/">
-        <CameraIcon
+      <Link to="/AdminPage">
+        <AdminPanelSettingsIcon
           className="icon"
           sx={{ paddingLeft: "1rem", fontSize: "2rem", opacity: "0" }}
         />
       </Link>
+      {/* <Link to="/">
+        <CameraIcon
+          className="icon"
+          sx={{ paddingLeft: "1rem", fontSize: "2rem", opacity: "0" }}
+        />
+      </Link> */}
 
       <img id={"logo"} src={require("../assets/img/logo.png")} alt="logo" />
 
