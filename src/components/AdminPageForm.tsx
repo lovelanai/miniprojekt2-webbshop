@@ -11,26 +11,6 @@ interface Props {
   product?: Product;
 }
 
-interface formData {
-  title: formThing;
-  id: formThing;
-}
-
-interface formThing {
-  id: number;
-  title: string;
-  longinfo: string;
-  info1: string;
-  info2: string;
-  info3: string;
-  price: number;
-  image: string;
-  image2: string;
-  image3: string;
-  spectitle: string;
-  spec: string;
-  specid: number;
-}
 export default function AdminPageForm(props: Props) {
   const initialValues = {
     id: props.product?.id,
