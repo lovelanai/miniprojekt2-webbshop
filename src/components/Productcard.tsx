@@ -7,13 +7,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Product } from "../interfaces/interfaces";
+
 import "./Productcard.css";
-import { info } from "console";
+
 import ProductAccordion from "./ProductAccordion";
-import { Theme } from "@mui/material";
+
 import { ProductContext } from "../contexts/ProductContext";
-import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
+import { useCart } from "../contexts/ShoppingCartContext";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({

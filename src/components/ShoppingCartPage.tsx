@@ -1,18 +1,14 @@
-import { createElement, CSSProperties, useContext, useState } from "react";
+import { CSSProperties, useContext } from "react";
 import "./ShoppingCart.css";
-import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
-import { Product } from "../interfaces/interfaces";
+import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import ProductContext from "../contexts/ProductContext";
-import Shoppingcart from "./CartItem";
 import CartItem from "./CartItem";
 
 function ShoppingCartPage() {
   const { cartItems } = useContext(ShoppingCartContext);
   const { amountOfProducts } = useContext(ShoppingCartContext);
-  const { handleAddProduct } = useCart();
-  const { handleRemoveProduct } = useCart();
+
 
   const totalCost = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -35,12 +31,12 @@ function ShoppingCartPage() {
               </div>
               <div className="items">
                 <h3>Produkter</h3>
-                <p>{amountOfProducts}</p>
+                <span>{amountOfProducts}</span>
               </div>
               <div className="total">
                 <h3>Total</h3>
 
-                <p>{totalCost}:-</p>
+                <span>{totalCost}:-</span>
 
                 <Link to="/checkOut">
                   <Button variant="contained" size="small" color="secondary">

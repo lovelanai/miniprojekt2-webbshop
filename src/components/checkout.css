@@ -1,5 +1,6 @@
 .checkout-container {
-  height: calc(100vh - 9rem);
+  min-height: calc(100vh - 9rem);
+  height: 100%;
   width: 100%;
   background-color: aquamarine;
   margin-top: 6rem;

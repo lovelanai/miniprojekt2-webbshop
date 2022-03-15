@@ -465,3 +465,37 @@ export const mockedShipping: Delivery[] = [
       "https://cutewallpaper.org/24/ups-logo-png/ups-logo-logos-de-marcas.png",
   },
 ];
+
+export interface payment {
+  title: string;
+  price: number;
+  info: string;
+  alt: string;
+}
+
+export interface paySelection {
+  payments: payment;
+  payChecked: boolean;
+}
+
+export const mockedPay: payment[] = [
+  {
+    title: "kortbettalning",
+    price: 0,
+    info: "direkt betalnign med kort",
+    alt: "visa, masterkard,apex"
+  },
+  {
+    title: "swish",
+    price: 0,
+    info: "direkt betalning med swish",
+    alt: "",
+  },
+  {
+    title: "faktura",
+    price: 49,
+    info: " Betala inom 14 dagar med faktura. avgift tillkommer",
+    alt: "",
+
+  },
+];

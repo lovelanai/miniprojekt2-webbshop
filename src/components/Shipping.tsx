@@ -1,12 +1,42 @@
-import { PinDropSharp } from "@mui/icons-material";
+
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
+import { useState } from 'react';
+
 import "./checkout.css";
 
-export default function Shipping() {
+interface Props {
+  sendPersonalData: (data: any[]) => void
+}
+
+export default function Shipping(props: Props) {
+
+
+
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [phonenum, setPhonenum] = useState('');
+  const [postnr, setPostnr] = useState('');
+  const [street, setStreet] = useState('');
+
+  const [personalInfo, setPersonalInfo] = useState<any[]>()
+
+  // const personalInfo = [email, name, phonenum, postnr, street];
+
+  function personalDataTransfer() {
+    setPersonalInfo([{ email: email, name: name, phone: phonenum, post: postnr, street: street }])
+
+    props.sendPersonalData([email, name, phonenum, postnr, street])
+
+
+  }
+
+
+
   return (
+
     <Box
       component="form"
       sx={{
@@ -24,23 +54,48 @@ export default function Shipping() {
               name="email"
               label="Mejladress"
               required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+
             />
             <TextField
-              className="box-1-input"
-              name="zip-code"
-              label="Postnummer"
+              name="given-name"
+              label="Fullständigt namn"
               required
+              value={name}
+              onChange={(event) => setName(event.target.value)}
             />
+
+
+            <TextField name="phonenumber" label="Telefon nr" required
+              value={phonenum}
+              onChange={(event) => setPhonenum(event.target.value)} />
+
+
+
           </div>
           <TextField
-            name="firstandlastname"
-            label="Fullständigt Namn"
+            className="box-1-input"
+            name="zip-code"
+            label="Postnummer"
             required
+            value={postnr}
+            onChange={(event) => setPostnr(event.target.value)}
+
           />
-          <TextField name="street" label="street" required />
-          <TextField name="phonenumber" label="Telefon nr" required />
+          <TextField name="adress1" label="Leveransadress" required
+            value={street}
+            onChange={(event) => setStreet(event.target.value)} />
         </div>
-      </div>
-    </Box>
+
+
+        <Button onClick={() => personalDataTransfer()} > Bekräfta </Button>
+
+
+
+
+      </div >
+    </Box >
+
   );
 }

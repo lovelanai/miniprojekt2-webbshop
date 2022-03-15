@@ -5,7 +5,7 @@ import "./Header.css";
 import { Badge } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 
 import "./ShoppingCartPage.tsx";
