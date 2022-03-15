@@ -192,6 +192,36 @@ export default function AdminPageForm(props: Props) {
           helperText="Produktens korta info 3"
           defaultValue={props.product?.info3}
         />
+        {props.product?.spec.map((item) => (
+          <div
+            key={item.id}
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <TextField
+              required
+              multiline
+              maxRows={6}
+              id="outlined-spectitle"
+              label="Spec title"
+              name="spectitle"
+              onChange={handleChange}
+              helperText={"Specifikationstitel " + item.id}
+              defaultValue={props.product?.spec[item.id - 1].spectitle}
+            />
+            <TextField
+              sx={{ marginLeft: 3 }}
+              required
+              multiline
+              maxRows={6}
+              id="outlined-specinfo"
+              label="Spec info"
+              name="specinfo"
+              onChange={handleChange}
+              helperText={"Specifikationsinfo " + item.id}
+              defaultValue={props.product?.spec[item.id - 1].spec}
+            />
+          </div>
+        ))}
       </div>
     </Box>
   );
