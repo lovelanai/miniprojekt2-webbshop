@@ -1,5 +1,5 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import {
-  Delivery,
   mockedShipping,
   ShipperSelection,
 } from "../interfaces/interfaces";
@@ -16,11 +16,10 @@ import {
   FormControlLabel,
   Checkbox,
   Typography,
-  Button,
-  getCheckboxUtilityClass,
 } from "@mui/material";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "@mui/material";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -73,32 +72,49 @@ export default function CheckOutAccordion() {
       setExpanded(newExpanded ? panel : false);
     };
 
+  const [personalInfo, setPersonalInfo] = useState<string[]>([])
+
+  function sendPersonalData(personaldata: string[]) {
+
+
+    setPersonalInfo([...personaldata])
+    console.log(personalInfo)
+
+
+  }
+
+  // const personalInfo = [email, name, phonenum, postnr, street];
+
   return (
     <div style={rootStyle}>
+
+      {/*  Personuppgifter liggandes i första accordion*/}
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
         sx={{ width: "100%" }}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Personuppgifter</Typography>
+          <Typography component={'span'}>Personuppgifter</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <Shipping />
+          <Typography component={'span'}>
+            <Shipping sendPersonalData={sendPersonalData} />
           </Typography>
         </AccordionDetails>
       </Accordion>
+
+      {/*Fraktuppgifter liggandes i andra accordion*/}
       <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
         sx={{ width: "100%" }}
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Leverans uppgifter</Typography>
+          <Typography component={'span'}>Leverans uppgifter</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography style={DeliveryForm}>
+          <Typography component={'span'} style={DeliveryForm}>
             {checkboxes.map((checkbox) => (
               <div key={checkbox.shipper.id}>
                 <FormGroup
@@ -124,10 +140,10 @@ export default function CheckOutAccordion() {
 
                           checkboxListToUpdate[currentBoxIndex].checked = true;
 
-                          console.log(checkboxListToUpdate);
+                          // console.log(checkboxListToUpdate);
 
                           setCheckboxes([...checkboxListToUpdate]);
-                          console.log(checkboxes);
+                          // console.log(checkboxes);
                         }}
                         checked={checkbox.checked}
                       />
@@ -141,21 +157,32 @@ export default function CheckOutAccordion() {
                     <p>{checkbox.shipper.price}:-</p>
                     <p>{checkbox.shipper.info}</p>
                   </div>
+
+
                 </FormGroup>
               </div>
             ))}
           </Typography>
+          <Button onClick={() => console.log(checkboxes.find(item => item.checked === true))} > leverans</Button>
         </AccordionDetails>
+
+        {/* Översikt liggandes i tredje accordion */}
       </Accordion>
       <Accordion
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Översikt</Typography>
+          <Typography component={'span'}>Översikt</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography></Typography>
+          <Typography component={'span'}>
+            <div>
+              <p>Orderöversikt</p>
+
+
+            </div>
+          </Typography>
         </AccordionDetails>
       </Accordion>
     </div>
