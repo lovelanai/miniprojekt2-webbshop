@@ -304,72 +304,42 @@ export default function AdminPageForm(props?: Props) {
           }
           defaultValue={props?.product?.info3}
         />
-        {props?.product?.spec
-          ? props?.product?.spec.map((item) => (
-              <div
-                key={item.id}
-                style={{ display: "flex", justifyContent: "center" }}
-              >
-                <TextField
-                  required
-                  multiline
-                  maxRows={6}
-                  id="outlined-spectitle"
-                  label="Spec title"
-                  name={"spectitle" + item.id}
-                  onChange={handleChange}
-                  // error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
-                  helperText={"Specifikationstitel " + item.id}
-                  defaultValue={props.product?.spec[item.id - 1].spectitle}
-                />
-                <TextField
-                  sx={{ marginLeft: 3 }}
-                  required
-                  multiline
-                  maxRows={6}
-                  id="outlined-specinfo"
-                  label="Spec info"
-                  name={"specinfo" + item.id}
-                  onChange={handleChange}
-                  helperText={"Specifikationsinfo " + item.id}
-                  defaultValue={props.product?.spec[item.id - 1].spec}
-                />
-              </div>
-            ))
-          : value.spec.map((item) => (
-              <div
-                key={item.id}
-                style={{ display: "flex", justifyContent: "center" }}
-              >
-                <TextField
-                  required
-                  multiline
-                  maxRows={6}
-                  id="outlined-spectitle"
-                  label="Spec title"
-                  name={"spectitle" + item.id}
-                  onChange={handleChange}
-                  // error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
-                  helperText={"Specifikationstitel " + item.id}
-                />
-                <TextField
-                  sx={{ marginLeft: 3 }}
-                  required
-                  multiline
-                  maxRows={6}
-                  id="outlined-specinfo"
-                  label="Spec info"
-                  name={"specinfo" + item.id}
-                  onChange={handleChange}
-                  helperText={"Specifikationsinfo " + item.id}
-                />
-              </div>
-            ))}
+        {value.spec.map((item) => (
+          <div
+            key={item.id}
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <TextField
+              required
+              multiline
+              maxRows={6}
+              id="outlined-spectitle"
+              label="Spec title"
+              name={"spectitle" + item.id}
+              onChange={handleChange}
+              // error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
+              helperText={"Specifikationstitel " + item.id}
+              defaultValue={props?.product?.spec[item.id - 1].spectitle}
+            />
+            <TextField
+              sx={{ marginLeft: 3 }}
+              required
+              multiline
+              maxRows={6}
+              id="outlined-specinfo"
+              label="Spec info"
+              name={"specinfo" + item.id}
+              onChange={handleChange}
+              helperText={"Specifikationsinfo " + item.id}
+              defaultValue={props?.product?.spec[item.id - 1].spec}
+            />
+          </div>
+        ))}
       </div>
       <Button
         onClick={sendToAddProduct}
         variant="contained"
-        size="small"
+        size="medium"
         color="primary"
       >
         Submit
