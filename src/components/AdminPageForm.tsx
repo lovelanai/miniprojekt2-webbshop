@@ -19,6 +19,13 @@ export default function AdminPageForm(props?: Props) {
     image: props?.product?.image,
     image2: props?.product?.image2,
     image3: props?.product?.image3,
+    spec: [
+      { spectitle: "", specinfo: "", id: 1 },
+      { spectitle: "", specinfo: "", id: 2 },
+      { spectitle: "", specinfo: "", id: 3 },
+      { spectitle: "", specinfo: "", id: 4 },
+      { spectitle: "", specinfo: "", id: 5 },
+    ],
     spectitle1: props?.product?.spec[0].spectitle,
     specinfo1: props?.product?.spec[0].spec,
     spectitle2: props?.product?.spec[1].spectitle,
@@ -297,37 +304,67 @@ export default function AdminPageForm(props?: Props) {
           }
           defaultValue={props?.product?.info3}
         />
-        {props?.product?.spec.map((item) => (
-          <div
-            key={item.id}
-            style={{ display: "flex", justifyContent: "center" }}
-          >
-            <TextField
-              required
-              multiline
-              maxRows={6}
-              id="outlined-spectitle"
-              label="Spec title"
-              name={"spectitle" + item.id}
-              onChange={handleChange}
-              // error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
-              helperText={"Specifikationstitel " + item.id}
-              defaultValue={props.product?.spec[item.id - 1].spectitle}
-            />
-            <TextField
-              sx={{ marginLeft: 3 }}
-              required
-              multiline
-              maxRows={6}
-              id="outlined-specinfo"
-              label="Spec info"
-              name={"specinfo" + item.id}
-              onChange={handleChange}
-              helperText={"Specifikationsinfo " + item.id}
-              defaultValue={props.product?.spec[item.id - 1].spec}
-            />
-          </div>
-        ))}
+        {props?.product?.spec
+          ? props?.product?.spec.map((item) => (
+              <div
+                key={item.id}
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <TextField
+                  required
+                  multiline
+                  maxRows={6}
+                  id="outlined-spectitle"
+                  label="Spec title"
+                  name={"spectitle" + item.id}
+                  onChange={handleChange}
+                  // error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
+                  helperText={"Specifikationstitel " + item.id}
+                  defaultValue={props.product?.spec[item.id - 1].spectitle}
+                />
+                <TextField
+                  sx={{ marginLeft: 3 }}
+                  required
+                  multiline
+                  maxRows={6}
+                  id="outlined-specinfo"
+                  label="Spec info"
+                  name={"specinfo" + item.id}
+                  onChange={handleChange}
+                  helperText={"Specifikationsinfo " + item.id}
+                  defaultValue={props.product?.spec[item.id - 1].spec}
+                />
+              </div>
+            ))
+          : value.spec.map((item) => (
+              <div
+                key={item.id}
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <TextField
+                  required
+                  multiline
+                  maxRows={6}
+                  id="outlined-spectitle"
+                  label="Spec title"
+                  name={"spectitle" + item.id}
+                  onChange={handleChange}
+                  // error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
+                  helperText={"Specifikationstitel " + item.id}
+                />
+                <TextField
+                  sx={{ marginLeft: 3 }}
+                  required
+                  multiline
+                  maxRows={6}
+                  id="outlined-specinfo"
+                  label="Spec info"
+                  name={"specinfo" + item.id}
+                  onChange={handleChange}
+                  helperText={"Specifikationsinfo " + item.id}
+                />
+              </div>
+            ))}
       </div>
       <Button
         onClick={sendToAddProduct}
