@@ -3,7 +3,7 @@ import {
   mockedShipping,
   ShipperSelection,
   mockedPay,
-  paySelection,
+  PaySelection,
 } from "../interfaces/interfaces";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -78,20 +78,29 @@ export default function CheckOutAccordion() {
     };
 
 
-  const [personalInfo, setPersonalInfo] = useState<any[]>()
+  const defaultPaymentState: PaySelection[] = mockedPay.map(
+    (paymethod) => ({ paymethod, paychecked: false })
+  );
 
+  const [checkboxesPay, setCheckboxesPay] =
+    React.useState<PaySelection[]>(defaultPaymentState);
+
+
+
+
+
+  const [personalInfo, setPersonalInfo] = useState<any[]>()
 
 
   function sendPersonalData(personaldata: any[]) {
 
 
-    console.log(personaldata)
+
 
     setPersonalInfo([...personaldata])
-    console.log(personalInfo)
-
 
   }
+
 
 
 
@@ -128,8 +137,8 @@ export default function CheckOutAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography component={'span'} style={DeliveryForm}>
-            {checkboxes.map((checkbox) => (
-              <div key={checkbox.shipper.id}>
+            {checkboxesPay.map((CheckBox) => (
+              <div key={CheckBox.paymethod.id}>
                 <FormGroup
                   sx={{
                     display: "flex",
@@ -137,38 +146,37 @@ export default function CheckOutAccordion() {
                     padding: "1rem 0",
                   }}
                 >
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        onChange={() => {
-                          let checkboxListToUpdate = checkboxes;
 
-                          checkboxListToUpdate.forEach((tempCheckbox) => {
-                            tempCheckbox.checked = false;
-                          });
 
-                          const currentBoxIndex = mockedShipping.findIndex(
-                            (item) => item.id === checkbox.shipper.id
-                          );
+                  <Checkbox
+                    onChange={() => {
+                      let checkboxPayListToUpdate = checkboxesPay
 
-                          checkboxListToUpdate[currentBoxIndex].checked = true;
+                      checkboxPayListToUpdate.forEach((tempCheckbox) => {
+                        tempCheckbox.paychecked = false;
+                      });
 
-                          // console.log(checkboxListToUpdate);
+                      const currentBoxIndex = mockedPay.findIndex(
+                        (item) => item.id === CheckBox.paymethod.id
+                      );
 
-                          setCheckboxes([...checkboxListToUpdate]);
-                          // console.log(checkboxes);
-                        }}
-                        checked={checkbox.checked}
-                      />
-                    }
-                    label={
-                      <img style={img} src={checkbox.shipper.image} alt="" />
-                    }
+                      checkboxPayListToUpdate[currentBoxIndex].paychecked = true;
+
+                      // console.log(checkboxListToUpdate);
+
+                      setCheckboxesPay([...checkboxPayListToUpdate]);
+                      // console.log(checkboxes);
+                    }}
+                    checked={CheckBox.paychecked}
                   />
 
-                  <div style={info} key={checkbox.shipper.id}>
-                    <p>{checkbox.shipper.price}:-</p>
-                    <p>{checkbox.shipper.info}</p>
+
+
+
+                  <div style={info} key={CheckBox.paymethod.id}>
+                    <p>{CheckBox.paymethod.price}:-</p>
+                    <p>{CheckBox.paymethod.info}</p>
+                    <p> {CheckBox.paymethod.alt}</p>
                   </div>
 
 
@@ -176,8 +184,8 @@ export default function CheckOutAccordion() {
               </div>
             ))}
           </Typography>
-          <Button onClick={() => console.log(checkboxes.find(item => item.checked === true))} > leverans</Button>
-          <Button>testknapp</Button>
+          <Button onClick={() => console.log(checkboxesPay.find(item => item.paychecked === true)?.paymethod.title)} >höst</Button>
+
         </AccordionDetails>
 
         {/* Översikt liggandes i tredje accordion */}
@@ -241,8 +249,8 @@ export default function CheckOutAccordion() {
               </div>
             ))}
           </Typography>
-          <Button onClick={() => console.log(checkboxes.find(item => item.checked === true))} > leverans</Button>
-          <Button>testknapp</Button>
+          <Button onClick={() => console.log(checkboxes.find(item => item.checked === true)?.shipper.title)} > leverans</Button>
+
         </AccordionDetails>
 
         {/* Översikt liggandes i tredje accordion */}
@@ -264,6 +272,7 @@ export default function CheckOutAccordion() {
                 <h3>Personuppgifter</h3>
                 {personalInfo?.map((item) => (<div>{item}</div>))}
               </div>
+
 
               <div>
                 <h3>Leveranssätt</h3>

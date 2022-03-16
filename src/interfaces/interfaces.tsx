@@ -467,31 +467,35 @@ export const mockedShipping: Delivery[] = [
 ];
 
 export interface payment {
+  id: number;
   title: string;
   price: number;
   info: string;
   alt: string;
 }
 
-export interface paySelection {
-  payments: payment;
-  payChecked: boolean;
+export interface PaySelection {
+  paymethod: payment;
+  paychecked: boolean;
 }
 
 export const mockedPay: payment[] = [
   {
+    id: 30,
     title: "kortbettalning",
     price: 0,
     info: "direkt betalnign med kort",
     alt: "visa, masterkard,apex"
   },
   {
+    id: 31,
     title: "swish",
     price: 0,
     info: "direkt betalning med swish",
     alt: "",
   },
   {
+    id: 32,
     title: "faktura",
     price: 49,
     info: " Betala inom 14 dagar med faktura. avgift tillkommer",
