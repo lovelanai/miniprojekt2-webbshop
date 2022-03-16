@@ -7,28 +7,28 @@ interface Props {
   product?: Product;
 }
 
-export default function AdminPageForm(props: Props) {
+export default function AdminPageForm(props?: Props) {
   const initialValues = {
-    id: props.product?.id,
-    title: props.product?.title,
-    longInfo: props.product?.longinfo,
-    info1: props.product?.info1,
-    info2: props.product?.info2,
-    info3: props.product?.info3,
-    price: props.product?.price,
-    image: props.product?.image,
-    image2: props.product?.image2,
-    image3: props.product?.image3,
-    spectitle1: props.product?.spec[0].spectitle,
-    specinfo1: props.product?.spec[0].spec,
-    spectitle2: props.product?.spec[1].spectitle,
-    specinfo2: props.product?.spec[1].spec,
-    spectitle3: props.product?.spec[2].spectitle,
-    specinfo3: props.product?.spec[2].spec,
-    spectitle4: props.product?.spec[3].spectitle,
-    specinfo4: props.product?.spec[3].spec,
-    spectitle5: props.product?.spec[4].spectitle,
-    specinfo5: props.product?.spec[4].spec,
+    id: props?.product?.id,
+    title: props?.product?.title,
+    longInfo: props?.product?.longinfo,
+    info1: props?.product?.info1,
+    info2: props?.product?.info2,
+    info3: props?.product?.info3,
+    price: props?.product?.price,
+    image: props?.product?.image,
+    image2: props?.product?.image2,
+    image3: props?.product?.image3,
+    spectitle1: props?.product?.spec[0].spectitle,
+    specinfo1: props?.product?.spec[0].spec,
+    spectitle2: props?.product?.spec[1].spectitle,
+    specinfo2: props?.product?.spec[1].spec,
+    spectitle3: props?.product?.spec[2].spectitle,
+    specinfo3: props?.product?.spec[2].spec,
+    spectitle4: props?.product?.spec[3].spectitle,
+    specinfo4: props?.product?.spec[3].spec,
+    spectitle5: props?.product?.spec[4].spectitle,
+    specinfo5: props?.product?.spec[4].spec,
   };
 
   const initialErrors = {
@@ -152,7 +152,7 @@ export default function AdminPageForm(props: Props) {
           name="title"
           error={Boolean(errorInput.title)}
           onChange={handleChange}
-          defaultValue={props.product?.title}
+          defaultValue={props?.product?.title}
           helperText={
             errorInput.title
               ? "Titeln måste vara minst ett tecken"
@@ -167,7 +167,7 @@ export default function AdminPageForm(props: Props) {
             name="price"
             onChange={handleChange}
             error={Boolean(errorInput.price)}
-            defaultValue={props.product?.price}
+            defaultValue={props?.product?.price}
             // value={value.price ? value.price : props.product?.price}
             helperText={
               errorInput.price
@@ -185,7 +185,7 @@ export default function AdminPageForm(props: Props) {
             name="id"
             error={Boolean(errorInput.id)}
             label="ID"
-            defaultValue={props.product?.id}
+            defaultValue={props?.product?.id}
             helperText={
               errorInput.id
                 ? "Produktens id får endast innehålla siffror"
@@ -202,7 +202,7 @@ export default function AdminPageForm(props: Props) {
           label="Image1"
           name="image"
           error={Boolean(errorInput.image)}
-          defaultValue={props.product?.image}
+          defaultValue={props?.product?.image}
           helperText={
             errorInput.image ? "Skriv in en URL" : "Produktens bild URL 1"
           }
@@ -212,7 +212,7 @@ export default function AdminPageForm(props: Props) {
           multiline
           maxRows={6}
           id="outlined-Image2"
-          defaultValue={props.product?.image2}
+          defaultValue={props?.product?.image2}
           onChange={handleChange}
           error={Boolean(errorInput.image2)}
           label="Image2"
@@ -230,7 +230,7 @@ export default function AdminPageForm(props: Props) {
           name="image3"
           onChange={handleChange}
           error={Boolean(errorInput.image3)}
-          defaultValue={props.product?.image3}
+          defaultValue={props?.product?.image3}
           helperText={
             errorInput.image3 ? "Skriv in en URL" : "Produktens bild URL 3"
           }
@@ -249,7 +249,7 @@ export default function AdminPageForm(props: Props) {
               ? "Produktinfo får inte vara tom"
               : "Produktens långa info"
           }
-          defaultValue={props.product?.longinfo}
+          defaultValue={props?.product?.longinfo}
         />
         <TextField
           required
@@ -263,7 +263,7 @@ export default function AdminPageForm(props: Props) {
           helperText={
             errorInput.info1 ? "Ange produktens info" : "Produktens info 1"
           }
-          defaultValue={props.product?.info1}
+          defaultValue={props?.product?.info1}
         />
         <TextField
           required
@@ -273,7 +273,7 @@ export default function AdminPageForm(props: Props) {
           label="Info2"
           name="info2"
           error={Boolean(errorInput.info2)}
-          defaultValue={props.product?.info2}
+          defaultValue={props?.product?.info2}
           onChange={handleChange}
           helperText={
             errorInput.info2
@@ -295,9 +295,9 @@ export default function AdminPageForm(props: Props) {
               ? "Ange produktens info"
               : "Produktens korta info 3"
           }
-          defaultValue={props.product?.info3}
+          defaultValue={props?.product?.info3}
         />
-        {props.product?.spec.map((item) => (
+        {props?.product?.spec.map((item) => (
           <div
             key={item.id}
             style={{ display: "flex", justifyContent: "center" }}
