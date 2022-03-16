@@ -503,3 +503,12 @@ export const mockedPay: payment[] = [
 
   },
 ];
+
+export interface PersonalData {
+  email: string,
+  name: string,
+  phone: number | string,
+  postnr: number | string,
+  street: string,
+
+}

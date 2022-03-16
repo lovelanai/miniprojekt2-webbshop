@@ -4,6 +4,7 @@ import {
   ShipperSelection,
   mockedPay,
   PaySelection,
+  PersonalData,
 } from "../interfaces/interfaces";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -18,11 +19,16 @@ import {
   FormControlLabel,
   Checkbox,
   Typography,
+  Input,
+  TextField,
+  Link,
+
 } from "@mui/material";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import CheckOutItems from "./CheckoutItems";
+import "./confirmationPage.tsx";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -89,15 +95,15 @@ export default function CheckOutAccordion() {
 
 
 
-  const [personalInfo, setPersonalInfo] = useState<any[]>()
+  const [personalInfo, setPersonalInfo] = useState<PersonalData>()
 
 
-  function sendPersonalData(personaldata: any[]) {
+  function sendPersonalData(personaldata: PersonalData) {
 
 
 
 
-    setPersonalInfo([...personaldata])
+    setPersonalInfo(personaldata)
 
   }
 
@@ -177,6 +183,8 @@ export default function CheckOutAccordion() {
                     <p>{CheckBox.paymethod.price}:-</p>
                     <p>{CheckBox.paymethod.info}</p>
                     <p> {CheckBox.paymethod.alt}</p>
+                    <p>{CheckBox.paymethod.title === "swish" ? personalInfo?.phone : null}</p>
+
                   </div>
 
 
@@ -270,14 +278,20 @@ export default function CheckOutAccordion() {
               <p>Orderöversikt</p>
               <div>
                 <h3>Personuppgifter</h3>
-                {personalInfo?.map((item) => (<div>{item}</div>))}
+                <p>Telefon: {personalInfo?.phone}</p>
+                <p>Email: {personalInfo?.email}</p>
+                <p>Namn: {personalInfo?.name}</p>
+                <p>Postnr: {personalInfo?.postnr}</p>
+                <p>Adress: {personalInfo?.street}</p>
               </div>
 
 
               <div>
                 <h3>Leveranssätt</h3>
                 {/* {checkboxes.map((checked) => (<div>{checked.findIndex() === true}</div>))} */}
-                <p>här ska valt fraktsätt finnas</p>
+                <p>{checkboxes.find(item => item.checked === true)?.shipper.title}</p>
+                <h3>Betalning</h3>
+                <p>{checkboxesPay.find(item => item.paychecked === true)?.paymethod.title}</p>
               </div>
 
 
@@ -287,10 +301,11 @@ export default function CheckOutAccordion() {
 
               </div>
 
-
-
             </div>
+
+
           </Typography>
+
         </AccordionDetails>
       </Accordion>
     </div >

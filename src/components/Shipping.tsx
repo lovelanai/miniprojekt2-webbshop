@@ -4,11 +4,12 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 import { useState } from 'react';
+import { PersonalData } from "../interfaces/interfaces";
 
 import "./checkout.css";
 
 interface Props {
-  sendPersonalData: (data: any[]) => void
+  sendPersonalData: (data: PersonalData) => void
 }
 
 export default function Shipping(props: Props) {
@@ -28,7 +29,7 @@ export default function Shipping(props: Props) {
   function personalDataTransfer() {
     setPersonalInfo([{ email: email, name: name, phone: phonenum, post: postnr, street: street }])
 
-    props.sendPersonalData([email, name, phonenum, postnr, street])
+    props.sendPersonalData({ email: email, name: name, phone: phonenum, postnr: postnr, street: street })
 
 
   }
