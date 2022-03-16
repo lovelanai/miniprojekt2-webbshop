@@ -1,11 +1,23 @@
+.admin-top-container {
+  margin-top: 6rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .admin-container {
   display: flex;
+  margin-top: 6rem;
+  background-color: #ffffff;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 6rem;
-  background-color: #ffffff;
   width: 100%;
+}
+
+.admin-edit-button {
+  margin: 1rem;
 }
 
 .admin-product-container {
@@ -59,4 +71,10 @@
 .admin-info-container {
   margin-top: 1rem;
   padding: 2rem;
+}
+
+@media (max-width: 535px) {
+  .admin-image-container {
+    flex-direction: column;
+  }
 }
