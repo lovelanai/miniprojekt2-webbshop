@@ -1,4 +1,5 @@
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import { Product } from "../interfaces/interfaces";
@@ -9,6 +10,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 function AdminPage() {
   const { products } = useContext(ProductContext);
   const [editForm, setEditForm] = useState(false);
+  const { handleRemoveProduct } = useContext(ProductContext);
   const [activeProduct, setActiveProduct] = useState<Product>();
 
   const sendToEdit = (product: Product) => {
@@ -25,6 +27,7 @@ function AdminPage() {
               onClick={() => sendToEdit(item)}
               className="admin-edit-icon"
             />
+            <DeleteForeverIcon className="admin-delete-icon" />
             <h2>Title: {item.title}</h2>
             <p style={{ paddingLeft: "1rem" }}>ID: {item.id}</p>
             <div className="admin-image-container">
