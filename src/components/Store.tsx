@@ -1,10 +1,7 @@
 import ImgMediaCard from "./Productcard";
 
-
 function Store() {
-  return (
-    <ImgMediaCard />
-  );
+  return <ImgMediaCard />;
 }
 
 export default Store;

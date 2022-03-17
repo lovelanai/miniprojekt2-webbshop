@@ -10,7 +10,13 @@ export interface Product {
   image: string;
   image2: string;
   image3: string;
-  spec: Array<{ spectitle: string; spec: string; id: number }>;
+  specs: Array<Spec>;
+}
+
+export interface Spec {
+  spectitle: string;
+  spec: string;
+  id: number;
 }
 
 export const mockedProducts: Product[] = [
@@ -30,7 +36,7 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1038723_1.jpg?ref=1145D98FC7&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1038723_2.jpg?ref=36400AFD1E&w=1920&h=1920&mode=max",
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "24.2 Megapixel",
@@ -74,7 +80,7 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1049125_3.jpg?ref=131E56B2CE&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1049125_1.jpg?ref=821387DCD1&w=3840&h=3840&mode=max",
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "40 Megapixel",
@@ -120,7 +126,7 @@ export const mockedProducts: Product[] = [
     image3:
       "https://www.scandinavianphoto.se/globalassets/1048664_13.jpg?ref=6BF35CDA79&w=3840&h=3840&mode=max",
 
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "20.1 Megapixel",
@@ -164,7 +170,7 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650_right.jpg?ref=756435196C&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650_top.jpg?ref=FF078259D7&w=1920&h=1920&mode=max",
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "24.2 Megapixel",
@@ -208,7 +214,7 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1036886_3.jpg?ref=8F1C2DC18B&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1036886_2.jpg?ref=45097BE295&w=3840&h=3840&mode=max",
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "20.3 Megapixel",
@@ -253,7 +259,7 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1054659_1.jpg?ref=A4E6F0B8D4&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1054659_2.jpg?ref=5F0C4D9C3E&w=1920&h=1920&mode=max",
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "20.4 Megapixel",
@@ -298,7 +304,7 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1047603_4.jpg?ref=88DB3CCEC9&w=960&h=960&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1047603_2.jpg?ref=0B65D6ADE3&w=960&h=960&mode=max",
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "45 Megapixel",
@@ -343,7 +349,7 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1053463_4.jpg?ref=CDD16AF565&w=1920&h=1920&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1053463_5.jpg?ref=C69C135ED7&w=1920&h=1920&mode=max",
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "26.1 Megapixel",
@@ -388,7 +394,7 @@ export const mockedProducts: Product[] = [
       "https://www.scandinavianphoto.se/globalassets/1053456_1.jpg?ref=160BDE0533&w=960&h=960&mode=max",
     image3:
       "https://www.scandinavianphoto.se/globalassets/1053456_3.jpg?ref=92FA1DBF61&w=960&h=960&mode=max",
-    spec: [
+    specs: [
       {
         spectitle: "Upplösning",
         spec: "26 Megapixel",
