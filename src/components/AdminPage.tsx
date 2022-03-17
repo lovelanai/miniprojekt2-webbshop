@@ -29,7 +29,7 @@ function AdminPage() {
             size="large"
             color="primary"
           >
-            Add product
+            Lägg till produkt
           </Button>
         </div>
         <div className="admin-container">
@@ -39,7 +39,10 @@ function AdminPage() {
                 onClick={() => sendToEdit(item)}
                 className="admin-edit-icon"
               />
-              <DeleteForeverIcon className="admin-delete-icon" />
+              <DeleteForeverIcon
+                onClick={() => handleRemoveProduct(item)}
+                className="admin-delete-icon"
+              />
               <h2>Title: {item.title}</h2>
               <p style={{ paddingLeft: "1rem" }}>ID: {item.id}</p>
               <div className="admin-image-container">
