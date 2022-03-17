@@ -19,8 +19,6 @@ import {
   FormControlLabel,
   Checkbox,
   Typography,
-
-
 } from "@mui/material";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { useState } from "react";
@@ -60,7 +58,6 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   },
 }));
 
-
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: "1px solid rgba(0, 0, 0, .125)",
@@ -68,7 +65,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function CheckOutAccordion() {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
-
 
   const defaultShipperState: ShipperSelection[] = mockedShipping.map(
     (shipper) => ({ shipper, checked: false })
@@ -82,19 +78,13 @@ export default function CheckOutAccordion() {
       setExpanded(newExpanded ? panel : false);
     };
 
-
-  const defaultPaymentState: PaySelection[] = mockedPay.map(
-    (paymethod) => ({ paymethod, paychecked: false })
-  );
+  const defaultPaymentState: PaySelection[] = mockedPay.map((paymethod) => ({
+    paymethod,
+    paychecked: false,
+  }));
 
   const [checkboxesPay, setCheckboxesPay] =
     React.useState<PaySelection[]>(defaultPaymentState);
-
-
-
-
-
-
 
   const [personalInfo, setPersonalInfo] = useState<PersonalData>({
     email: "",
@@ -102,29 +92,16 @@ export default function CheckOutAccordion() {
     phone: "",
     postnr: "",
     street: "",
-  })
-
+  });
 
   function sendPersonalData(personaldata: PersonalData) {
-
-
-
-
-    setPersonalInfo(personaldata)
-
+    setPersonalInfo(personaldata);
   }
-
-
-
-
-
-
 
   // const personalInfo = [email, name, phonenum, postnr, street];
 
   return (
     <div style={rootStyle}>
-
       {/*  Personuppgifter liggandes i första accordion*/}
       <Accordion
         expanded={expanded === "panel1"}
@@ -132,10 +109,10 @@ export default function CheckOutAccordion() {
         sx={{ width: "100%" }}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography component={'span'}>Personuppgifter</Typography>
+          <Typography component={"span"}>Personuppgifter</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={'span'}>
+          <Typography component={"span"}>
             <Shipping sendPersonalData={sendPersonalData} />
           </Typography>
         </AccordionDetails>
@@ -147,10 +124,10 @@ export default function CheckOutAccordion() {
         sx={{ width: "100%" }}
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography component={'span'}>Betalnings alternativ</Typography>
+          <Typography component={"span"}>Betalnings alternativ</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={'span'} style={DeliveryForm}>
+          <Typography component={"span"} style={DeliveryForm}>
             {checkboxesPay.map((CheckBox) => (
               <div key={CheckBox.paymethod.id}>
                 <FormGroup
@@ -160,11 +137,9 @@ export default function CheckOutAccordion() {
                     padding: "1rem 0",
                   }}
                 >
-
-
                   <Checkbox
                     onChange={() => {
-                      let checkboxPayListToUpdate = checkboxesPay
+                      let checkboxPayListToUpdate = checkboxesPay;
 
                       checkboxPayListToUpdate.forEach((tempCheckbox) => {
                         tempCheckbox.paychecked = false;
@@ -174,7 +149,8 @@ export default function CheckOutAccordion() {
                         (item) => item.id === CheckBox.paymethod.id
                       );
 
-                      checkboxPayListToUpdate[currentBoxIndex].paychecked = true;
+                      checkboxPayListToUpdate[currentBoxIndex].paychecked =
+                        true;
 
                       // console.log(checkboxListToUpdate);
 
@@ -184,25 +160,33 @@ export default function CheckOutAccordion() {
                     checked={CheckBox.paychecked}
                   />
 
-
-
-
                   <div style={info} key={CheckBox.paymethod.id}>
                     <p>{CheckBox.paymethod.price}:-</p>
                     <p>{CheckBox.paymethod.info}</p>
                     <p> {CheckBox.paymethod.alt}</p>
-                    <p>{CheckBox.paymethod.title === "swish" ? personalInfo.phone : null} {CheckBox.paymethod.title === "faktura" ? personalInfo.email : null}
+                    <p>
+                      {CheckBox.paymethod.title === "swish"
+                        ? personalInfo.phone
+                        : null}{" "}
+                      {CheckBox.paymethod.title === "faktura"
+                        ? personalInfo.email
+                        : null}
                     </p>
-
                   </div>
-
-
                 </FormGroup>
               </div>
             ))}
           </Typography>
-          <Button onClick={() => console.log(checkboxesPay.find(item => item.paychecked === true)?.paymethod.title)} >höst</Button>
-
+          <Button
+            onClick={() =>
+              console.log(
+                checkboxesPay.find((item) => item.paychecked === true)
+                  ?.paymethod.title
+              )
+            }
+          >
+            höst
+          </Button>
         </AccordionDetails>
 
         {/* Översikt liggandes i tredje accordion */}
@@ -214,10 +198,10 @@ export default function CheckOutAccordion() {
         sx={{ width: "100%" }}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography component={'span'}>Betalning</Typography>
+          <Typography component={"span"}>Betalning</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={'span'}>
+          <Typography component={"span"}>
             <CardPayment />
           </Typography>
         </AccordionDetails>
@@ -229,10 +213,10 @@ export default function CheckOutAccordion() {
         sx={{ width: "100%" }}
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography component={'span'}>Leverans uppgifter</Typography>
+          <Typography component={"span"}>Leverans uppgifter</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={'span'} style={DeliveryForm}>
+          <Typography component={"span"} style={DeliveryForm}>
             {checkboxes.map((checkbox) => (
               <div key={checkbox.shipper.id}>
                 <FormGroup
@@ -275,14 +259,20 @@ export default function CheckOutAccordion() {
                     <p>{checkbox.shipper.price}:-</p>
                     <p>{checkbox.shipper.info}</p>
                   </div>
-
-
                 </FormGroup>
               </div>
             ))}
           </Typography>
-          <Button onClick={() => console.log(checkboxes.find(item => item.checked === true)?.shipper.title)} > leverans</Button>
-
+          <Button
+            onClick={() =>
+              console.log(
+                checkboxes.find((item) => item.checked === true)?.shipper.title
+              )
+            }
+          >
+            {" "}
+            leverans
+          </Button>
         </AccordionDetails>
 
         {/* Översikt liggandes i tredje accordion */}
@@ -294,10 +284,10 @@ export default function CheckOutAccordion() {
         sx={{ width: "100%" }}
       >
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
-          <Typography component={'span'}>Översikt</Typography>
+          <Typography component={"span"}>Översikt</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={'span'}>
+          <Typography component={"span"}>
             <div>
               <p>Orderöversikt</p>
               <div>
@@ -309,32 +299,50 @@ export default function CheckOutAccordion() {
                 <p>Adress: {personalInfo.street}</p>
               </div>
 
-
               <div>
                 <h3>Leveranssätt</h3>
                 {/* {checkboxes.map((checked) => (<div>{checked.findIndex() === true}</div>))} */}
-                <p>{checkboxes.find(item => item.checked === true)?.shipper.title} <p>{checkboxes.find(item => item.checked === true)?.shipper.price}:-</p> </p>
+                <p>
+                  {
+                    checkboxes.find((item) => item.checked === true)?.shipper
+                      .title
+                  }{" "}
+                  <p>
+                    {
+                      checkboxes.find((item) => item.checked === true)?.shipper
+                        .price
+                    }
+                    :-
+                  </p>{" "}
+                </p>
                 <h3>Betalning</h3>
-                <p>{checkboxesPay.find(item => item.paychecked === true)?.paymethod.title}  <p>{checkboxesPay.find(item => item.paychecked === true)?.paymethod.price}:- </p>  </p>
+                <p>
+                  {
+                    checkboxesPay.find((item) => item.paychecked === true)
+                      ?.paymethod.title
+                  }{" "}
+                  <p>
+                    {
+                      checkboxesPay.find((item) => item.paychecked === true)
+                        ?.paymethod.price
+                    }
+                    :-{" "}
+                  </p>{" "}
+                </p>
               </div>
-
 
               <div>
                 <h3>Valda produkter</h3>
                 <CheckOutItems />
-
               </div>
-
             </div>
             <Link to={`/ConfirmationPage/${personalInfo.name}`}>
-
               <Button>Bekräfta köp</Button>
             </Link>
           </Typography>
-
         </AccordionDetails>
       </Accordion>
-    </div >
+    </div>
   );
 }
 
@@ -346,7 +354,7 @@ const rootStyle: CSSProperties = {
   minWidth: "40rem",
   width: "70%",
   marginTop: "5rem",
-  marginBottom: "3rem"
+  marginBottom: "3rem",
 };
 
 const DeliveryForm: CSSProperties = {
