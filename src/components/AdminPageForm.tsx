@@ -1,7 +1,8 @@
 import { Button, Box, TextField } from "@mui/material";
-import { ChangeEvent, FC, useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import { Product } from "../interfaces/interfaces";
+import { Link } from "react-router-dom";
 
 interface Props {
   product?: Product;
@@ -60,29 +61,33 @@ export default function AdminPageForm(props?: Props) {
     image2: false,
     image3: false,
   };
-  const { handleAddProduct, handleRemoveProduct } = useContext(ProductContext);
+  const { handleAddProduct, handleRemoveProduct, products } =
+    useContext(ProductContext);
   const [value, setValue] = useState(initialValues);
   const [errorInput, setErrorInput] = useState(initialErrors);
 
   const handleChange = (
     evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    if (evt.target.value.length === 0) {
+    if (evt.target.value.length === 0 && !evt.target.name.includes("spec")) {
       setErrorInput({
         ...errorInput,
         [evt.target.name]: true,
       });
-    } else if (evt.target.value.length > 0) {
+    } else if (
+      evt.target.value.length > 0 &&
+      !evt.target.name.includes("spec")
+    ) {
       setErrorInput({
         ...errorInput,
         [evt.target.name]: false,
       });
     }
 
-    /**This if-statement checks if the name of the target is title or price, if true, then it checks
+    /**This if-statement checks if the name of the target is price, if true, then it checks
      * if it includes anything else than numbers.
      */
-    if (evt.target.name === "id" || evt.target.name === "price") {
+    if (evt.target.name === "price") {
       if (!/^\d*$/.test(evt.target.value)) {
         setErrorInput({
           ...errorInput,
@@ -99,51 +104,103 @@ export default function AdminPageForm(props?: Props) {
       ...value,
       [evt.target.name]: currentValue,
     });
-    console.log(value);
   };
+  // <TextField
+  //   sx={{ marginLeft: 3 }}
+  //   required
+  //   multiline
+  //   maxRows={6}
+  //   id="outlined-ID"
+  //   onChange={handleChange}
+  //   name="id"
+  //   disabled={true}
+  //   label="ID"
+  //   /** If we edit an existing product the ID input-field shows its ID number. If we want to add a new product we
+  //    * check for the highest already existing ID number in the products array,
+  //    *  and sets the new ID number to the highest ID number + 1.
+  //    */
+  //   defaultValue={
+  //     props?.product?.id
+  //       ? props?.product?.id
+  //       : Math.max.apply(
+  //           Math,
+  //           products.map((item) => {
+  //             return item.id + 1;
+  //           })
+  //         )
+  //   }
+  //   helperText={
+  //     errorInput.id
+  //       ? "Produktens id får endast innehålla siffror"
+  //       : "Produktens ID"
+  //   }
+  // />;
 
   const sendToAddProduct = () => {
     const product: Product = {
-      id: value.id as number,
-      title: value.title as string,
-      longinfo: value.longInfo as string,
-      info1: value.info1 as string,
-      info2: value.info2 as string,
-      info3: value.info3 as string,
-      price: value.price as number,
+      id: props?.product
+        ? props.product.id
+        : Math.max.apply(
+            Math,
+            products.map((item) => {
+              return item.id + 1;
+            })
+          ),
+      title: value.title!,
+      longinfo: value.longInfo!,
+      info1: value.info1!,
+      info2: value.info2!,
+      info3: value.info3!,
+      price: Number(value.price),
       quantity: 1,
-      image: value.image as string,
-      image2: value.image2 as string,
-      image3: value.image3 as string,
+      image: value.image!,
+      image2: value.image2!,
+      image3: value.image3!,
       specs: [
         {
-          spectitle: value.spec[0].spectitle as string,
-          spec: value.spec[0].specinfo as string,
+          spectitle: value.spec[0].spectitle!,
+          spec: value.spec[0].specinfo!,
           id: 1,
         },
         {
-          spectitle: value.spec[1].spectitle as string,
-          spec: value.spec[1].specinfo as string,
+          spectitle: value.spec[1].spectitle!,
+          spec: value.spec[1].specinfo!,
           id: 2,
         },
         {
-          spectitle: value.spec[2].spectitle as string,
-          spec: value.spec[2].specinfo as string,
+          spectitle: value.spec[2].spectitle!,
+          spec: value.spec[2].specinfo!,
           id: 3,
         },
         {
-          spectitle: value.spec[3].spectitle as string,
-          spec: value.spec[3].specinfo as string,
+          spectitle: value.spec[3].spectitle!,
+          spec: value.spec[3].specinfo!,
           id: 4,
         },
         {
-          spectitle: value.spec[4].spectitle as string,
-          spec: value.spec[4].specinfo as string,
+          spectitle: value.spec[4].spectitle!,
+          spec: value.spec[4].specinfo!,
           id: 5,
         },
       ],
     };
     handleAddProduct(product);
+  };
+
+  const areAllFieldsFilled = () => {
+    if (
+      value.title?.length &&
+      value.price?.toString().length &&
+      value.longInfo?.length &&
+      value.image?.length &&
+      value.image2?.length &&
+      value.image3?.length &&
+      value.info1?.length &&
+      value.info2?.length &&
+      value.info3?.length
+    ) {
+      return false;
+    } else return true;
   };
 
   return (
@@ -190,23 +247,6 @@ export default function AdminPageForm(props?: Props) {
               errorInput.price
                 ? "Produktens pris får endast innehålla siffror"
                 : "Produktens pris"
-            }
-          />
-          <TextField
-            sx={{ marginLeft: 3 }}
-            required
-            multiline
-            maxRows={6}
-            id="outlined-ID"
-            onChange={handleChange}
-            name="id"
-            error={Boolean(errorInput.id)}
-            label="ID"
-            defaultValue={props?.product?.id}
-            helperText={
-              errorInput.id
-                ? "Produktens id får endast innehålla siffror"
-                : "Produktens ID"
             }
           />
         </div>
@@ -327,12 +367,7 @@ export default function AdminPageForm(props?: Props) {
               label="Spec title"
               name={`spec[${item.id - 1}].spectitle`}
               onChange={handleChange}
-              error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
-              helperText={
-                `errorInput.spec[${item.id}].spectitle`
-                  ? "Specifikationstitel " + item.id
-                  : "Ange specifikationstitel"
-              }
+              helperText={"Specifikationstitel " + item.id}
               defaultValue={props?.product?.specs[item.id - 1].spectitle}
             />
             <TextField
@@ -344,25 +379,23 @@ export default function AdminPageForm(props?: Props) {
               label="Spec info"
               name={`spec[${item.id - 1}].specinfo`}
               onChange={handleChange}
-              error={Boolean(`errorInput.spec[${item.id}].specinfo`)}
-              helperText={
-                `errorInput.spec[${item.id}].specinfo`
-                  ? "Specifikationsinfo " + item.id
-                  : "Ange specifikationsinfo"
-              }
+              helperText={"Ange specifikationsinfo " + item.id}
               defaultValue={props?.product?.specs[item.id - 1].spec}
             />
           </div>
         ))}
       </div>
-      <Button
-        onClick={sendToAddProduct}
-        variant="contained"
-        size="medium"
-        color="primary"
-      >
-        Submit
-      </Button>
+      <Link to="/AdminPage">
+        <Button
+          onClick={sendToAddProduct}
+          variant="contained"
+          disabled={Boolean(areAllFieldsFilled())}
+          size="medium"
+          color="primary"
+        >
+          Submit
+        </Button>
+      </Link>
     </Box>
   );
 }
