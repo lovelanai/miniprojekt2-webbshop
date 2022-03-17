@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 
+
 import "./ShoppingCartPage.tsx";
 function Header() {
   const { amountOfProducts } = useContext(ShoppingCartContext);

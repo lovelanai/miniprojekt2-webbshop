@@ -22,12 +22,10 @@ export default function Shipping(props: Props) {
   const [postnr, setPostnr] = useState('');
   const [street, setStreet] = useState('');
 
-  const [personalInfo, setPersonalInfo] = useState<any[]>()
 
   // const personalInfo = [email, name, phonenum, postnr, street];
 
   function personalDataTransfer() {
-    setPersonalInfo([{ email: email, name: name, phone: phonenum, post: postnr, street: street }])
 
     props.sendPersonalData({ email: email, name: name, phone: phonenum, postnr: postnr, street: street })
 

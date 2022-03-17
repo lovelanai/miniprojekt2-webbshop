@@ -1,6 +1,5 @@
-import { useState } from "react";
+
 import "./checkout.css";
-import Shipping from "./Shipping";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 import CheckOutAccordion from "./CheckOutAccordion";

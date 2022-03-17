@@ -482,23 +482,23 @@ export interface PaySelection {
 export const mockedPay: payment[] = [
   {
     id: 30,
-    title: "kortbettalning",
+    title: "Kortbetalning",
     price: 0,
-    info: "direkt betalnign med kort",
-    alt: "visa, masterkard,apex"
+    info: " gratis, direktbetalning med kort",
+    alt: "Visa, Mastercard, American Express"
   },
   {
     id: 31,
     title: "swish",
     price: 0,
-    info: "direkt betalning med swish",
+    info: "Gratis, direktbetalning med swish",
     alt: "",
   },
   {
     id: 32,
     title: "faktura",
     price: 49,
-    info: " Betala inom 14 dagar med faktura. avgift tillkommer",
+    info: " Betala inom 14 dagar med faktura.",
     alt: "",
 
   },
@@ -507,8 +507,8 @@ export const mockedPay: payment[] = [
 export interface PersonalData {
   email: string,
   name: string,
-  phone: number | string,
-  postnr: number | string,
+  phone: string,
+  postnr: string,
   street: string,
 
 }
