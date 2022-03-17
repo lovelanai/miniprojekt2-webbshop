@@ -55,7 +55,6 @@ export default function ProductTab(props: Props) {
         >
           <Tab label="Produktinfo" {...a11yProps(0)} />
           <Tab label="Specs" {...a11yProps(1)} />
-          {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
