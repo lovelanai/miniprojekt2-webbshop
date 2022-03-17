@@ -23,11 +23,13 @@ import {
 
 } from "@mui/material";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "@mui/material";
 import CheckOutItems from "./CheckoutItems";
 import { Link } from "react-router-dom";
 import CardPayment from "./CardPayment";
+import { CheckBox } from "@mui/icons-material";
+import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -66,7 +68,9 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
+
 export default function CheckOutAccordion() {
+  const { totalPrice } = React.useContext(ShoppingCartContext);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
 
@@ -298,7 +302,7 @@ export default function CheckOutAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography component={'span'}>
-            <div>
+            <div >
               <p>Orderöversikt</p>
               <div>
                 <h3>Personuppgifter</h3>
@@ -318,14 +322,17 @@ export default function CheckOutAccordion() {
                 <p>{checkboxesPay.find(item => item.paychecked === true)?.paymethod.title}  <p>{checkboxesPay.find(item => item.paychecked === true)?.paymethod.price}:- </p>  </p>
               </div>
 
-
               <div>
                 <h3>Valda produkter</h3>
                 <CheckOutItems />
-
+                <p>{personalInfo.email}</p>
               </div>
-
+              Totalpris: {totalPrice + checkboxesPay.find(item => item.paychecked === true)?.paymethod.price! + checkboxes.find(item => item.checked === true)?.shipper.price!} kr
+              <div>
+                Moms: {totalPrice * 0.25} kr
+              </div>
             </div>
+
             <Link to={`/ConfirmationPage/${personalInfo.name}`}>
 
               <Button>Bekräfta köp</Button>
@@ -363,3 +370,5 @@ const img: CSSProperties = {
   height: "3.5rem",
   paddingLeft: "3rem",
 };
+
+

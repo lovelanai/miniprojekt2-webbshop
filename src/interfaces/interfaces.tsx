@@ -484,7 +484,7 @@ export const mockedPay: payment[] = [
     id: 30,
     title: "Kortbetalning",
     price: 0,
-    info: " gratis, direktbetalning med kort",
+    info: " gratis, direktbetalning med kort ",
     alt: "Visa, Mastercard, American Express"
   },
   {
