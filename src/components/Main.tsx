@@ -4,8 +4,12 @@ import ShoppingCartPage from "./ShoppingCartPage";
 import Store from "./Store";
 import { useContext } from "react";
 import { ProductContext } from "../contexts/ProductContext";
+
 import CheckOut from "./CheckOutPage";
 import Confirmation from "./confirmationPage";
+
+import AdminPage from "./AdminPage";
+
 
 function Main() {
   const { products } = useContext(ProductContext);
@@ -13,7 +17,9 @@ function Main() {
     <main>
       <Routes>
         <Route path="/" element={<Store />} />
+        <Route path="/AdminPage" element={<AdminPage />} />
         <Route path="/ShoppingCartPage" element={<ShoppingCartPage />} />
+
 
         <Route path="/CheckOut" element={<CheckOut />} />
         <Route
@@ -21,15 +27,15 @@ function Main() {
           element={<Confirmation />}
         />
 
+
         {products.map((item) => (
           <Route
+            key={item.id}
             path={item.title.replaceAll(" ", "-")}
-            element={<ProductInfo key={item.id} product={item} />}
+            element={<ProductInfo product={item} />}
           />
         ))}
-        {/* <Route path="/productInfo" element={<ProductInfo />} /> */}
       </Routes>
-      {/* <ProductInfo /> */}
     </main>
   );
 }

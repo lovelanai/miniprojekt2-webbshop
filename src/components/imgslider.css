@@ -4,26 +4,12 @@
                    min-height: 255;  
                   min-width: 700; 
                   overflow: hidden;
-                  width: 700px; 
+                  width: 100%; 
                   object-fit: contain;
  }
  .img-slider{
-   width: 700px;
+   width: 100%;
     display: flex;
               justify-content: center;
                   flex-direction: column;
-}
- 
-@media (max-width: 800px) {
-.img-slider{
-   width: 300px;
-   min-height: 155px;
-   
-}
-.img{
-   width: 300px;
-   min-height: 155px;
-}
-
-    
 }

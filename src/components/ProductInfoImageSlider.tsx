@@ -57,81 +57,87 @@ function ProductInfoImageSlider(props: Props) {
   };
 
   return (
-    <Box className="img-slider" sx={{ flexGrow: 1 }}>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {images.map((step, index) => (
-          <div key={step.id}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                className="img"
-                component="img"
-                // sx={{
-                //   // height: "100%",
-                //   display: "block",
-                //   height: 455,
-                //   minHeight: 255,
-                //   minWidth: 700,
-                //   overflow: "hidden",
-                //   width: 700,
-                //   objectFit: "contain",
+    <div className="left-product-container">
+      <Box className="img-slider" sx={{ flexGrow: 1 }}>
+        <AutoPlaySwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          enableMouseEvents
+        >
+          {images.map((step, index) => (
+            <div key={step.id}>
+              {Math.abs(activeStep - index) <= 2 ? (
+                <Box
+                  className="img"
+                  component="img"
+                  // sx={{
+                  //   // height: "100%",
+                  //   display: "block",
+                  //   height: 455,
+                  //   minHeight: 255,
+                  //   minWidth: 700,
+                  //   overflow: "hidden",
+                  //   width: 700,
+                  //   objectFit: "contain",
 
-                src={step.imgPath}
-                alt={step.label}
-              />
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
-      <MobileStepper
-        className="next"
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: 50,
-          pl: 2,
-          bgcolor: "background.default",
-        }}
-      >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
-    </Box>
+                  src={step.imgPath}
+                  alt={step.label}
+                />
+              ) : null}
+            </div>
+          ))}
+        </AutoPlaySwipeableViews>
+        <MobileStepper
+          className="next"
+          steps={maxSteps}
+          position="static"
+          activeStep={activeStep}
+          nextButton={
+            <Button
+              size="small"
+              onClick={handleNext}
+              disabled={activeStep === maxSteps - 1}
+            >
+              Next
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowLeft />
+              ) : (
+                <KeyboardArrowRight />
+              )}
+            </Button>
+          }
+          backButton={
+            <Button
+              size="small"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowRight />
+              ) : (
+                <KeyboardArrowLeft />
+              )}
+              Back
+            </Button>
+          }
+        />
+        <Paper
+          square
+          elevation={0}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: 50,
+            pl: 2,
+            bgcolor: "background.default",
+          }}
+        >
+          <Typography>{images[activeStep].label}</Typography>
+        </Paper>
+      </Box>
+    </div>
   );
 }
 

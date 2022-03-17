@@ -24,6 +24,10 @@
 .right-product-container {
   width: 50%;
 }
+.left-product-container {
+  width: 50%;
+  margin-right: 2rem;
+}
 
 .product-info-title {
   font-size: 2rem;
@@ -40,7 +44,7 @@
 
 .product-info-price {
   font-size: 1.5rem;
-  margin: 1rem;
+  margin: 1rem 3rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
@@ -50,26 +54,35 @@
     flex-direction: column;
     height: unset;
   }
+  .right-product-container {
+    width: 100%;
+  }
+  .left-product-container {
+    width: 100%;
+  }
+}
+
+@media (max-height: 1100) {
+  .product-info-container {
+    height: 100%;
+  }
 }
 
 @media (max-width: 800px) {
   .product-info-container {
-padding: 0 2rem;
-}
-.product-info-title {
-  font-size: 1.3rem;
-  margin: 0.8rem 0;
-  display: flex;
-  justify-content: center;
-
-}
-.product-info-description {
-  font-size: 0.8rem;
-   margin: 0rem;
-
-}
-.product-info-price {
-margin: 1rem 0;
-}
-
+    padding: 0 2rem;
+  }
+  .product-info-title {
+    font-size: 1.3rem;
+    margin: 0.8rem 0;
+    display: flex;
+    justify-content: center;
+  }
+  .product-info-description {
+    font-size: 0.8rem;
+    margin: 0rem;
+  }
+  .product-info-price {
+    margin: 1rem 0;
+  }
 }

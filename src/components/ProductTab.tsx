@@ -22,11 +22,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -59,28 +55,27 @@ export default function ProductTab(props: Props) {
         >
           <Tab label="Produktinfo" {...a11yProps(0)} />
           <Tab label="Specs" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <p>{props.product.longinfo}</p>
+        <Typography>{props.product.longinfo}</Typography>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ul>
-          {props.product.spec.map((test) => (
+        <ul style={{ padding: "0" }}>
+          {props.product.specs.map((test) => (
             <li
               style={{ display: "flex", justifyContent: "space-between" }}
               key={test.id}
             >
-              <p style={{ marginRight: "3rem" }}>{test.spectitle}</p>
-              <p>{test.spec}</p>
+              <Typography style={{ margin: "0" }}>{test.spectitle}</Typography>
+              <Typography style={{ margin: ".3rem 0" }}>{test.spec}</Typography>
             </li>
           ))}
         </ul>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      {/* <TabPanel value={value} index={2}>
         Item Three
-      </TabPanel>
+      </TabPanel> */}
     </Box>
   );
 }
