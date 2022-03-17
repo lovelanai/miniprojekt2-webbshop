@@ -9,6 +9,7 @@ function Confirmation() {
   return (
     <div style={rootStyle}>
       <p>Tack för ditt köp {customerName} </p>
+      <p>varsågod fan</p>
 
       <div>
         <h3>{r}</h3>
