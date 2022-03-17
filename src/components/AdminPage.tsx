@@ -57,7 +57,7 @@ function AdminPage() {
                 </ul>
 
                 <ul>
-                  {item.spec.map((spec) => (
+                  {item.specs.map((spec) => (
                     <li key={spec.id}>
                       <p>
                         {spec.spectitle} ID: {spec.id}

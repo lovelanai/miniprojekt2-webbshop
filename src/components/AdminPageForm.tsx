@@ -20,22 +20,32 @@ export default function AdminPageForm(props?: Props) {
     image2: props?.product?.image2,
     image3: props?.product?.image3,
     spec: [
-      { spectitle: "", specinfo: "", id: 1 },
-      { spectitle: "", specinfo: "", id: 2 },
-      { spectitle: "", specinfo: "", id: 3 },
-      { spectitle: "", specinfo: "", id: 4 },
-      { spectitle: "", specinfo: "", id: 5 },
+      {
+        spectitle: props?.product?.specs[0].spectitle,
+        specinfo: props?.product?.specs[0].spec,
+        id: 1,
+      },
+      {
+        spectitle: props?.product?.specs[1].spectitle,
+        specinfo: props?.product?.specs[1].spec,
+        id: 2,
+      },
+      {
+        spectitle: props?.product?.specs[2].spectitle,
+        specinfo: props?.product?.specs[2].spec,
+        id: 3,
+      },
+      {
+        spectitle: props?.product?.specs[3].spectitle,
+        specinfo: props?.product?.specs[3].spec,
+        id: 4,
+      },
+      {
+        spectitle: props?.product?.specs[4].spectitle,
+        specinfo: props?.product?.specs[4].spec,
+        id: 5,
+      },
     ],
-    spectitle1: props?.product?.spec[0].spectitle,
-    specinfo1: props?.product?.spec[0].spec,
-    spectitle2: props?.product?.spec[1].spectitle,
-    specinfo2: props?.product?.spec[1].spec,
-    spectitle3: props?.product?.spec[2].spectitle,
-    specinfo3: props?.product?.spec[2].spec,
-    spectitle4: props?.product?.spec[3].spectitle,
-    specinfo4: props?.product?.spec[3].spec,
-    spectitle5: props?.product?.spec[4].spectitle,
-    specinfo5: props?.product?.spec[4].spec,
   };
 
   const initialErrors = {
@@ -105,30 +115,30 @@ export default function AdminPageForm(props?: Props) {
       image: value.image as string,
       image2: value.image2 as string,
       image3: value.image3 as string,
-      spec: [
+      specs: [
         {
-          spectitle: value.spectitle1 as string,
-          spec: value.specinfo1 as string,
+          spectitle: value.spec[0].spectitle as string,
+          spec: value.spec[0].specinfo as string,
           id: 1,
         },
         {
-          spectitle: value.spectitle2 as string,
-          spec: value.specinfo2 as string,
+          spectitle: value.spec[1].spectitle as string,
+          spec: value.spec[1].specinfo as string,
           id: 2,
         },
         {
-          spectitle: value.spectitle3 as string,
-          spec: value.specinfo3 as string,
+          spectitle: value.spec[2].spectitle as string,
+          spec: value.spec[2].specinfo as string,
           id: 3,
         },
         {
-          spectitle: value.spectitle4 as string,
-          spec: value.specinfo4 as string,
+          spectitle: value.spec[3].spectitle as string,
+          spec: value.spec[3].specinfo as string,
           id: 4,
         },
         {
-          spectitle: value.spectitle5 as string,
-          spec: value.specinfo5 as string,
+          spectitle: value.spec[4].spectitle as string,
+          spec: value.spec[4].specinfo as string,
           id: 5,
         },
       ],
@@ -315,11 +325,15 @@ export default function AdminPageForm(props?: Props) {
               maxRows={6}
               id="outlined-spectitle"
               label="Spec title"
-              name={"spectitle" + item.id}
+              name={`spec[${item.id - 1}].spectitle`}
               onChange={handleChange}
-              // error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
-              helperText={"Specifikationstitel " + item.id}
-              defaultValue={props?.product?.spec[item.id - 1].spectitle}
+              error={Boolean(`errorInput.spec[${item.id}].spectitle`)}
+              helperText={
+                `errorInput.spec[${item.id}].spectitle`
+                  ? "Specifikationstitel " + item.id
+                  : "Ange specifikationstitel"
+              }
+              defaultValue={props?.product?.specs[item.id - 1].spectitle}
             />
             <TextField
               sx={{ marginLeft: 3 }}
@@ -328,10 +342,15 @@ export default function AdminPageForm(props?: Props) {
               maxRows={6}
               id="outlined-specinfo"
               label="Spec info"
-              name={"specinfo" + item.id}
+              name={`spec[${item.id - 1}].specinfo`}
               onChange={handleChange}
-              helperText={"Specifikationsinfo " + item.id}
-              defaultValue={props?.product?.spec[item.id - 1].spec}
+              error={Boolean(`errorInput.spec[${item.id}].specinfo`)}
+              helperText={
+                `errorInput.spec[${item.id}].specinfo`
+                  ? "Specifikationsinfo " + item.id
+                  : "Ange specifikationsinfo"
+              }
+              defaultValue={props?.product?.specs[item.id - 1].spec}
             />
           </div>
         ))}
