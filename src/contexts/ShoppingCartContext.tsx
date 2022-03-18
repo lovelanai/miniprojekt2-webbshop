@@ -6,18 +6,22 @@ export interface ContextValue {
   amountOfProducts: number;
   handleAddProduct: (product: Product) => void;
   handleRemoveProduct: (product: Product) => void;
+  totalPrice: number;
 }
+
 
 export const ShoppingCartContext = createContext<ContextValue>({
   cartItems: [],
   amountOfProducts: 0,
-  handleAddProduct: () => {},
-  handleRemoveProduct: () => {},
+  handleAddProduct: () => { },
+  handleRemoveProduct: () => { },
+  totalPrice: 0,
 });
 
 const ShoppingCartProvider: FC = (props) => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [amountOfProducts, setAmountOfProducts] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   /**
    * This function adds a product to the cartItems-array.
@@ -40,6 +44,7 @@ const ShoppingCartProvider: FC = (props) => {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
     setAmountOfProducts(amountOfProducts + 1);
+    setTotalPrice(totalPrice + product.price)
   }
 
   /**
@@ -70,9 +75,11 @@ const ShoppingCartProvider: FC = (props) => {
     <ShoppingCartContext.Provider
       value={{
         cartItems,
+        totalPrice,
         handleAddProduct,
         handleRemoveProduct,
         amountOfProducts,
+
       }}
     >
       {props.children}
