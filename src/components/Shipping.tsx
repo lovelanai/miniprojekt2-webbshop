@@ -113,7 +113,7 @@ export default function Shipping(props: Props) {
       }
     }
     if (evt.target.name === "adress1") {
-      if (!/^\d{4,4}$/gm.test(evt.target.value)) {
+      if (!/[^A-Za-z0-9]+/.test(evt.target.value)) {
         setErrorinput({
           ...errorInput,
           [evt.target.name]: true,
