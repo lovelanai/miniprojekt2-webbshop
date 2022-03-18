@@ -45,7 +45,7 @@ export default function CardPayment() {
     }
 
     if (evt.target.name === "number") {
-      if (!/^\d{16,16}$/gm.test(evt.target.value)) {
+      if (!/^\d{0,16}$/gm.test(evt.target.value)) {
         setErrorinput({
           ...errorInput,
           [evt.target.name]: true,
