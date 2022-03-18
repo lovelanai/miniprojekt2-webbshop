@@ -1,8 +1,10 @@
-import { Button, Box, TextField } from "@mui/material";
+import { Button, Box, TextField, Modal, Typography } from "@mui/material";
 import { ChangeEvent, useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import { Product } from "../interfaces/interfaces";
 import { Link } from "react-router-dom";
+import { style } from "@mui/system";
+import React from "react";
 
 interface Props {
   product?: Product;
@@ -61,10 +63,30 @@ export default function AdminPageForm(props?: Props) {
     image2: false,
     image3: false,
   };
+
+  const modalStyle = {
+    position: "absolute" as "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    // border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
   const { handleAddProduct, handleRemoveProduct, products } =
     useContext(ProductContext);
   const [value, setValue] = useState(initialValues);
   const [errorInput, setErrorInput] = useState(initialErrors);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const addedProductMessage = () => {
+    handleOpen();
+    setTimeout(handleClose, 1200);
+  };
 
   const handleChange = (
     evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -105,36 +127,6 @@ export default function AdminPageForm(props?: Props) {
       [evt.target.name]: currentValue,
     });
   };
-  // <TextField
-  //   sx={{ marginLeft: 3 }}
-  //   required
-  //   multiline
-  //   maxRows={6}
-  //   id="outlined-ID"
-  //   onChange={handleChange}
-  //   name="id"
-  //   disabled={true}
-  //   label="ID"
-  //   /** If we edit an existing product the ID input-field shows its ID number. If we want to add a new product we
-  //    * check for the highest already existing ID number in the products array,
-  //    *  and sets the new ID number to the highest ID number + 1.
-  //    */
-  //   defaultValue={
-  //     props?.product?.id
-  //       ? props?.product?.id
-  //       : Math.max.apply(
-  //           Math,
-  //           products.map((item) => {
-  //             return item.id + 1;
-  //           })
-  //         )
-  //   }
-  //   helperText={
-  //     errorInput.id
-  //       ? "Produktens id får endast innehålla siffror"
-  //       : "Produktens ID"
-  //   }
-  // />;
 
   const sendToAddProduct = () => {
     const product: Product = {
@@ -196,6 +188,7 @@ export default function AdminPageForm(props?: Props) {
       ],
     };
     handleAddProduct(product);
+    addedProductMessage();
   };
 
   const areAllFieldsFilled = () => {
@@ -406,6 +399,18 @@ export default function AdminPageForm(props?: Props) {
         >
           Submit
         </Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={modalStyle}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              {props?.product ? "Produkt uppdaterad" : "Produkten tillagd"}
+            </Typography>
+          </Box>
+        </Modal>
       </Link>
     </Box>
   );

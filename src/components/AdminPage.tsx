@@ -14,9 +14,6 @@ function AdminPage() {
   const [editForm, setEditForm] = useState(false);
   const { handleRemoveProduct } = useContext(ProductContext);
   const [activeProduct, setActiveProduct] = useState<Product>();
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const sendToEdit = (product?: Product) => {
     setActiveProduct(product);
@@ -39,23 +36,24 @@ function AdminPage() {
         <div className="admin-container">
           {products.map((item) => (
             <div key={item.id} className="admin-product-container">
-              <Button
-                onClick={() => sendToEdit(item)}
-                variant="contained"
-                startIcon={<EditIcon />}
-                sx={{ margin: "1rem" }}
-              >
-                Edit
-              </Button>
-              <Button
-                color="error"
-                onClick={() => handleRemoveProduct(item)}
-                variant="contained"
-                startIcon={<DeleteForeverIcon />}
-                sx={{ margin: "1rem" }}
-              >
-                Remove
-              </Button>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <Button
+                  style={{ margin: "1rem" }}
+                  variant="contained"
+                  onClick={() => sendToEdit(item)}
+                  startIcon={<EditIcon />}
+                >
+                  Edit
+                </Button>
+                <Button
+                  style={{ margin: "1rem", backgroundColor: "red" }}
+                  variant="contained"
+                  onClick={() => handleRemoveProduct(item)}
+                  startIcon={<DeleteForeverIcon />}
+                >
+                  Remove
+                </Button>
+              </div>
               <h2>Title: {item.title}</h2>
               <p style={{ paddingLeft: "1rem" }}>ID: {item.id}</p>
               <div className="admin-image-container">
