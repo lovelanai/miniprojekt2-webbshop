@@ -6,13 +6,17 @@ import { Product } from "../interfaces/interfaces";
 import "./AdminPage.css";
 import AdminPageForm from "./AdminPageForm";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import { pink, red } from "@mui/material/colors";
 
 function AdminPage() {
   const { products } = useContext(ProductContext);
   const [editForm, setEditForm] = useState(false);
   const { handleRemoveProduct } = useContext(ProductContext);
   const [activeProduct, setActiveProduct] = useState<Product>();
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const sendToEdit = (product?: Product) => {
     setActiveProduct(product);
@@ -35,14 +39,23 @@ function AdminPage() {
         <div className="admin-container">
           {products.map((item) => (
             <div key={item.id} className="admin-product-container">
-              <EditIcon
+              <Button
                 onClick={() => sendToEdit(item)}
-                className="admin-edit-icon"
-              />
-              <DeleteForeverIcon
+                variant="contained"
+                startIcon={<EditIcon />}
+                sx={{ margin: "1rem" }}
+              >
+                Edit
+              </Button>
+              <Button
+                color="error"
                 onClick={() => handleRemoveProduct(item)}
-                className="admin-delete-icon"
-              />
+                variant="contained"
+                startIcon={<DeleteForeverIcon />}
+                sx={{ margin: "1rem" }}
+              >
+                Remove
+              </Button>
               <h2>Title: {item.title}</h2>
               <p style={{ paddingLeft: "1rem" }}>ID: {item.id}</p>
               <div className="admin-image-container">

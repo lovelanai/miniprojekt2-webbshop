@@ -14,7 +14,15 @@ export const ProductContext = createContext<ContextValue>({
 });
 
 const ProductProvider: FC = (props) => {
-  const [products, setProducts] = useState<Product[]>(mockedProducts);
+  let productLS = JSON.parse(localStorage.getItem("ProductsLS")!);
+  const [products, setProducts] = useState<Product[]>(
+    productLS ? productLS : mockedProducts
+  );
+
+  useEffect(() => {
+    localStorage.setItem("ProductsLS", JSON.stringify(products));
+    console.log(JSON.parse(localStorage.getItem("ProductsLS")!));
+  }, [products]);
 
   const handleAddProduct = (product: Product) => {
     const productExists = products.find((item) => item.id === product.id);

@@ -138,14 +138,25 @@ export default function AdminPageForm(props?: Props) {
 
   const sendToAddProduct = () => {
     const product: Product = {
+      /**
+       * If you are editing an existing product, the ID will be the same as the products' original ID.
+       *
+       * If we add a new product and the products-array contains at least one product, we check for the largest ID number of the products in
+       * the products-array, and set the new products' ID number to that number + 1. So if the largest ID number of the exisiting products is 10,
+       * we set the new product ID to 11.
+       *
+       * If we add a new product and we dont have any existing products. We set the ID to 1.
+       */
       id: props?.product
         ? props.product.id
-        : Math.max.apply(
+        : products.length > 0
+        ? Math.max.apply(
             Math,
             products.map((item) => {
               return item.id + 1;
             })
-          ),
+          )
+        : 1,
       title: value.title!,
       longinfo: value.longInfo!,
       info1: value.info1!,
