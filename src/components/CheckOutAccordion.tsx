@@ -32,6 +32,7 @@ import "./checkOutAccordion.css";
 
 import SwishPayment from "./SwishPayment";
 import FakturaPayment from "./FakturaPayment";
+import { useUser } from "../contexts/confirmationContext";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -71,6 +72,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function CheckOutAccordion() {
   const { totalPrice } = React.useContext(ShoppingCartContext);
+  const { confirm } = useUser();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
   const defaultShipperState: ShipperSelection[] = mockedShipping.map(
@@ -375,7 +377,9 @@ export default function CheckOutAccordion() {
             </div>
 
             <Link to={`/ConfirmationPage/${personalInfo.name}`}>
-              <Button variant="contained">Slutför köp</Button>
+              <Button onClick={confirm} variant="contained">
+                Slutför köp
+              </Button>
             </Link>
           </Typography>
         </AccordionDetails>
