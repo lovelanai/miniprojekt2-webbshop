@@ -1,107 +1,93 @@
 import React, { useState, FocusEvent, ChangeEvent } from "react";
-// import Cards from "react-credit-cards"
-// import "react-credit-cards/es/styles-compiled.css";
-// import { Focused } from "react-credit-cards";
+
 import { Box, TextField } from "@mui/material";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { grid, margin } from "@mui/system";
 
 export default function CardPayment() {
-  // const [number, setNumber] = useState("");
-  // const [name, setName] = useState("");
-  // const [expiry, setExpiry] = useState("");
-  // const [cvc, setCvc] = useState("");
-  // const [focus, setFocus] = useState<Focused>();
+  const [number, setNumber] = useState("");
+  const [name, setName] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [cvc, setCvc] = useState("");
 
-  // const initialErrors = {
-  //   name: false,
-  //   number: false,
-  //   expiry: false,
-  //   cvc: false,
-  // };
-  // const [errorInput, setErrorinput] = useState(initialErrors);
+  const initialErrors = {
+    name: false,
+    number: false,
+    expiry: false,
+    cvc: false,
+  };
+  const [errorInput, setErrorinput] = useState(initialErrors);
 
-  // const handleChange = (
-  //   evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   if (evt.target.name === "name") {
-  //     if (
-  //       !/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(
-  //         evt.target.value
-  //       )
-  //     ) {
-  //       setErrorinput({
-  //         ...errorInput,
-  //         [evt.target.name]: true,
-  //       });
-  //     } else {
-  //       setName(evt.target.value);
-  //       setFocus(evt.target.name as Focused);
-  //       setErrorinput({
-  //         ...errorInput,
-  //         [evt.target.name]: false,
-  //       });
-  //     }
-  //   }
+  const handleChange = (
+    evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    if (evt.target.name === "name") {
+      if (
+        !/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(
+          evt.target.value
+        )
+      ) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setName(evt.target.value);
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
 
-  //   if (evt.target.name === "number") {
-  //     if (!/^\d{16,16}$/gm.test(evt.target.value)) {
-  //       setErrorinput({
-  //         ...errorInput,
-  //         [evt.target.name]: true,
-  //       });
-  //     } else {
-  //       setNumber(evt.target.value);
-  //       setFocus(evt.target.name as Focused);
-  //       setErrorinput({
-  //         ...errorInput,
-  //         [evt.target.name]: false,
-  //       });
-  //     }
-  //   }
+    if (evt.target.name === "number") {
+      if (!/^\d{16,16}$/gm.test(evt.target.value)) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setNumber(evt.target.value);
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
 
-  //   if (evt.target.name === "cvc") {
-  //     if (!/^\d{3,3}$/gm.test(evt.target.value)) {
-  //       setErrorinput({
-  //         ...errorInput,
-  //         [evt.target.name]: true,
-  //       });
-  //     } else {
-  //       setCvc(evt.target.value);
-  //       setFocus(evt.target.name as Focused);
-  //       setErrorinput({
-  //         ...errorInput,
-  //         [evt.target.name]: false,
-  //       });
-  //     }
-  //   }
+    if (evt.target.name === "cvc") {
+      if (!/^\d{3,3}$/gm.test(evt.target.value)) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setCvc(evt.target.value);
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
 
-  //   if (evt.target.name === "expiry") {
-  //     if (!/^\d{4,4}$/gm.test(evt.target.value)) {
-  //       setErrorinput({
-  //         ...errorInput,
-  //         [evt.target.name]: true,
-  //       });
-  //     } else {
-  //       setExpiry(evt.target.value);
-  //       setFocus(evt.target.name as Focused);
-  //       setErrorinput({
-  //         ...errorInput,
-  //         [evt.target.name]: false,
-  //       });
-  //     }
-  //   }
-  // };
+    if (evt.target.name === "expiry") {
+      if (!/^\d{4,4}$/gm.test(evt.target.value)) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setExpiry(evt.target.value);
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
+  };
 
   return (
     <div style={rootStyle}>
-      {/* <Cards
-        name={name}
-        number={number}
-        expiry={expiry}
-        cvc={cvc}
-        focused={focus}
-      />
       <div style={inputs}>
         <TextField
           name="name"
@@ -138,7 +124,7 @@ export default function CardPayment() {
           error={Boolean(errorInput.cvc)}
           onChange={handleChange}
         />
-      </div> */}
+      </div>
     </div>
   );
 }
