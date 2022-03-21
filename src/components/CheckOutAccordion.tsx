@@ -1,40 +1,35 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import {
-  mockedShipping,
-  ShipperSelection,
-  mockedPay,
-  PaySelection,
-  PersonalData,
-} from "../interfaces/interfaces";
-import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import {
+  Button,
+  Card,
+  CardActions,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Typography,
+} from "@mui/material";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from "@mui/material/AccordionSummary";
-import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import Shipping from "./Shipping";
-import {
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  Typography,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Box,
-} from "@mui/material";
-import React, { useContext, useState } from "react";
-import { Button } from "@mui/material";
-import CheckOutItems from "./CheckoutItems";
+import { styled } from "@mui/material/styles";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import CardPayment from "./CardPayment";
 import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
+import {
+  mockedPay,
+  mockedShipping,
+  PaySelection,
+  PersonalData,
+  ShipperSelection,
+} from "../interfaces/interfaces";
+import CardPayment from "./CardPayment";
 import "./checkOutAccordion.css";
-
-import SwishPayment from "./SwishPayment";
 import FakturaPayment from "./FakturaPayment";
+import Shipping from "./Shipping";
+import SwishPayment from "./SwishPayment";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />

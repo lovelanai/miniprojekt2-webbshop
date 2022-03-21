@@ -1,4 +1,4 @@
-import { FC, useState, createContext, useContext, useEffect } from "react";
+import { createContext, FC, useContext, useState } from "react";
 import { Product } from "../interfaces/interfaces";
 
 export interface ContextValue {
@@ -9,12 +9,11 @@ export interface ContextValue {
   totalPrice: number;
 }
 
-
 export const ShoppingCartContext = createContext<ContextValue>({
   cartItems: [],
   amountOfProducts: 0,
-  handleAddProduct: () => { },
-  handleRemoveProduct: () => { },
+  handleAddProduct: () => {},
+  handleRemoveProduct: () => {},
   totalPrice: 0,
 });
 
@@ -44,7 +43,7 @@ const ShoppingCartProvider: FC = (props) => {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
     setAmountOfProducts(amountOfProducts + 1);
-    setTotalPrice(totalPrice + product.price)
+    setTotalPrice(totalPrice + product.price);
   }
 
   /**
@@ -79,7 +78,6 @@ const ShoppingCartProvider: FC = (props) => {
         handleAddProduct,
         handleRemoveProduct,
         amountOfProducts,
-
       }}
     >
       {props.children}

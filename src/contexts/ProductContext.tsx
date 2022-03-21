@@ -1,5 +1,5 @@
-import { FC, useState, createContext, useContext, useEffect } from "react";
-import { Product, mockedProducts } from "../interfaces/interfaces";
+import { createContext, FC, useEffect, useState } from "react";
+import { mockedProducts, Product } from "../interfaces/interfaces";
 
 interface ContextValue {
   products: Product[];

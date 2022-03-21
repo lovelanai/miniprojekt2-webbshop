@@ -1,9 +1,4 @@
-
-import ProductProvider, { ProductContext } from "../contexts/ProductContext";
-import ShoppingCartProvider from "../contexts/ShoppingCartContext";
-
 import Footer from "./Footer";
-
 import Header from "./Header";
 import Main from "./Main";
 

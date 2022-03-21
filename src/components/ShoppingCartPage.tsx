@@ -1,9 +1,9 @@
-import { CSSProperties, useContext } from "react";
-import "./ShoppingCart.css";
-import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
-import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 import CartItem from "./CartItem";
+import "./ShoppingCart.css";
 
 function ShoppingCartPage() {
   const { cartItems } = useContext(ShoppingCartContext);

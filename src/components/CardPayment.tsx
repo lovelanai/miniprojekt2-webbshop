@@ -1,8 +1,5 @@
-import React, { useState, FocusEvent, ChangeEvent } from "react";
-
-import { Box, Button, TextField } from "@mui/material";
-import { CSSProperties } from "@material-ui/core/styles/withStyles";
-import { grid, margin } from "@mui/system";
+import { Button, TextField } from "@mui/material";
+import React, { ChangeEvent, useState } from "react";
 import "./cardPayment.css";
 
 interface Props {

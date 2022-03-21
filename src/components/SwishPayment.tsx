@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from "@mui/material";
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface Props {
   telnumber: string;

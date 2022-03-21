@@ -1,10 +1,8 @@
-import { Button, Box, TextField, Modal, Typography } from "@mui/material";
-import { ChangeEvent, useContext, useState } from "react";
+import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import React, { ChangeEvent, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { ProductContext } from "../contexts/ProductContext";
 import { Product } from "../interfaces/interfaces";
-import { Link } from "react-router-dom";
-import { style } from "@mui/system";
-import React from "react";
 
 interface Props {
   product?: Product;
