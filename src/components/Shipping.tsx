@@ -6,7 +6,7 @@ import { ChangeEvent, useState } from "react";
 import { Focused } from "react-credit-cards";
 import { PersonalData } from "../interfaces/interfaces";
 
-import "./checkout.css";
+import "./CheckOutPage.css";
 
 interface Props {
   sendPersonalData: (data: PersonalData) => void;
@@ -43,6 +43,7 @@ export default function Shipping(props: Props) {
   const handleChange = (
     evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    personalDataTransfer();
     if (evt.target.name === "email") {
       if (
         !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(
@@ -199,8 +200,6 @@ export default function Shipping(props: Props) {
             }
           />
         </div>
-
-        <Button onClick={() => personalDataTransfer()}> Bekräfta </Button>
       </div>
     </Box>
   );

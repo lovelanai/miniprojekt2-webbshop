@@ -9,14 +9,14 @@ function ShoppingCartPage() {
   const { cartItems } = useContext(ShoppingCartContext);
   const { amountOfProducts } = useContext(ShoppingCartContext);
 
-
   const totalCost = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
   return (
     <div>
-      <div style={containerStyle}>
+      <div className="containerStyle">
         <div className="cart-container">
           <div className="cart">
             <div className="cart-left">
@@ -37,12 +37,13 @@ function ShoppingCartPage() {
                 <h3>Total</h3>
 
                 <span>{totalCost}:-</span>
-
-                <Link to="/checkOut">
-                  <Button variant="contained" size="small" color="secondary">
-                    Bekräfta
-                  </Button>
-                </Link>
+                <div className="confirm-button">
+                  <Link to="/checkOut">
+                    <Button variant="contained" size="small" color="secondary">
+                      Bekräfta
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -51,12 +52,5 @@ function ShoppingCartPage() {
     </div>
   );
 }
-
-const containerStyle: CSSProperties = {
-  height: "calc(100vh - 9rem)",
-  width: "100%",
-  background: "white",
-  marginTop: "6rem",
-};
 
 export default ShoppingCartPage;

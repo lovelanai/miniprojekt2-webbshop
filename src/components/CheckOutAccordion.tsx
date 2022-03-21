@@ -28,6 +28,10 @@ import { Link } from "react-router-dom";
 import CardPayment from "./CardPayment";
 import { CheckBox } from "@mui/icons-material";
 import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
+import "./checkOutAccordion.css";
+
+import SwishPayment from "./SwishPayment";
+import FakturaPayment from "./FakturaPayment";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -65,7 +69,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-
 export default function CheckOutAccordion() {
   const { totalPrice } = React.useContext(ShoppingCartContext);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
@@ -102,10 +105,20 @@ export default function CheckOutAccordion() {
     setPersonalInfo(personaldata);
   }
 
-  // const personalInfo = [email, name, phonenum, postnr, street];
+  const areAllFieldsFilled = () => {
+    if (
+      personalInfo.email?.length >= 5 &&
+      personalInfo.name?.length &&
+      personalInfo.phone.toString().length >= 7 &&
+      personalInfo.postnr?.toString().length === 5 &&
+      personalInfo.street?.length
+    ) {
+      return false;
+    } else return true;
+  };
 
   return (
-    <div style={rootStyle}>
+    <div className=" rootStyle">
       {/*  Personuppgifter liggandes i första accordion*/}
       <Accordion
         expanded={expanded === "panel1"}
@@ -116,9 +129,16 @@ export default function CheckOutAccordion() {
           <Typography component={"span"}>Personuppgifter</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={"span"}>
-            <Shipping sendPersonalData={sendPersonalData} />
-          </Typography>
+          <Shipping sendPersonalData={sendPersonalData} />
+          <Button
+            variant="contained"
+            disabled={Boolean(areAllFieldsFilled())}
+            onClick={() => setExpanded("panel2")}
+            size="medium"
+            color="primary"
+          >
+            Bekräfta
+          </Button>
         </AccordionDetails>
       </Accordion>
 
@@ -131,7 +151,7 @@ export default function CheckOutAccordion() {
           <Typography component={"span"}>Betalnings alternativ</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={"span"} style={DeliveryForm}>
+          <Typography component={"span"} className="DeliveryForm">
             {checkboxesPay.map((CheckBox) => (
               <div key={CheckBox.paymethod.id}>
                 <FormGroup
@@ -164,7 +184,7 @@ export default function CheckOutAccordion() {
                     checked={CheckBox.paychecked}
                   />
 
-                  <div style={info} key={CheckBox.paymethod.id}>
+                  <div className="info" key={CheckBox.paymethod.id}>
                     <p>{CheckBox.paymethod.price}:-</p>
                     <p>{CheckBox.paymethod.info}</p>
                     <p> {CheckBox.paymethod.alt}</p>
@@ -181,15 +201,8 @@ export default function CheckOutAccordion() {
               </div>
             ))}
           </Typography>
-          <Button
-            onClick={() =>
-              console.log(
-                checkboxesPay.find((item) => item.paychecked === true)
-                  ?.paymethod.title
-              )
-            }
-          >
-            höst
+          <Button variant="contained" onClick={() => setExpanded("panel3")}>
+            Bekräfta
           </Button>
         </AccordionDetails>
 
@@ -206,7 +219,18 @@ export default function CheckOutAccordion() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography component={"span"}>
-            <CardPayment />
+            {checkboxesPay.find((item) => item.paychecked === true)?.paymethod
+              .title === "Kortbetalning" ? (
+              <CardPayment triggerNextAccordion={() => setExpanded("panel4")} />
+            ) : checkboxesPay.find((item) => item.paychecked === true)
+                ?.paymethod.title === "swish" ? (
+              <SwishPayment />
+            ) : checkboxesPay.find((item) => item.paychecked === true)
+                ?.paymethod.title === "faktura" ? (
+              <FakturaPayment />
+            ) : (
+              <p>Ingen betalningsmetod vald</p>
+            )}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -220,7 +244,7 @@ export default function CheckOutAccordion() {
           <Typography component={"span"}>Leverans uppgifter</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={"span"} style={DeliveryForm}>
+          <Typography component={"span"} className="DeliveryForm">
             {checkboxes.map((checkbox) => (
               <div key={checkbox.shipper.id}>
                 <FormGroup
@@ -255,11 +279,15 @@ export default function CheckOutAccordion() {
                       />
                     }
                     label={
-                      <img style={img} src={checkbox.shipper.image} alt="" />
+                      <img
+                        className="img"
+                        src={checkbox.shipper.image}
+                        alt=""
+                      />
                     }
                   />
 
-                  <div style={info} key={checkbox.shipper.id}>
+                  <div className="info" key={checkbox.shipper.id}>
                     <p>{checkbox.shipper.price}:-</p>
                     <p>{checkbox.shipper.info}</p>
                   </div>
@@ -267,15 +295,9 @@ export default function CheckOutAccordion() {
               </div>
             ))}
           </Typography>
-          <Button
-            onClick={() =>
-              console.log(
-                checkboxes.find((item) => item.checked === true)?.shipper.title
-              )
-            }
-          >
+          <Button variant="contained" onClick={() => setExpanded("panel5")}>
             {" "}
-            leverans
+            Bekräfta
           </Button>
         </AccordionDetails>
 
@@ -291,18 +313,14 @@ export default function CheckOutAccordion() {
           <Typography component={"span"}>Översikt</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography component={'span'}>
-            <div >
-              <p>Orderöversikt</p>
-              <div>
-                <h3>Personuppgifter</h3>
-                <p>Telefon: {personalInfo.phone}</p>
-                <p>Email: {personalInfo.email}</p>
-                <p>Namn: {personalInfo.name}</p>
-                <p>Postnr: {personalInfo.postnr}</p>
-                <p>Adress: {personalInfo.street}</p>
-              </div>
-
+          <Typography component={"span"}>
+            <div className="person">
+              <h3>Personuppgifter</h3>
+              <p>Telefon: {personalInfo.phone}</p>
+              <p>Email: {personalInfo.email}</p>
+              <p>Namn: {personalInfo.name}</p>
+              <p>Postnr: {personalInfo.postnr}</p>
+              <p>Adress: {personalInfo.street}</p>
               <div>
                 <h3>Leveranssätt</h3>
                 {/* {checkboxes.map((checked) => (<div>{checked.findIndex() === true}</div>))} */}
@@ -334,20 +352,23 @@ export default function CheckOutAccordion() {
                   </p>{" "}
                 </p>
               </div>
-
               <div>
                 <h3>Valda produkter</h3>
                 <CheckOutItems />
                 <p>{personalInfo.email}</p>
               </div>
-              Totalpris: {totalPrice + checkboxesPay.find(item => item.paychecked === true)?.paymethod.price! + checkboxes.find(item => item.checked === true)?.shipper.price!} kr
-              <div>
-                Moms: {totalPrice * 0.25} kr
-              </div>
+              Totalpris:{" "}
+              {totalPrice +
+                checkboxesPay.find((item) => item.paychecked === true)
+                  ?.paymethod.price! +
+                checkboxes.find((item) => item.checked === true)?.shipper
+                  .price!}{" "}
+              kr
+              <div>Moms: {totalPrice * 0.25} kr</div>
             </div>
 
             <Link to={`/ConfirmationPage/${personalInfo.name}`}>
-              <Button>Bekräfta köp</Button>
+              <Button variant="contained">Bekräfta köp</Button>
             </Link>
           </Typography>
         </AccordionDetails>
@@ -355,31 +376,3 @@ export default function CheckOutAccordion() {
     </div>
   );
 }
-
-const rootStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  flexDirection: "column",
-  alignItems: "center",
-  minWidth: "40rem",
-  width: "70%",
-  marginTop: "5rem",
-  marginBottom: "3rem",
-};
-
-const DeliveryForm: CSSProperties = {
-  dislpay: "flex",
-  flexDirection: "column",
-};
-
-const info: CSSProperties = {
-  display: "flex",
-};
-
-const img: CSSProperties = {
-  width: "10rem",
-  height: "3.5rem",
-  paddingLeft: "3rem",
-};
-
-

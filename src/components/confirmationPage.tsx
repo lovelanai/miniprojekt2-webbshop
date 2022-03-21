@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import { useParams } from "react-router-dom";
+import "./confirmationPage.css";
 
 function Confirmation() {
   const { customerName } = useParams();
@@ -7,11 +8,9 @@ function Confirmation() {
   let r = Math.round(Math.random() * 999999999999);
 
   return (
-    <div style={rootStyle}>
-      <p>Tack för ditt köp {customerName} </p>
-      <p>varsågod fan</p>
-
-      <div>
+    <div className="rootStyle">
+      <div className="rootChild">
+        <p>Tack för ditt köp {customerName} </p>
         <h3>{r}</h3>
       </div>
     </div>
@@ -19,14 +18,3 @@ function Confirmation() {
 }
 
 export default Confirmation;
-
-const rootStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  flexDirection: "column",
-  alignItems: "center",
-  minWidth: "40rem",
-  width: "70%",
-  marginTop: "5rem",
-  marginBottom: "3rem",
-};

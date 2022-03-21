@@ -1,0 +1,13 @@
+.rootStyle {
+  display: flex;
+  flex-direction: column;
+  min-width: 40rem;
+  width: 70%;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.rootChild {
+  justify-content: center;
+  align-items: center;
+}
