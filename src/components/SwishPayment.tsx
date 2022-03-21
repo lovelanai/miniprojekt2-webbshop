@@ -8,12 +8,16 @@ interface Props {
 
 export default function SwishPayment(props: Props) {
   const [errorInput, setErrorinput] = useState({ phonenumber: false });
-  const [phonenumber, setPhonenumber] = useState("");
+  const [phonenumber, setPhonenumber] = useState(props.telnumber);
 
   const handleChange = (
     evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    if (!/^\d{8,11}$/gm.test(evt.target.value)) {
+    if (
+      !/(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g.test(
+        evt.target.value
+      )
+    ) {
       setErrorinput({
         ...errorInput,
         [evt.target.name]: true,
@@ -29,9 +33,12 @@ export default function SwishPayment(props: Props) {
   };
 
   function isNumberFilled() {
-    if (phonenumber.toString().length >= 7) {
-      return true;
-    } else return false;
+    if (
+      phonenumber.toString().length >= 7 &&
+      errorInput.phonenumber === false
+    ) {
+      return false;
+    } else return true;
   }
 
   return (
@@ -47,13 +54,13 @@ export default function SwishPayment(props: Props) {
         <div className="box-1">
           <TextField
             name="phonenumber"
-            label="Telefon nr"
+            label="Telefonnummer"
             required
             defaultValue={props.telnumber}
             helperText={
               errorInput.phonenumber
-                ? "Ange giltig telefon nummer"
-                : "Telefon nummer"
+                ? "Ange giltigt telefonnummer"
+                : "Telefonnummer"
             }
             error={Boolean(errorInput.phonenumber)}
             onChange={handleChange}
@@ -62,6 +69,7 @@ export default function SwishPayment(props: Props) {
             variant="contained"
             disabled={Boolean(isNumberFilled())}
             onClick={() => props.triggerNextAccordion()}
+            sx={{ width: "100%" }}
           >
             Bekräfta
           </Button>
