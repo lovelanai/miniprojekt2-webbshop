@@ -189,9 +189,6 @@ export default function CheckOutAccordion() {
                     <p>{CheckBox.paymethod.info}</p>
                     <p> {CheckBox.paymethod.alt}</p>
                     <p>
-                      {CheckBox.paymethod.title === "swish"
-                        ? personalInfo.phone
-                        : null}{" "}
                       {CheckBox.paymethod.title === "faktura"
                         ? personalInfo.email
                         : null}
@@ -201,7 +198,13 @@ export default function CheckOutAccordion() {
               </div>
             ))}
           </Typography>
-          <Button variant="contained" onClick={() => setExpanded("panel3")}>
+          <Button
+            variant="contained"
+            disabled={Boolean(
+              checkboxesPay.find((item) => item.paychecked === true)
+            )}
+            onClick={() => setExpanded("panel3")}
+          >
             Bekräfta
           </Button>
         </AccordionDetails>
@@ -224,10 +227,16 @@ export default function CheckOutAccordion() {
               <CardPayment triggerNextAccordion={() => setExpanded("panel4")} />
             ) : checkboxesPay.find((item) => item.paychecked === true)
                 ?.paymethod.title === "swish" ? (
-              <SwishPayment />
+              <SwishPayment
+                telnumber={personalInfo.phone}
+                triggerNextAccordion={() => setExpanded("panel4")}
+              />
             ) : checkboxesPay.find((item) => item.paychecked === true)
                 ?.paymethod.title === "faktura" ? (
-              <FakturaPayment />
+              <FakturaPayment
+                email={personalInfo.email}
+                triggerNextAccordion={() => setExpanded("panel4")}
+              />
             ) : (
               <p>Ingen betalningsmetod vald</p>
             )}
@@ -296,7 +305,6 @@ export default function CheckOutAccordion() {
             ))}
           </Typography>
           <Button variant="contained" onClick={() => setExpanded("panel5")}>
-            {" "}
             Bekräfta
           </Button>
         </AccordionDetails>
@@ -355,7 +363,6 @@ export default function CheckOutAccordion() {
               <div>
                 <h3>Valda produkter</h3>
                 <CheckOutItems />
-                <p>{personalInfo.email}</p>
               </div>
               Totalpris:{" "}
               {totalPrice +
@@ -368,7 +375,7 @@ export default function CheckOutAccordion() {
             </div>
 
             <Link to={`/ConfirmationPage/${personalInfo.name}`}>
-              <Button variant="contained">Bekräfta köp</Button>
+              <Button variant="contained">Slutför köp</Button>
             </Link>
           </Typography>
         </AccordionDetails>

@@ -171,8 +171,8 @@ export default function Shipping(props: Props) {
               required
               helperText={
                 errorInput.phonenumber
-                  ? "Ange giltig telefon nummer"
-                  : "Telefon nummer"
+                  ? "Ange giltig telefonnummer"
+                  : "Telefonnummer"
               }
               error={Boolean(errorInput.phonenumber)}
               onChange={handleChange}
