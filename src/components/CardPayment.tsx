@@ -1,14 +1,30 @@
 import React, { useState, FocusEvent, ChangeEvent } from "react";
 
-import { Box, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { grid, margin } from "@mui/system";
+import "./cardPayment.css";
 
-export default function CardPayment() {
+interface Props {
+  triggerNextAccordion(): void;
+}
+
+export default function CardPayment(props: Props) {
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [expiry, setExpiry] = useState("");
   const [cvc, setCvc] = useState("");
+
+  const areAllFieldsFilled = () => {
+    if (
+      name?.length &&
+      number?.toString().length === 16 &&
+      expiry?.toString().length === 4 &&
+      cvc?.toString().length === 3
+    ) {
+      return false;
+    } else return true;
+  };
 
   const initialErrors = {
     name: false,
@@ -87,19 +103,20 @@ export default function CardPayment() {
   };
 
   return (
-    <div style={rootStyle}>
-      <div style={inputs}>
+    <div>
+      <div className="inputs">
         <TextField
           name="name"
           id="outlined-name"
-          helperText={errorInput.name ? "Ange giltig Namn" : "Namn på kort"}
+          placeholder="Namn"
+          helperText={errorInput.name ? "Ange giltigt namn" : "Namn på kort"}
           error={Boolean(errorInput.name)}
           onChange={handleChange}
         />
         <TextField
           name="number"
           id="outlined-number"
-          label="number"
+          label="Kortnummer"
           helperText={
             errorInput.number ? "Ange giltigt kortnummer" : "Kortnummer"
           }
@@ -123,23 +140,19 @@ export default function CardPayment() {
           helperText={errorInput.cvc ? "Ange giltig CVC" : "CVC"}
           error={Boolean(errorInput.cvc)}
           onChange={handleChange}
+          sx={{ width: "100%" }}
         />
       </div>
+      <Button
+        variant="contained"
+        onClick={() => props.triggerNextAccordion()}
+        disabled={Boolean(areAllFieldsFilled())}
+        size="medium"
+        color="primary"
+        sx={{ width: "100%" }}
+      >
+        Bekräfta
+      </Button>
     </div>
   );
 }
-
-const rootStyle: CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexDirection: "column",
-};
-
-const inputs: CSSProperties = {
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  margin: "1rem",
-  columnGap: ".5rem",
-  rowGap: ".5rem",
-};

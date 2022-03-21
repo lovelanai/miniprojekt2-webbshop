@@ -1,5 +1,4 @@
-
-import "./checkout.css";
+import "./CheckOutPage.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 import CheckOutAccordion from "./CheckOutAccordion";

@@ -1,29 +1,29 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useState, ChangeEvent } from "react";
 
+import "./CheckOutPage.css";
+
 interface Props {
-  telnumber: string;
+  email: string;
   triggerNextAccordion(): void;
 }
 
-export default function SwishPayment(props: Props) {
-  const [errorInput, setErrorinput] = useState({ phonenumber: false });
-  const [phonenumber, setPhonenumber] = useState(props.telnumber);
+export default function FakturaPayment(props: Props) {
+  const [errorInput, setErrorinput] = useState({ email: false });
+  const [email, setEmail] = useState(props.email);
 
   const handleChange = (
     evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     if (
-      !/(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g.test(
-        evt.target.value
-      )
+      !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(evt.target.value)
     ) {
       setErrorinput({
         ...errorInput,
         [evt.target.name]: true,
       });
     } else {
-      setPhonenumber(evt.target.value);
+      setEmail(evt.target.value);
 
       setErrorinput({
         ...errorInput,
@@ -32,11 +32,8 @@ export default function SwishPayment(props: Props) {
     }
   };
 
-  function isNumberFilled() {
-    if (
-      phonenumber.toString().length >= 7 &&
-      errorInput.phonenumber === false
-    ) {
+  function isEmailFilled() {
+    if (email.length >= 5 && errorInput.email === false) {
       return false;
     } else return true;
   }
@@ -53,21 +50,19 @@ export default function SwishPayment(props: Props) {
       <div className="form-container">
         <div className="box-1">
           <TextField
-            name="phonenumber"
-            label="Telefonnummer"
+            name="email"
+            label="Mailadress"
             required
-            defaultValue={props.telnumber}
+            defaultValue={props.email}
             helperText={
-              errorInput.phonenumber
-                ? "Ange giltigt telefonnummer"
-                : "Telefonnummer"
+              errorInput.email ? "Ange giltig mailadress" : "Mailadress"
             }
-            error={Boolean(errorInput.phonenumber)}
+            error={Boolean(errorInput.email)}
             onChange={handleChange}
           />
           <Button
             variant="contained"
-            disabled={Boolean(isNumberFilled())}
+            disabled={Boolean(isEmailFilled())}
             onClick={() => props.triggerNextAccordion()}
             sx={{ width: "100%" }}
           >

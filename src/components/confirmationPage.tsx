@@ -1,32 +1,31 @@
 import { CSSProperties } from "react";
 import { useParams } from "react-router-dom";
+import "./confirmationPage.css";
+import { PersonalData, User } from "../interfaces/interfaces";
+import { useUser } from "../contexts/confirmationContext";
 
 function Confirmation() {
   const { customerName } = useParams();
+  const { isLoading } = useUser();
 
   let r = Math.round(Math.random() * 999999999999);
 
-  return (
-    <div style={rootStyle}>
-      <p>Tack för ditt köp {customerName} </p>
-      <p>varsågod fan</p>
+  function confirmationFetch(_: string) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ customerName });
+      }, 2000);
+    });
+  }
 
-      <div>
-        <h3>{r}</h3>
+  return (
+    <div className="rootStyle">
+      <div className="rootChild">
+        {/* {isLoading ? (
+        <span>laddar...</span>) : ( <p>Tack för ditt köp {customerName} </p> <h3>{r}</h3>  )}; */}
       </div>
     </div>
   );
 }
 
 export default Confirmation;
-
-const rootStyle: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  flexDirection: "column",
-  alignItems: "center",
-  minWidth: "40rem",
-  width: "70%",
-  marginTop: "5rem",
-  marginBottom: "3rem",
-};

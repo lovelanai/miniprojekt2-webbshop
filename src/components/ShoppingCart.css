@@ -1,3 +1,11 @@
+.containerStyle {
+  /* height: calc(100vh - 9rem); */
+  height: 100%;
+  width: 100%;
+  background: white;
+  margin-top: 6rem;
+}
+
 .cart-container {
   background: white;
   /* height: calc(100vh - 9rem); */
@@ -8,8 +16,9 @@
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
+
 .header-font {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
 }
 
 .cart {
@@ -88,6 +97,11 @@
 
 .total h3 {
   font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.confirm-button {
+  margin-top: 1rem;
 }
 
 .total p {
@@ -147,12 +161,23 @@
   .cart {
     display: flex;
     flex-direction: column-reverse;
-  }
-  .cart-right {
-    display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    background-color: white;
+  }
+  .cart-container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .cart-left {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .total {
+    display: flex;
+    flex-direction: column;
   }
 }
 @media (max-width: 900px) {
@@ -174,7 +199,7 @@
 
   .total p {
     padding: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .items h3 {
@@ -182,14 +207,14 @@
   }
 
   .items p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     padding: 0.5rem;
   }
 }
 
 .emtyCart {
   width: 100%;
-  min-height: 26rem;
+  min-height: calc(100vh - 13.2rem);
   justify-content: center;
   align-items: center;
   display: flex;
