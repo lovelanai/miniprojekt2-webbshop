@@ -3,13 +3,16 @@ import ProductProvider from "../contexts/ProductContext";
 import "./App.css";
 import Layout from "./Layout";
 import ShoppingCartProvider from "../contexts/ShoppingCartContext";
+import ConfirmationProvider from "../contexts/confirmationContext";
 
 function App() {
   return (
     <BrowserRouter>
       <ProductProvider>
         <ShoppingCartProvider>
-          <Layout />
+          <ConfirmationProvider>
+            <Layout />
+          </ConfirmationProvider>
         </ShoppingCartProvider>
       </ProductProvider>
     </BrowserRouter>

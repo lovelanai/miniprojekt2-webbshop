@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 import { ChangeEvent, useState } from "react";
-import { Focused } from "react-credit-cards";
 import { PersonalData } from "../interfaces/interfaces";
 
 import "./CheckOutPage.css";
