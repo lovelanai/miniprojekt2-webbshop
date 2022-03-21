@@ -73,8 +73,7 @@ export default function AdminPageForm(props?: Props) {
     boxShadow: 24,
     p: 4,
   };
-  const { handleAddProduct, handleRemoveProduct, products } =
-    useContext(ProductContext);
+  const { handleAddProduct, products } = useContext(ProductContext);
   const [value, setValue] = useState(initialValues);
   const [errorInput, setErrorInput] = useState(initialErrors);
   const [open, setOpen] = useState(false);
