@@ -6,7 +6,8 @@ import { Product } from "../interfaces/interfaces";
 import "./AdminPage.css";
 import AdminPageForm from "./AdminPageForm";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import { pink, red } from "@mui/material/colors";
 
 function AdminPage() {
   const { products } = useContext(ProductContext);
@@ -35,14 +36,24 @@ function AdminPage() {
         <div className="admin-container">
           {products.map((item) => (
             <div key={item.id} className="admin-product-container">
-              <EditIcon
-                onClick={() => sendToEdit(item)}
-                className="admin-edit-icon"
-              />
-              <DeleteForeverIcon
-                onClick={() => handleRemoveProduct(item)}
-                className="admin-delete-icon"
-              />
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <Button
+                  style={{ margin: "1rem" }}
+                  variant="contained"
+                  onClick={() => sendToEdit(item)}
+                  startIcon={<EditIcon />}
+                >
+                  Edit
+                </Button>
+                <Button
+                  style={{ margin: "1rem", backgroundColor: "red" }}
+                  variant="contained"
+                  onClick={() => handleRemoveProduct(item)}
+                  startIcon={<DeleteForeverIcon />}
+                >
+                  Remove
+                </Button>
+              </div>
               <h2>Title: {item.title}</h2>
               <p style={{ paddingLeft: "1rem" }}>ID: {item.id}</p>
               <div className="admin-image-container">

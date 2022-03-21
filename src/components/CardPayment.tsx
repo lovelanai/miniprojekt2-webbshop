@@ -1,7 +1,5 @@
 import React, { useState, FocusEvent, ChangeEvent } from "react";
-import Cards from "react-credit-cards";
-import "react-credit-cards/es/styles-compiled.css";
-import { Focused } from "react-credit-cards";
+
 import { Box, TextField } from "@mui/material";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { grid, margin } from "@mui/system";
@@ -11,7 +9,6 @@ export default function CardPayment() {
   const [name, setName] = useState("");
   const [expiry, setExpiry] = useState("");
   const [cvc, setCvc] = useState("");
-  const [focus, setFocus] = useState<Focused>();
 
   const initialErrors = {
     name: false,
@@ -36,7 +33,6 @@ export default function CardPayment() {
         });
       } else {
         setName(evt.target.value);
-        setFocus(evt.target.name as Focused);
         setErrorinput({
           ...errorInput,
           [evt.target.name]: false,
@@ -52,7 +48,6 @@ export default function CardPayment() {
         });
       } else {
         setNumber(evt.target.value);
-        setFocus(evt.target.name as Focused);
         setErrorinput({
           ...errorInput,
           [evt.target.name]: false,
@@ -68,7 +63,6 @@ export default function CardPayment() {
         });
       } else {
         setCvc(evt.target.value);
-        setFocus(evt.target.name as Focused);
         setErrorinput({
           ...errorInput,
           [evt.target.name]: false,
@@ -84,7 +78,6 @@ export default function CardPayment() {
         });
       } else {
         setExpiry(evt.target.value);
-        setFocus(evt.target.name as Focused);
         setErrorinput({
           ...errorInput,
           [evt.target.name]: false,
@@ -95,13 +88,6 @@ export default function CardPayment() {
 
   return (
     <div style={rootStyle}>
-      <Cards
-        name={name}
-        number={number}
-        expiry={expiry}
-        cvc={cvc}
-        focused={focus}
-      />
       <div style={inputs}>
         <TextField
           name="name"
