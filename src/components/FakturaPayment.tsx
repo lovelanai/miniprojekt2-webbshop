@@ -55,7 +55,7 @@ export default function FakturaPayment(props: Props) {
             required
             defaultValue={props.email}
             helperText={
-              errorInput.email ? "Ange giltig Mailadress" : "Mailadress"
+              errorInput.email ? "Ange giltig mailadress" : "Mailadress"
             }
             error={Boolean(errorInput.email)}
             onChange={handleChange}
@@ -64,6 +64,7 @@ export default function FakturaPayment(props: Props) {
             variant="contained"
             disabled={Boolean(isEmailFilled())}
             onClick={() => props.triggerNextAccordion()}
+            sx={{ width: "100%" }}
           >
             Bekräfta
           </Button>

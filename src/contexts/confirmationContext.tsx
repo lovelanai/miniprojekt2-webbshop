@@ -1,6 +1,6 @@
 import { createContext, FC, useContext, useState } from "react";
 import { User } from "../interfaces/interfaces";
-import { confirmationFetch } from "../";
+// import { confirmationFetch } from "../";
 
 interface ContextValue {
   isLoading: boolean;
@@ -10,7 +10,7 @@ interface ContextValue {
 
 export const UserContext = createContext<ContextValue>({
   isLoading: false,
-  user: { name },
+  // user: { name },
   confirm: () => {},
 });
 
@@ -20,7 +20,7 @@ const UserProvider: FC = (props) => {
 
   const confirm = async () => {
     setIsLoading(true);
-    const user = await confirmationFetch("api/login");
+    // const user = await confirmationFetch("api/login");
     setUser(user);
     setIsLoading(false);
   };

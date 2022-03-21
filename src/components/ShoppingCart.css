@@ -214,7 +214,7 @@
 
 .emtyCart {
   width: 100%;
-  min-height: 26rem;
+  min-height: calc(100vh - 13.2rem);
   justify-content: center;
   align-items: center;
   display: flex;

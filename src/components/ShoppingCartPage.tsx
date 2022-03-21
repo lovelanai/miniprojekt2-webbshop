@@ -38,11 +38,27 @@ function ShoppingCartPage() {
 
                 <span>{totalCost}:-</span>
                 <div className="confirm-button">
-                  <Link to="/checkOut">
-                    <Button variant="contained" size="small" color="secondary">
-                      Bekräfta
+                  {cartItems.length > 0 ? (
+                    <Link to="/checkOut">
+                      <Button
+                        disabled={false}
+                        variant="contained"
+                        size="small"
+                        color="secondary"
+                      >
+                        Checka ut
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      disabled={true}
+                      variant="contained"
+                      size="small"
+                      color="secondary"
+                    >
+                      Checka ut
                     </Button>
-                  </Link>
+                  )}
                 </div>
               </div>
             </div>
