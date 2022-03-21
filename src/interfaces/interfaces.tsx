@@ -491,7 +491,7 @@ export const mockedPay: payment[] = [
     title: "Kortbetalning",
     price: 0,
     info: " gratis, direktbetalning med kort ",
-    alt: "Visa, Mastercard, American Express"
+    alt: "Visa, Mastercard, American Express",
   },
   {
     id: 31,
@@ -506,15 +506,13 @@ export const mockedPay: payment[] = [
     price: 49,
     info: " Betala inom 14 dagar med faktura.",
     alt: "",
-
   },
 ];
 
 export interface PersonalData {
-  email: string,
-  name: string,
-  phone: string,
-  postnr: string,
-  street: string,
-
+  email: string;
+  name: string;
+  phone: string;
+  postnr: string;
+  street: string;
 }

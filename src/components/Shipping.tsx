@@ -1,43 +1,136 @@
-
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-import { useState } from 'react';
+import { ChangeEvent, useState } from "react";
+import { Focused } from "react-credit-cards";
 import { PersonalData } from "../interfaces/interfaces";
 
 import "./checkout.css";
 
 interface Props {
-  sendPersonalData: (data: PersonalData) => void
+  sendPersonalData: (data: PersonalData) => void;
 }
 
 export default function Shipping(props: Props) {
+  function personalDataTransfer() {
+    props.sendPersonalData({
+      email: email,
+      name: name,
+      phone: phonenumber,
+      postnr: zip,
+      street: adress1,
+    });
+  }
 
-
-
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [phonenum, setPhonenum] = useState('');
-  const [postnr, setPostnr] = useState('');
-  const [street, setStreet] = useState('');
-
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [zip, setZip] = useState("");
+  const [adress1, setAdress1] = useState("");
 
   // const personalInfo = [email, name, phonenum, postnr, street];
 
-  function personalDataTransfer() {
+  const initialErrors = {
+    email: false,
+    name: false,
+    phonenumber: false,
+    zip: false,
+    adress1: false,
+  };
+  const [errorInput, setErrorinput] = useState(initialErrors);
 
-    props.sendPersonalData({ email: email, name: name, phone: phonenum, postnr: postnr, street: street })
+  const handleChange = (
+    evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    if (evt.target.name === "email") {
+      if (
+        !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(
+          evt.target.value
+        )
+      ) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setEmail(evt.target.value);
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
 
+    if (evt.target.name === "name") {
+      if (
+        !/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(
+          evt.target.value
+        )
+      ) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setName(evt.target.value);
 
-  }
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
 
+    if (evt.target.name === "phonenumber") {
+      if (!/^\d{8,11}$/gm.test(evt.target.value)) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setPhonenumber(evt.target.value);
 
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
+
+    if (evt.target.name === "zip") {
+      if (!/^\d{5,5}$/gm.test(evt.target.value)) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setZip(evt.target.value);
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
+    if (evt.target.name === "adress1") {
+      if (!/[^A-Za-z0-9]+/.test(evt.target.value)) {
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: true,
+        });
+      } else {
+        setAdress1(evt.target.value);
+
+        setErrorinput({
+          ...errorInput,
+          [evt.target.name]: false,
+        });
+      }
+    }
+  };
 
   return (
-
     <Box
-
       component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
@@ -54,48 +147,61 @@ export default function Shipping(props: Props) {
               name="email"
               label="Mejladress"
               required
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-
+              helperText={
+                errorInput.email ? "Ange gilig email" : "Email adress"
+              }
+              error={Boolean(errorInput.email)}
+              onChange={handleChange}
             />
             <TextField
-              name="given-name"
+              name="name"
               label="Fullständigt namn"
               required
-              value={name}
-              onChange={(event) => setName(event.target.value)}
+              helperText={
+                errorInput.name ? "Ange giltig Namn" : "För och efternamn"
+              }
+              error={Boolean(errorInput.name)}
+              onChange={handleChange}
             />
 
-
-            <TextField name="phonenumber" label="Telefon nr" required
-              value={phonenum}
-              onChange={(event) => setPhonenum(event.target.value)} />
-
-
-
+            <TextField
+              name="phonenumber"
+              label="Telefon nr"
+              required
+              helperText={
+                errorInput.phonenumber
+                  ? "Ange giltig telefon nummer"
+                  : "Telefon nummer"
+              }
+              error={Boolean(errorInput.phonenumber)}
+              onChange={handleChange}
+            />
           </div>
           <TextField
             className="box-1-input"
-            name="zip-code"
+            name="zip"
             label="Postnummer"
             required
-            value={postnr}
-            onChange={(event) => setPostnr(event.target.value)}
-
+            helperText={
+              errorInput.zip ? "Ange giltigt postnummer" : "Ange postnummer"
+            }
+            error={Boolean(errorInput.zip)}
+            onChange={handleChange}
           />
-          <TextField name="adress1" label="Leveransadress" required
-            value={street}
-            onChange={(event) => setStreet(event.target.value)} />
+          <TextField
+            name="adress1"
+            label="Leveransadress"
+            required
+            error={Boolean(errorInput.adress1)}
+            onChange={handleChange}
+            helperText={
+              errorInput.adress1 ? "Ange giltig adress" : "Leverans adress"
+            }
+          />
         </div>
 
-
-        <Button onClick={() => personalDataTransfer()} > Bekräfta </Button>
-
-
-
-
-      </div >
-    </Box >
-
+        <Button onClick={() => personalDataTransfer()}> Bekräfta </Button>
+      </div>
+    </Box>
   );
 }
