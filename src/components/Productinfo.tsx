@@ -35,7 +35,7 @@ function ProductInfo(props: Props) {
             onClick={() => handleAddProduct(product)}
             variant="contained"
             size="small"
-            color="primary"
+            color="secondary"
           >
             Lägg i kundvagn
           </Button>

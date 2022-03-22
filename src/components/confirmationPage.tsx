@@ -1,5 +1,6 @@
+import { Card } from "@mui/material";
 import { useParams } from "react-router-dom";
-import "./confirmationPage.css";
+
 import { useUser } from "../contexts/confirmationContext";
 import "./confirmationPage.css";
 
@@ -14,9 +15,24 @@ function Confirmation() {
       {isLoading ? (
         <span className="loading">laddar...</span>
       ) : (
-        <span>
-          <p>Tack för ditt köp {customerName}</p> <h3>Ordernummer: {r}</h3>
-        </span>
+        <div className="confirmation-container">
+          <Card className="confirmation-card">
+            <div>
+              <img
+                id={"logo"}
+                src={require("../assets/img/logo.png")}
+                alt="logo"
+              />
+            </div>
+            <div>
+              <p>Tack för ditt köp</p>
+              <p>{customerName}</p>
+
+              <p>Ordernummer:</p>
+              <p>{r}</p>
+            </div>
+          </Card>
+        </div>
       )}
     </div>
   );

@@ -6,6 +6,7 @@ export interface ContextValue {
   amountOfProducts: number;
   handleAddProduct: (product: Product) => void;
   handleRemoveProduct: (product: Product) => void;
+  emptyCart: () => void;
   totalPrice: number;
 }
 
@@ -14,6 +15,7 @@ export const ShoppingCartContext = createContext<ContextValue>({
   amountOfProducts: 0,
   handleAddProduct: () => {},
   handleRemoveProduct: () => {},
+  emptyCart: () => {},
   totalPrice: 0,
 });
 
@@ -44,6 +46,11 @@ const ShoppingCartProvider: FC = (props) => {
     }
     setAmountOfProducts(amountOfProducts + 1);
     setTotalPrice(totalPrice + product.price);
+  }
+
+  function emptyCart() {
+    setCartItems([]);
+    setAmountOfProducts(0);
   }
 
   /**
@@ -78,6 +85,7 @@ const ShoppingCartProvider: FC = (props) => {
         handleAddProduct,
         handleRemoveProduct,
         amountOfProducts,
+        emptyCart,
       }}
     >
       {props.children}

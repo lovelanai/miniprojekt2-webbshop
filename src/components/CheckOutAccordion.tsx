@@ -28,14 +28,9 @@ import {
 import CardPayment from "./CardPayment";
 import "./checkOutAccordion.css";
 import FakturaPayment from "./FakturaPayment";
-<<<<<<< HEAD
 import { useUser } from "../contexts/confirmationContext";
 import Shipping from "./Shipping";
 import SwishPayment from "./SwishPayment";
-=======
-import Shipping from "./Shipping";
-import SwishPayment from "./SwishPayment";
->>>>>>> 3bc33bf00bea29b98519b7241d990e2d914b02ea
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -139,7 +134,6 @@ export default function CheckOutAccordion() {
             disabled={Boolean(areAllFieldsFilled())}
             onClick={() => setExpanded("panel2")}
             size="medium"
-            color="primary"
             sx={{ width: "100%" }}
           >
             Bekräfta
@@ -315,8 +309,8 @@ export default function CheckOutAccordion() {
       </Accordion>
 
       <Accordion
-        expanded={expanded === "panel5"}
         onChange={handleChange("panel5")}
+        expanded={expanded === "panel5"}
         sx={{ width: "100%" }}
       >
         <AccordionSummary aria-controls="panel4d-content" id="panel4d-header">
@@ -375,8 +369,8 @@ export default function CheckOutAccordion() {
                 <h3>Valda produkter</h3>
 
                 {cartItems.map((item) => (
-                  <div className="product-checkout-container">
-                    <Card className="product-checkout-width" key={item.id}>
+                  <div className="product-checkout-container" key={item.id}>
+                    <Card className="product-checkout-width">
                       <h1>{item.title}</h1>
                       <div className="image-checkout-container">
                         <img src={item.image} alt="" />
@@ -401,12 +395,29 @@ export default function CheckOutAccordion() {
               <div>Moms: {totalPrice * 0.25} kr</div>
             </div>
             <br />
-            <Link to={`/ConfirmationPage/${personalInfo.name}`}>
-              <Button onClick={confirm} variant="contained" sx={{ width: "100%" }}>
-
+            {/* If shipping and payment has not been choosen, the button is disabled. If they have been choosen
+            the button will not be disabled and the "Link-to" will work. */}
+            {checkboxes.find((item) => item.checked === true) &&
+            checkboxesPay.find((item) => item.paychecked === true) ? (
+              <Link to={`/ConfirmationPage/${personalInfo.name}`}>
+                <Button
+                  onClick={confirm}
+                  variant="contained"
+                  sx={{ width: "100%" }}
+                >
+                  Slutför köp
+                </Button>
+              </Link>
+            ) : (
+              <Button
+                disabled={true}
+                onClick={confirm}
+                variant="contained"
+                sx={{ width: "100%" }}
+              >
                 Slutför köp
               </Button>
-            </Link>
+            )}
           </Typography>
         </AccordionDetails>
       </Accordion>

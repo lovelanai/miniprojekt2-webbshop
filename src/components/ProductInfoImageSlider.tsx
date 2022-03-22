@@ -18,8 +18,6 @@ interface Props {
 }
 
 function ProductInfoImageSlider(props: Props) {
-  // const { products } = useContext(ProductContext);
-  // const { activeProduct } = useContext(ActiveProductContext);
   const { product } = props;
   const images = [
     {
@@ -70,16 +68,6 @@ function ProductInfoImageSlider(props: Props) {
                 <Box
                   className="img"
                   component="img"
-                  // sx={{
-                  //   // height: "100%",
-                  //   display: "block",
-                  //   height: 455,
-                  //   minHeight: 255,
-                  //   minWidth: 700,
-                  //   overflow: "hidden",
-                  //   width: 700,
-                  //   objectFit: "contain",
-
                   src={step.imgPath}
                   alt={step.label}
                 />

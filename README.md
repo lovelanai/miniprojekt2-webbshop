@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# ![KAMERPROFFSET](src/assets/img/smallogo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Projektbeskrivning 📃
 
-## Available Scripts
+Vi har skapat en webbshop där en kund kan lägga till och ta bort olika produkter i en varukorg. I varukorgen kan kunden sedan skriva in sina personuppgifter, välja leverans- och betalningsalternativ och sedan bekräfta sin order. Alla input-fält innehåller också validering. Efter färdig beställning så töms varukorgen och kunden möts av en orderbekräftelse.
 
-In the project directory, you can run:
+Utöver kundflödet så har vi även skapat en admin-sida där vi kan ändra produkter enligt CRUD-principen. Här kan vi redigera, lägga till och ta bort produkter. Fälten för redigering/tillägg av produkt valideras också enligt våra valideringsregler. Produkter som uppdaterats eller lagts till sparas även i localstorage.
 
-### `npm start`
+[Link to repo](https://github.com/lovelanai/miniprojekt2-webbshop)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Initiate project 👨‍💻
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To run the project, simply write the following command in the terminal:
 
-### `npm test`
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm install
 
-### `npm run build`
+npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## [Material UI](https://mui.com/getting-started/installation/) 📦
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project was built using components from the component-library _Material UI_.
 
-### `npm run eject`
+Click [here](https://mui.com/getting-started/installation/) to read more about _Material UI_.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Created by:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## William Saar [**Github**](https://github.com/Willen17) 🐱‍🏍
 
-## Learn More
+## Erik Matsegård [**Github**](https://github.com/matsegard) ⏰
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Love Lanai [**Github**](https://github.com/lovelanai) 👨‍🦼
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Max Andersson [**Github**](https://github.com/frontMAX) 🏌️‍♂️

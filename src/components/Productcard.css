@@ -5,6 +5,7 @@
   flex-basis: max-content;
   background-color: white;
   margin-top: 5rem;
+  min-height: calc(100vh - 8rem);
 }
 
 .price {
@@ -31,6 +32,12 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+.storeCardStyle{
+   max-width: 345px;
+    margin: 2rem;
+    padding: 0 2rem;
 }
 
 @media (max-width: 480px) {

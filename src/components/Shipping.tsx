@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { PersonalData } from "../interfaces/interfaces";
 import "./CheckOutPage.css";
 
@@ -9,23 +9,11 @@ interface Props {
 }
 
 export default function Shipping(props: Props) {
-  function personalDataTransfer() {
-    props.sendPersonalData({
-      email: email,
-      name: name,
-      phone: phonenumber,
-      postnr: zip,
-      street: adress,
-    });
-  }
-
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
   const [zip, setZip] = useState("");
   const [adress, setAdress] = useState("");
-
-  // const personalInfo = [email, name, phonenum, postnr, street];
 
   const initialErrors = {
     email: false,
@@ -36,10 +24,25 @@ export default function Shipping(props: Props) {
   };
   const [errorInput, setErrorinput] = useState(initialErrors);
 
+  /**This function makes sure ro re-renders the website each time these values are changed
+   * The eslint-disable is used in order to not have to use the props.sendPersonalData as a
+   * dependency, which would cause a never-ending loop.
+   */
+  useEffect(() => {
+    props.sendPersonalData({
+      email: email,
+      name: name,
+      phone: phonenumber,
+      postnr: zip,
+      street: adress,
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [email, name, phonenumber, zip, adress]);
+
   const handleChange = (
     evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    personalDataTransfer();
     if (evt.target.name === "email") {
       if (
         !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(
