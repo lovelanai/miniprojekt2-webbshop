@@ -32,7 +32,6 @@ const ProductProvider: FC = (props) => {
       setProducts(
         products.map((item) => (item.id === product.id ? { ...product } : item))
       );
-      console.log(products);
     } else {
       setProducts([...products, product]);
     }

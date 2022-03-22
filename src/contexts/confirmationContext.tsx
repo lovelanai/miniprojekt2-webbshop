@@ -1,37 +1,32 @@
 import { createContext, FC, useContext, useState } from "react";
-import { User } from "../interfaces/interfaces";
-// import { confirmationFetch } from "../";
+import { confirmationFetch } from "../components/confirmationFetch";
 
-interface ContextValue {
+export interface ContextValue {
   isLoading: boolean;
-  user?: User;
   confirm: () => void;
 }
 
-export const UserContext = createContext<ContextValue>({
+export const ConfirmationContext = createContext<ContextValue>({
   isLoading: false,
-  // user: { name },
   confirm: () => {},
 });
 
-const UserProvider: FC = (props) => {
-  const [user, setUser] = useState<User>();
+const ConfirmationProvider: FC = (props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const confirm = async () => {
     setIsLoading(true);
-    // const user = await confirmationFetch("api/login");
-    setUser(user);
+    await confirmationFetch("api/confirm");
     setIsLoading(false);
   };
 
   return (
-    <UserContext.Provider value={{ user, isLoading, confirm }}>
+    <ConfirmationContext.Provider value={{ isLoading, confirm }}>
       {props.children}
-    </UserContext.Provider>
+    </ConfirmationContext.Provider>
   );
 };
 
-export default UserProvider;
+export default ConfirmationProvider;
 
-export const useUser = () => useContext(UserContext);
+export const useUser = () => useContext(ConfirmationContext);

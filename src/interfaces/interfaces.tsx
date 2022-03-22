@@ -516,7 +516,3 @@ export interface PersonalData {
   postnr: string;
   street: string;
 }
-
-export interface User {
-  Name: string;
-}

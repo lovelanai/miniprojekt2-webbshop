@@ -28,8 +28,14 @@ import {
 import CardPayment from "./CardPayment";
 import "./checkOutAccordion.css";
 import FakturaPayment from "./FakturaPayment";
+<<<<<<< HEAD
+import { useUser } from "../contexts/confirmationContext";
 import Shipping from "./Shipping";
 import SwishPayment from "./SwishPayment";
+=======
+import Shipping from "./Shipping";
+import SwishPayment from "./SwishPayment";
+>>>>>>> 3bc33bf00bea29b98519b7241d990e2d914b02ea
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -68,6 +74,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function CheckOutAccordion() {
+  const { confirm } = useUser();
   const { totalPrice, cartItems } = React.useContext(ShoppingCartContext);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
@@ -395,7 +402,8 @@ export default function CheckOutAccordion() {
             </div>
             <br />
             <Link to={`/ConfirmationPage/${personalInfo.name}`}>
-              <Button sx={{ width: "100%" }} variant="contained">
+              <Button onClick={confirm} variant="contained" sx={{ width: "100%" }}>
+
                 Slutför köp
               </Button>
             </Link>
