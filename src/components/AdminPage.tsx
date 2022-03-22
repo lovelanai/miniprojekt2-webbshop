@@ -45,7 +45,8 @@ function AdminPage() {
                   Edit
                 </Button>
                 <Button
-                  style={{ margin: "1rem", backgroundColor: "red" }}
+                  style={{ margin: "1rem" }}
+                  color="secondary"
                   variant="contained"
                   onClick={() => handleRemoveProduct(item)}
                   startIcon={<DeleteForeverIcon />}

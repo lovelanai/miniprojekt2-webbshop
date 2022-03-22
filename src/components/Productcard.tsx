@@ -46,11 +46,7 @@ export default function ImgMediaCard(): JSX.Element {
                   </Typography>
                 </div>
                 <div className="price">
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
+                  <Typography variant="body2" component="p">
                     {item.price} SEK
                   </Typography>
                 </div>
@@ -61,16 +57,16 @@ export default function ImgMediaCard(): JSX.Element {
           <CardActions>
             <div className="buttons">
               <Button
-                color="primary"
                 onClick={() => handleAddProduct(item)}
                 variant="contained"
+                color="secondary"
                 size="small"
               >
                 Lägg i kundvagn
               </Button>
 
               <Link to={item.title.replaceAll(" ", "-")}>
-                <Button variant="contained" size="small" color="secondary">
+                <Button variant="contained" color="primary" size="small">
                   Till produkten
                 </Button>
               </Link>

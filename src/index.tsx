@@ -2,16 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { green, purple } from "@mui/material/colors";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: "#333333",
+      contrastText: "#FBF7F5", //button text white instead of black
     },
+    background: {
+      default: "#333333",
+    },
+
     secondary: {
-      main: green[500],
+      main: "#DA344D",
     },
   },
 });
