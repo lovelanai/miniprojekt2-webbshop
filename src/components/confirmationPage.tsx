@@ -1,8 +1,6 @@
-import { CSSProperties } from "react";
 import { useParams } from "react-router-dom";
-import "./confirmationPage.css";
-import { PersonalData, User } from "../interfaces/interfaces";
 import { useUser } from "../contexts/confirmationContext";
+import "./confirmationPage.css";
 
 function Confirmation() {
   const { customerName } = useParams();

@@ -1,6 +1,5 @@
 import { Box, Button, TextField } from "@mui/material";
-import { useState, ChangeEvent } from "react";
-
+import { ChangeEvent, useState } from "react";
 import "./CheckOutPage.css";
 
 interface Props {
