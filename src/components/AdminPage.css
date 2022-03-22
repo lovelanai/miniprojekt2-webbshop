@@ -14,6 +14,7 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  min-height: calc(100vh - 19rem);
 }
 
 .admin-edit-button {

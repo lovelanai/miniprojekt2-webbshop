@@ -25,8 +25,6 @@ export default function Shipping(props: Props) {
   const [zip, setZip] = useState("");
   const [adress, setAdress] = useState("");
 
-  // const personalInfo = [email, name, phonenum, postnr, street];
-
   const initialErrors = {
     email: false,
     name: false,
@@ -36,7 +34,7 @@ export default function Shipping(props: Props) {
   };
   const [errorInput, setErrorinput] = useState(initialErrors);
 
-  const handleChange = (
+  const handleChange = async (
     evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     personalDataTransfer();

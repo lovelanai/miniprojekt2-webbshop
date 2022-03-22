@@ -4,12 +4,6 @@ import CheckOutAccordion from "./CheckOutAccordion";
 import "./CheckOutPage.css";
 
 function CheckOut() {
-  // const [isFilled, setIsFilled] = useState(false);
-  // const [formData, setFormData] = useState();
-
-  // function fillForm(data){
-  //   data
-
   return (
     <div className="checkout-container">
       <Link to="/ShoppingCartPage">

@@ -73,9 +73,6 @@ export default function ProductTab(props: Props) {
           ))}
         </ul>
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel> */}
     </Box>
   );
 }

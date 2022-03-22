@@ -21,7 +21,6 @@ const ProductProvider: FC = (props) => {
 
   useEffect(() => {
     localStorage.setItem("ProductsLS", JSON.stringify(products));
-    console.log(JSON.parse(localStorage.getItem("ProductsLS")!));
   }, [products]);
 
   const handleAddProduct = (product: Product) => {

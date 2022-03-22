@@ -28,8 +28,8 @@ export default function CartItem(): JSX.Element {
     <div>
       <div className="test-container">
         {cartItems.map((item) => (
-          <div>
-            <Card className="test" key={item.id}>
+          <div key={item.id}>
+            <Card className="test">
               <div className="image">
                 <h1>{item.title}</h1>
                 <CardMedia
@@ -49,6 +49,7 @@ export default function CartItem(): JSX.Element {
                 </CardContent>
                 <CardActions>
                   <Button
+                    variant="contained"
                     size="small"
                     onClick={() => handleRemoveProduct(item)}
                   >
@@ -56,7 +57,11 @@ export default function CartItem(): JSX.Element {
                   </Button>
 
                   <Typography>{item.quantity} </Typography>
-                  <Button size="small" onClick={() => handleAddProduct(item)}>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={() => handleAddProduct(item)}
+                  >
                     +
                   </Button>
                 </CardActions>

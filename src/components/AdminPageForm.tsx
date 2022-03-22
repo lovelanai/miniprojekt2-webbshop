@@ -361,7 +361,6 @@ export default function AdminPageForm(props?: Props) {
             style={{ display: "flex", justifyContent: "center" }}
           >
             <TextField
-              required
               multiline
               maxRows={6}
               id="outlined-spectitle"
@@ -373,7 +372,6 @@ export default function AdminPageForm(props?: Props) {
             />
             <TextField
               sx={{ marginLeft: 3 }}
-              required
               multiline
               maxRows={6}
               id="outlined-specinfo"

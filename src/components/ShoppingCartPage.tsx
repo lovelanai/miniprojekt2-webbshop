@@ -40,22 +40,12 @@ function ShoppingCartPage() {
                 <div className="confirm-button">
                   {cartItems.length > 0 ? (
                     <Link to="/checkOut">
-                      <Button
-                        disabled={false}
-                        variant="contained"
-                        size="small"
-                        color="secondary"
-                      >
+                      <Button disabled={false} variant="contained" size="small">
                         Checka ut
                       </Button>
                     </Link>
                   ) : (
-                    <Button
-                      disabled={true}
-                      variant="contained"
-                      size="small"
-                      color="secondary"
-                    >
+                    <Button disabled={true} variant="contained" size="small">
                       Checka ut
                     </Button>
                   )}

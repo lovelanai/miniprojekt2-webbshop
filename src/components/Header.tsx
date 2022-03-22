@@ -17,12 +17,6 @@ function Header() {
           sx={{ paddingLeft: "1rem", fontSize: "2rem", opacity: "0" }}
         />
       </Link>
-      {/* <Link to="/">
-        <CameraIcon
-          className="icon"
-          sx={{ paddingLeft: "1rem", fontSize: "2rem", opacity: "0" }}
-        />
-      </Link> */}
 
       <img id={"logo"} src={require("../assets/img/logo.png")} alt="logo" />
 
