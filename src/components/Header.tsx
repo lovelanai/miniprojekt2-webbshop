@@ -1,16 +1,12 @@
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import CameraIcon from "@mui/icons-material/Camera";
-import "./Header.css";
-
-import { Badge } from "@mui/material";
-import { Link } from "react-router-dom";
-
-import { useContext } from "react";
-import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-
-
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Badge } from "@mui/material";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
+import "./Header.css";
 import "./ShoppingCartPage.tsx";
+
 function Header() {
   const { amountOfProducts } = useContext(ShoppingCartContext);
   return (

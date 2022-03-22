@@ -1,8 +1,5 @@
-import React, { useState, FocusEvent, ChangeEvent } from "react";
-
-import { Box, Button, TextField } from "@mui/material";
-import { CSSProperties } from "@material-ui/core/styles/withStyles";
-import { grid, margin } from "@mui/system";
+import { Button, TextField } from "@mui/material";
+import React, { ChangeEvent, useState } from "react";
 import "./cardPayment.css";
 
 interface Props {
@@ -103,19 +100,20 @@ export default function CardPayment(props: Props) {
   };
 
   return (
-    <div className="rootStyle">
+    <div>
       <div className="inputs">
         <TextField
           name="name"
           id="outlined-name"
-          helperText={errorInput.name ? "Ange giltig Namn" : "Namn på kort"}
+          placeholder="Namn"
+          helperText={errorInput.name ? "Ange giltigt namn" : "Namn på kort"}
           error={Boolean(errorInput.name)}
           onChange={handleChange}
         />
         <TextField
           name="number"
           id="outlined-number"
-          label="number"
+          label="Kortnummer"
           helperText={
             errorInput.number ? "Ange giltigt kortnummer" : "Kortnummer"
           }
@@ -139,17 +137,19 @@ export default function CardPayment(props: Props) {
           helperText={errorInput.cvc ? "Ange giltig CVC" : "CVC"}
           error={Boolean(errorInput.cvc)}
           onChange={handleChange}
+          sx={{ width: "100%" }}
         />
-        <Button
-          variant="contained"
-          onClick={() => props.triggerNextAccordion()}
-          disabled={Boolean(areAllFieldsFilled())}
-          size="medium"
-          color="primary"
-        >
-          Submit
-        </Button>
       </div>
+      <Button
+        variant="contained"
+        onClick={() => props.triggerNextAccordion()}
+        disabled={Boolean(areAllFieldsFilled())}
+        size="medium"
+        color="primary"
+        sx={{ width: "100%" }}
+      >
+        Bekräfta
+      </Button>
     </div>
   );
 }

@@ -1,13 +1,12 @@
-import EditIcon from "@mui/icons-material/Edit";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import EditIcon from "@mui/icons-material/Edit";
+import { Button } from "@mui/material";
 import { useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import { Product } from "../interfaces/interfaces";
 import "./AdminPage.css";
 import AdminPageForm from "./AdminPageForm";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Button, IconButton } from "@mui/material";
-import { pink, red } from "@mui/material/colors";
 
 function AdminPage() {
   const { products } = useContext(ProductContext);

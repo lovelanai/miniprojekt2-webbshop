@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./confirmationPage.css";
 import { useUser } from "../contexts/confirmationContext";
-import { Typography } from "@mui/material";
-import CheckOutItems from "./CheckoutItems";
+import "./confirmationPage.css";
 
 function Confirmation() {
   const { customerName } = useParams();

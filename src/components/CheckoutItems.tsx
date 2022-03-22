@@ -1,7 +1,3 @@
-import { CSSProperties, useContext } from "react";
-import "./ShoppingCart.css";
-import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
-import "./CheckoutItems.css";
 import {
   Card,
   CardActions,
@@ -9,6 +5,10 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../contexts/ShoppingCartContext";
+import "./CheckoutItems.css";
+import "./ShoppingCart.css";
 
 export default function CheckOutItems(): JSX.Element {
   const { cartItems } = useContext(ShoppingCartContext);

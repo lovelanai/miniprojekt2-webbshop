@@ -1,12 +1,10 @@
-import ProductInfoImageSlider from "./ProductInfoImageSlider";
-import "./Productinfo.css";
-import { useContext } from "react";
-import ProductContext from "../contexts/ProductContext";
-import { Product } from "../interfaces/interfaces";
-import { Button } from "@mui/material";
-import { useCart } from "../contexts/ShoppingCartContext";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useCart } from "../contexts/ShoppingCartContext";
+import { Product } from "../interfaces/interfaces";
+import "./Productinfo.css";
+import ProductInfoImageSlider from "./ProductInfoImageSlider";
 import ProductTab from "./ProductTab";
 
 interface Props {

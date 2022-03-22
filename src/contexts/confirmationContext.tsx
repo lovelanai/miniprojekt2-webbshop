@@ -15,7 +15,6 @@ const ConfirmationProvider: FC = (props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const confirm = async () => {
-    console.log("funktionen körs");
     setIsLoading(true);
     await confirmationFetch("api/confirm");
     setIsLoading(false);

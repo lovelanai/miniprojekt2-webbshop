@@ -1,20 +1,17 @@
-import React, { useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-
-import "./Productcard.css";
-
-import ProductAccordion from "./ProductAccordion";
-
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ProductContext } from "../contexts/ProductContext";
 import { useCart } from "../contexts/ShoppingCartContext";
-import { Link } from "react-router-dom";
+import ProductAccordion from "./ProductAccordion";
+import "./Productcard.css";
 
 const useStyles = makeStyles({
   root: {

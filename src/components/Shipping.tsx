@@ -1,10 +1,7 @@
-import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-
 import { ChangeEvent, useState } from "react";
 import { PersonalData } from "../interfaces/interfaces";
-
 import "./CheckOutPage.css";
 
 interface Props {
@@ -18,7 +15,7 @@ export default function Shipping(props: Props) {
       name: name,
       phone: phonenumber,
       postnr: zip,
-      street: adress1,
+      street: adress,
     });
   }
 
@@ -26,7 +23,7 @@ export default function Shipping(props: Props) {
   const [name, setName] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
   const [zip, setZip] = useState("");
-  const [adress1, setAdress1] = useState("");
+  const [adress, setAdress] = useState("");
 
   // const personalInfo = [email, name, phonenum, postnr, street];
 
@@ -35,7 +32,7 @@ export default function Shipping(props: Props) {
     name: false,
     phonenumber: false,
     zip: false,
-    adress1: false,
+    adress: false,
   };
   const [errorInput, setErrorinput] = useState(initialErrors);
 
@@ -83,7 +80,11 @@ export default function Shipping(props: Props) {
     }
 
     if (evt.target.name === "phonenumber") {
-      if (!/^\d{8,11}$/gm.test(evt.target.value)) {
+      if (
+        !/(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g.test(
+          evt.target.value
+        )
+      ) {
         setErrorinput({
           ...errorInput,
           [evt.target.name]: true,
@@ -112,18 +113,18 @@ export default function Shipping(props: Props) {
         });
       }
     }
-    if (evt.target.name === "adress1") {
+    if (evt.target.name === "address-line1") {
       if (!/[^A-Za-z0-9]+/.test(evt.target.value)) {
         setErrorinput({
           ...errorInput,
-          [evt.target.name]: true,
+          adress: true,
         });
       } else {
-        setAdress1(evt.target.value);
+        setAdress(evt.target.value);
 
         setErrorinput({
           ...errorInput,
-          [evt.target.name]: false,
+          adress: false,
         });
       }
     }
@@ -140,15 +141,15 @@ export default function Shipping(props: Props) {
     >
       <div>
         <div className="form-container">
-          <div className="box-1">
+          <div>
             <TextField
               className="box-1-input"
               type="email"
               name="email"
-              label="Mejladress"
+              label="Email"
               required
               helperText={
-                errorInput.email ? "Ange gilig email" : "Email adress"
+                errorInput.email ? "Ange gilig email-adress" : "Email-adress"
               }
               error={Boolean(errorInput.email)}
               onChange={handleChange}
@@ -158,7 +159,7 @@ export default function Shipping(props: Props) {
               label="Fullständigt namn"
               required
               helperText={
-                errorInput.name ? "Ange giltig Namn" : "För och efternamn"
+                errorInput.name ? "Ange giltigt namn" : "För- och efternamn"
               }
               error={Boolean(errorInput.name)}
               onChange={handleChange}
@@ -166,11 +167,11 @@ export default function Shipping(props: Props) {
 
             <TextField
               name="phonenumber"
-              label="Telefon nr"
+              label="Telefonnummer"
               required
               helperText={
                 errorInput.phonenumber
-                  ? "Ange giltig telefonnummer"
+                  ? "Ange giltigt telefonnummer"
                   : "Telefonnummer"
               }
               error={Boolean(errorInput.phonenumber)}
@@ -189,13 +190,13 @@ export default function Shipping(props: Props) {
             onChange={handleChange}
           />
           <TextField
-            name="adress1"
+            name="address-line1"
             label="Leveransadress"
             required
-            error={Boolean(errorInput.adress1)}
+            error={Boolean(errorInput.adress)}
             onChange={handleChange}
             helperText={
-              errorInput.adress1 ? "Ange giltig adress" : "Leverans adress"
+              errorInput.adress ? "Ange giltig adress" : "Leveransadress"
             }
           />
         </div>

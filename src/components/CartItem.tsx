@@ -1,8 +1,3 @@
-import { createElement, useContext, useState } from "react";
-import "./ShoppingCart.css";
-import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
-import { Product } from "../interfaces/interfaces";
-import { Link } from "react-router-dom";
 import {
   Button,
   Card,
@@ -11,8 +6,9 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import ProductContext from "../contexts/ProductContext";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import { useContext } from "react";
+import { ShoppingCartContext, useCart } from "../contexts/ShoppingCartContext";
+import "./ShoppingCart.css";
 
 export default function CartItem(): JSX.Element {
   const { cartItems } = useContext(ShoppingCartContext);

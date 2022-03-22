@@ -1,14 +1,6 @@
-.rootStyle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .inputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 1rem;
   column-gap: 0.5rem;
-  row-gap: 5rem;
 }
