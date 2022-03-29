@@ -1,7 +1,6 @@
 # ![KAMERPROFFSET](src/assets/img/smallogo.png)
 
-## Länk till webbsidan
-[Kameraproffset](https://kameraproffset.netlify.app/)
+## [Kameraproffset hemsida](https://kameraproffset.netlify.app/)
 
 ## Projektbeskrivning 📃
 
