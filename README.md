@@ -1,5 +1,8 @@
 # ![KAMERPROFFSET](src/assets/img/smallogo.png)
 
+## Länk till hemsidan
+[Kameraproffset](https://kameraproffset.netlify.app/)
+
 ## Projektbeskrivning 📃
 
 Vi har skapat en webbshop där en kund kan lägga till och ta bort olika produkter i en varukorg. I varukorgen kan kunden sedan skriva in sina personuppgifter, välja leverans- och betalningsalternativ och sedan bekräfta sin order. Alla input-fält innehåller också validering. Efter färdig beställning så töms varukorgen och kunden möts av en orderbekräftelse.
