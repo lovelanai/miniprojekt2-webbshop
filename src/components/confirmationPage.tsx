@@ -1,6 +1,4 @@
-import { Card } from "@mui/material";
 import { useParams } from "react-router-dom";
-
 import { useUser } from "../contexts/confirmationContext";
 import "./confirmationPage.css";
 
