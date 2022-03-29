@@ -44,7 +44,7 @@ export default function CartItem(): JSX.Element {
               <div className="product-info">
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">
-                    {item.price}
+                    {item.price}:-
                   </Typography>
                 </CardContent>
                 <CardActions>
