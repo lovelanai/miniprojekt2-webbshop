@@ -16,7 +16,7 @@ function Confirmation() {
         <span className="loading">laddar...</span>
       ) : (
         <div className="confirmation-container">
-          <Card className="confirmation-card">
+          <div className="confirmation-card">
             <div>
               <img
                 id={"logo"}
@@ -31,7 +31,7 @@ function Confirmation() {
               <p>Ordernummer:</p>
               <p>{r}</p>
             </div>
-          </Card>
+          </div>
         </div>
       )}
     </div>

@@ -5,7 +5,9 @@ footer {
   height: 3rem;
   align-items: center;
   justify-content: center;
-  color: #fbf7f5;
+  color: #fffadd;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 h2 {
