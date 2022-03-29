@@ -10,8 +10,25 @@ import React from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Product } from "../interfaces/interfaces";
 import "./imgslider.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const AutoPlaySwipeableViews = SwipeableViews;
+
+const sliderTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#333333",
+      contrastText: "#FBF7F5", //button text white instead of black
+    },
+    background: {
+      default: "#333333",
+    },
+
+    secondary: {
+      main: "#333333",
+    },
+  },
+});
 
 interface Props {
   product: Product;
@@ -54,77 +71,78 @@ function ProductInfoImageSlider(props: Props) {
   };
 
   return (
-    <div className="left-product-container">
-      <Box className="img-slider" sx={{ flexGrow: 1 }}>
-        <AutoPlaySwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={activeStep}
-          onChangeIndex={handleStepChange}
-          enableMouseEvents
-        >
-          {images.map((step, index) => (
-            <div key={step.id}>
-              {Math.abs(activeStep - index) <= 2 ? (
-                <Box
-                  className="img"
-                  component="img"
-                  src={step.imgPath}
-                  alt={step.label}
-                />
-              ) : null}
-            </div>
-          ))}
-        </AutoPlaySwipeableViews>
-        <MobileStepper
-          className="next"
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          nextButton={
-            <Button
-              size="small"
-              onClick={handleNext}
-              disabled={activeStep === maxSteps - 1}
-            >
-              Next
-              {theme.direction === "rtl" ? (
-                <KeyboardArrowLeft />
-              ) : (
-                <KeyboardArrowRight />
-              )}
-            </Button>
-          }
-          backButton={
-            <Button
-              size="small"
-              onClick={handleBack}
-              disabled={activeStep === 0}
-            >
-              {theme.direction === "rtl" ? (
-                <KeyboardArrowRight />
-              ) : (
-                <KeyboardArrowLeft />
-              )}
-              Back
-            </Button>
-          }
-        />
-        <Paper
-          square
-          elevation={0}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: 50,
-            pl: 2,
-            bgcolor: "background.default",
-          }}
-        >
-          <Typography>{images[activeStep].label}</Typography>
-        </Paper>
-      </Box>
-    </div>
+    <ThemeProvider theme={sliderTheme}>
+      <div className="left-product-container">
+        <Box className="img-slider" sx={{ flexGrow: 1 }}>
+          <AutoPlaySwipeableViews
+            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            index={activeStep}
+            onChangeIndex={handleStepChange}
+            enableMouseEvents
+          >
+            {images.map((step, index) => (
+              <div key={step.id}>
+                {Math.abs(activeStep - index) <= 2 ? (
+                  <Box
+                    className="img"
+                    component="img"
+                    src={step.imgPath}
+                    alt={step.label}
+                  />
+                ) : null}
+              </div>
+            ))}
+          </AutoPlaySwipeableViews>
+          <MobileStepper
+            className="next"
+            steps={maxSteps}
+            position="static"
+            activeStep={activeStep}
+            nextButton={
+              <Button
+                size="small"
+                onClick={handleNext}
+                disabled={activeStep === maxSteps - 1}
+              >
+                Next
+                {theme.direction === "rtl" ? (
+                  <KeyboardArrowLeft />
+                ) : (
+                  <KeyboardArrowRight />
+                )}
+              </Button>
+            }
+            backButton={
+              <Button
+                size="small"
+                onClick={handleBack}
+                disabled={activeStep === 0}
+              >
+                {theme.direction === "rtl" ? (
+                  <KeyboardArrowRight />
+                ) : (
+                  <KeyboardArrowLeft />
+                )}
+                Back
+              </Button>
+            }
+          />
+          <Paper
+            square
+            elevation={0}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: 50,
+              pl: 2,
+            }}
+          >
+            <Typography>{images[activeStep].label}</Typography>
+          </Paper>
+        </Box>
+      </div>
+    </ThemeProvider>
   );
 }
 
