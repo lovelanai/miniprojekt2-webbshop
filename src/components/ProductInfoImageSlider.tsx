@@ -21,7 +21,7 @@ const sliderTheme = createTheme({
       contrastText: "#FBF7F5", //button text white instead of black
     },
     background: {
-      default: "#333333",
+      default: "#FFFFFF",
     },
 
     secondary: {
