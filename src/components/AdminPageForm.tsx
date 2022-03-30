@@ -1,4 +1,12 @@
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+import {
+  Box,
+  Button,
+  Modal,
+  TextField,
+  Typography,
+  createTheme,
+} from "@mui/material";
 import React, { ChangeEvent, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../contexts/ProductContext";
@@ -7,6 +15,22 @@ import { Product } from "../interfaces/interfaces";
 interface Props {
   product?: Product;
 }
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#333333",
+      contrastText: "#FBF7F5", //button text white instead of black
+    },
+    background: {
+      default: "#333333",
+    },
+
+    secondary: {
+      main: "#DA344D",
+    },
+  },
+});
 
 export default function AdminPageForm(props?: Props) {
   const initialValues = {
@@ -205,208 +229,210 @@ export default function AdminPageForm(props?: Props) {
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        "& .MuiTextField-root": {
-          marginTop: 2,
-          marginBottom: 2,
-          width: "100%",
-        },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
-        <TextField
-          required
-          multiline
-          maxRows={4}
-          id="outlined-Titel"
-          label="Titel"
-          name="title"
-          error={Boolean(errorInput.title)}
-          onChange={handleChange}
-          defaultValue={props?.product?.title}
-          helperText={
-            errorInput.title
-              ? "Titeln måste vara minst ett tecken"
-              : "Produktens titel"
-          }
-        />
-        <div style={{ display: "flex", justifyContent: "center" }}>
+    <ThemeProvider theme={theme}>
+      <Box
+        component="form"
+        sx={{
+          "& .MuiTextField-root": {
+            marginTop: 2,
+            marginBottom: 2,
+            width: "100%",
+          },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <div>
           <TextField
             required
-            id="outlined-number"
-            label="Price"
-            name="price"
+            multiline
+            maxRows={4}
+            id="outlined-Titel"
+            label="Titel"
+            name="title"
+            error={Boolean(errorInput.title)}
             onChange={handleChange}
-            error={Boolean(errorInput.price)}
-            defaultValue={props?.product?.price}
-            // value={value.price ? value.price : props.product?.price}
+            defaultValue={props?.product?.title}
             helperText={
-              errorInput.price
-                ? "Produktens pris får endast innehålla siffror"
-                : "Produktens pris"
+              errorInput.title
+                ? "Titeln måste vara minst ett tecken"
+                : "Produktens titel"
             }
           />
-        </div>
-        <TextField
-          required
-          multiline
-          maxRows={6}
-          id="outlined-Image1"
-          onChange={handleChange}
-          label="Image1"
-          name="image"
-          error={Boolean(errorInput.image)}
-          defaultValue={props?.product?.image}
-          helperText={
-            errorInput.image ? "Skriv in en URL" : "Produktens bild URL 1"
-          }
-        />
-        <TextField
-          required
-          multiline
-          maxRows={6}
-          id="outlined-Image2"
-          defaultValue={props?.product?.image2}
-          onChange={handleChange}
-          error={Boolean(errorInput.image2)}
-          label="Image2"
-          name="image2"
-          helperText={
-            errorInput.image2 ? "Skriv in en URL" : "Produktens bild URL 2"
-          }
-        />
-        <TextField
-          required
-          multiline
-          maxRows={6}
-          id="outlined-Image3"
-          label="Image3"
-          name="image3"
-          onChange={handleChange}
-          error={Boolean(errorInput.image3)}
-          defaultValue={props?.product?.image3}
-          helperText={
-            errorInput.image3 ? "Skriv in en URL" : "Produktens bild URL 3"
-          }
-        />
-        <TextField
-          required
-          multiline
-          maxRows={6}
-          id="Outlined-LongInfo"
-          label="Long info"
-          name="longInfo"
-          onChange={handleChange}
-          error={Boolean(errorInput.longInfo)}
-          helperText={
-            errorInput.longInfo
-              ? "Produktinfo får inte vara tom"
-              : "Produktens långa info"
-          }
-          defaultValue={props?.product?.longinfo}
-        />
-        <TextField
-          required
-          multiline
-          maxRows={6}
-          id="outlined-Info1"
-          label="Info1"
-          name="info1"
-          onChange={handleChange}
-          error={Boolean(errorInput.info1)}
-          helperText={
-            errorInput.info1 ? "Ange produktens info" : "Produktens info 1"
-          }
-          defaultValue={props?.product?.info1}
-        />
-        <TextField
-          required
-          multiline
-          maxRows={6}
-          id="outlined-Info2"
-          label="Info2"
-          name="info2"
-          error={Boolean(errorInput.info2)}
-          defaultValue={props?.product?.info2}
-          onChange={handleChange}
-          helperText={
-            errorInput.info2
-              ? "Ange produktens info"
-              : "Produktens korta info 2"
-          }
-        />
-        <TextField
-          required
-          multiline
-          maxRows={6}
-          id="outlined-Info3"
-          label="Info3"
-          name="info3"
-          onChange={handleChange}
-          error={Boolean(errorInput.info3)}
-          helperText={
-            errorInput.info3
-              ? "Ange produktens info"
-              : "Produktens korta info 3"
-          }
-          defaultValue={props?.product?.info3}
-        />
-        {value.spec.map((item) => (
-          <div
-            key={item.id}
-            style={{ display: "flex", justifyContent: "center" }}
-          >
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <TextField
-              multiline
-              maxRows={6}
-              id="outlined-spectitle"
-              label="Spec title"
-              name={`spec[${item.id - 1}].spectitle`}
+              required
+              id="outlined-number"
+              label="Price"
+              name="price"
               onChange={handleChange}
-              helperText={"Specifikationstitel " + item.id}
-              defaultValue={props?.product?.specs[item.id - 1].spectitle}
-            />
-            <TextField
-              sx={{ marginLeft: 3 }}
-              multiline
-              maxRows={6}
-              id="outlined-specinfo"
-              label="Spec info"
-              name={`spec[${item.id - 1}].specinfo`}
-              onChange={handleChange}
-              helperText={"Ange specifikationsinfo " + item.id}
-              defaultValue={props?.product?.specs[item.id - 1].spec}
+              error={Boolean(errorInput.price)}
+              defaultValue={props?.product?.price}
+              // value={value.price ? value.price : props.product?.price}
+              helperText={
+                errorInput.price
+                  ? "Produktens pris får endast innehålla siffror"
+                  : "Produktens pris"
+              }
             />
           </div>
-        ))}
-      </div>
-      <Link to="/AdminPage">
-        <Button
-          onClick={sendToAddProduct}
-          variant="contained"
-          disabled={Boolean(areAllFieldsFilled())}
-          size="medium"
-          color="primary"
-        >
-          Submit
-        </Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={modalStyle}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              {props?.product ? "Produkt uppdaterad" : "Produkten tillagd"}
-            </Typography>
-          </Box>
-        </Modal>
-      </Link>
-    </Box>
+          <TextField
+            required
+            multiline
+            maxRows={6}
+            id="outlined-Image1"
+            onChange={handleChange}
+            label="Image1"
+            name="image"
+            error={Boolean(errorInput.image)}
+            defaultValue={props?.product?.image}
+            helperText={
+              errorInput.image ? "Skriv in en URL" : "Produktens bild URL 1"
+            }
+          />
+          <TextField
+            required
+            multiline
+            maxRows={6}
+            id="outlined-Image2"
+            defaultValue={props?.product?.image2}
+            onChange={handleChange}
+            error={Boolean(errorInput.image2)}
+            label="Image2"
+            name="image2"
+            helperText={
+              errorInput.image2 ? "Skriv in en URL" : "Produktens bild URL 2"
+            }
+          />
+          <TextField
+            required
+            multiline
+            maxRows={6}
+            id="outlined-Image3"
+            label="Image3"
+            name="image3"
+            onChange={handleChange}
+            error={Boolean(errorInput.image3)}
+            defaultValue={props?.product?.image3}
+            helperText={
+              errorInput.image3 ? "Skriv in en URL" : "Produktens bild URL 3"
+            }
+          />
+          <TextField
+            required
+            multiline
+            maxRows={6}
+            id="Outlined-LongInfo"
+            label="Long info"
+            name="longInfo"
+            onChange={handleChange}
+            error={Boolean(errorInput.longInfo)}
+            helperText={
+              errorInput.longInfo
+                ? "Produktinfo får inte vara tom"
+                : "Produktens långa info"
+            }
+            defaultValue={props?.product?.longinfo}
+          />
+          <TextField
+            required
+            multiline
+            maxRows={6}
+            id="outlined-Info1"
+            label="Info1"
+            name="info1"
+            onChange={handleChange}
+            error={Boolean(errorInput.info1)}
+            helperText={
+              errorInput.info1 ? "Ange produktens info" : "Produktens info 1"
+            }
+            defaultValue={props?.product?.info1}
+          />
+          <TextField
+            required
+            multiline
+            maxRows={6}
+            id="outlined-Info2"
+            label="Info2"
+            name="info2"
+            error={Boolean(errorInput.info2)}
+            defaultValue={props?.product?.info2}
+            onChange={handleChange}
+            helperText={
+              errorInput.info2
+                ? "Ange produktens info"
+                : "Produktens korta info 2"
+            }
+          />
+          <TextField
+            required
+            multiline
+            maxRows={6}
+            id="outlined-Info3"
+            label="Info3"
+            name="info3"
+            onChange={handleChange}
+            error={Boolean(errorInput.info3)}
+            helperText={
+              errorInput.info3
+                ? "Ange produktens info"
+                : "Produktens korta info 3"
+            }
+            defaultValue={props?.product?.info3}
+          />
+          {value.spec.map((item) => (
+            <div
+              key={item.id}
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <TextField
+                multiline
+                maxRows={6}
+                id="outlined-spectitle"
+                label="Spec title"
+                name={`spec[${item.id - 1}].spectitle`}
+                onChange={handleChange}
+                helperText={"Specifikationstitel " + item.id}
+                defaultValue={props?.product?.specs[item.id - 1].spectitle}
+              />
+              <TextField
+                sx={{ marginLeft: 3 }}
+                multiline
+                maxRows={6}
+                id="outlined-specinfo"
+                label="Spec info"
+                name={`spec[${item.id - 1}].specinfo`}
+                onChange={handleChange}
+                helperText={"Ange specifikationsinfo " + item.id}
+                defaultValue={props?.product?.specs[item.id - 1].spec}
+              />
+            </div>
+          ))}
+        </div>
+        <Link to="/AdminPage">
+          <Button
+            onClick={sendToAddProduct}
+            variant="contained"
+            disabled={Boolean(areAllFieldsFilled())}
+            size="medium"
+            color="primary"
+          >
+            Submit
+          </Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={modalStyle}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                {props?.product ? "Produkt uppdaterad" : "Produkten tillagd"}
+              </Typography>
+            </Box>
+          </Modal>
+        </Link>
+      </Box>
+    </ThemeProvider>
   );
 }
