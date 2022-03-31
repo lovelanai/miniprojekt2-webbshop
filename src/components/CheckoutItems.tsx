@@ -34,7 +34,7 @@ export default function CheckOutItems(): JSX.Element {
               <div className="productInfo">
                 <CardContent></CardContent>
                 <CardActions>
-                  <Typography style={{ margin: "0 2" }}>
+                  <Typography className="amount-number">
                     {item.quantity} st
                   </Typography>
                 </CardActions>
