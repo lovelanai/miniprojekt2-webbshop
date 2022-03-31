@@ -34,9 +34,7 @@ export default function CheckOutItems(): JSX.Element {
               <div className="productInfo">
                 <CardContent></CardContent>
                 <CardActions>
-                  <Typography className="amount-number">
-                    {item.quantity} st
-                  </Typography>
+                  <p className="amount-number">{item.quantity} st</p>
                 </CardActions>
                 <Typography>{item.quantity * item.price}:- </Typography>
               </div>
