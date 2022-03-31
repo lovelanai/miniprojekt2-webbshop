@@ -34,10 +34,10 @@ Click [here](https://mui.com/getting-started/installation/) to read more about _
 
 ---
 
-## William Saar [**Github**](https://github.com/Willen17) 🐱‍🏍
+## William Saar [**Github**](https://github.com/Willen17)
 
-## Erik Matsegård [**Github**](https://github.com/matsegard) ⏰
+## Erik Matsegård [**Github**](https://github.com/matsegard)
 
-## Love Lanai [**Github**](https://github.com/lovelanai) 👨‍🦼
+## Love Lanai [**Github**](https://github.com/lovelanai)
 
-## Max Andersson [**Github**](https://github.com/frontMAX) 🏌️‍♂️
+## Max Andersson [**Github**](https://github.com/frontMAX)
