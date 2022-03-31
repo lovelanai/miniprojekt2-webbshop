@@ -75,7 +75,9 @@ export default function CartItem(): JSX.Element {
                       -
                     </Button>
 
-                    <Typography>{item.quantity} </Typography>
+                    <Typography style={{ marginLeft: "8px" }}>
+                      {item.quantity}{" "}
+                    </Typography>
                     <Button
                       variant="contained"
                       size="small"
