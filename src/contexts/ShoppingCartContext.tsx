@@ -75,6 +75,7 @@ const ShoppingCartProvider: FC = (props) => {
       );
     }
     setAmountOfProducts(amountOfProducts - 1);
+    setTotalPrice(totalPrice - product.price);
   }
 
   return (
