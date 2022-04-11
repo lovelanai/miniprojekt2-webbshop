@@ -70,11 +70,16 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function CheckOutAccordion() {
   const { confirm } = useUser();
-  const { totalPrice, cartItems } = React.useContext(ShoppingCartContext);
+  const { cartItems } = React.useContext(ShoppingCartContext);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
   const defaultShipperState: ShipperSelection[] = mockedShipping.map(
     (shipper) => ({ shipper, checked: false })
+  );
+
+  const totalCost = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
   );
 
   const [checkboxes, setCheckboxes] =
@@ -386,13 +391,13 @@ export default function CheckOutAccordion() {
               </div>
               <hr />
               Totalpris:{" "}
-              {totalPrice +
+              {totalCost +
                 checkboxesPay.find((item) => item.paychecked === true)
                   ?.paymethod.price! +
                 checkboxes.find((item) => item.checked === true)?.shipper
                   .price!}{" "}
               kr
-              <div>Moms: {totalPrice * 0.25} kr</div>
+              <div>Moms: {totalCost * 0.25} kr</div>
             </div>
             <br />
             {/* If shipping and payment has not been choosen, the button is disabled. If they have been choosen
