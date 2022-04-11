@@ -120,7 +120,7 @@ export const mockedProducts: Product[] = [
     price: 27490,
     quantity: 1,
     image:
-      "https://www.scandinavianphoto.se/globalassets/1048664_11.jpg?ref=C91E595A11&w=1920&h=1920&mode=max",
+      "https://www.scandinavianphoto.se/globalassets/1048664_1.jpg?ref=3E5370D1CD&w=960&h=960&mode=max",
     image2:
       "https://www.scandinavianphoto.se/globalassets/1048664_12.jpg?ref=1A2B604F61&w=1920&h=1920&mode=max",
     image3:
