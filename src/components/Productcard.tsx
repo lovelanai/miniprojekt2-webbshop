@@ -40,6 +40,7 @@ export default function ImgMediaCard(): JSX.Element {
                     variant="body2"
                     color="textSecondary"
                     component="ul"
+                    className="item-short-info"
                   >
                     <li>{item.info1}</li>
                     <li>{item.info2}</li> <li>{item.info3}</li>
